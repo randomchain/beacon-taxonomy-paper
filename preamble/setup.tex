@@ -1,0 +1,286 @@
+%!TEX root = ../main.tex
+\input{preamble/constants.tex}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata}
+
+%Give me those text sizes
+\usepackage{lmodern}
+
+\usepackage{multicol}
+\renewcommand{\multicolsep}{\itemsep}
+
+%Space between line commands
+\usepackage{setspace}
+
+%Control enumerate and friends
+\usepackage[inline]{enumitem}
+
+%Line numbers
+\usepackage[modulo]{lineno} %Keep before fvextra
+\usepackage{fvextra} %Keep this before csquote
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{lastpage}
+\usepackage{rotating}
+\usepackage{xargs}
+
+%Lets get the ref working
+\usepackage[english]{varioref}
+\usepackage{hyperref}
+  \hypersetup{
+    bookmarksnumbered,
+    bookmarksdepth=1,
+    pdfauthor={\GROUP},
+    pdftitle={\TITLE},
+    pdfsubject={\SUBJECT},
+    pdfpagelayout=TwoPageRight,
+    pdfdisplaydoctitle,
+    breaklinks,
+    linktoc=all,
+    pdfprintscaling=None,
+    plainpages=false,
+    colorlinks,
+    linkcolor=aaublue,
+    citecolor=aaublue,
+    urlcolor=aaublue,
+    filecolor=aaublue
+  }
+\usepackage[english, capitalize]{cleveref}
+
+%Use relative imports
+\usepackage{import}
+
+%Fancy table layout help
+\usepackage{booktabs}
+
+%Set some crefs
+\crefname{appchap}{appendix}{appendices}
+\Crefname{appchap}{Appendix}{Appendices}
+
+%Titles and captions
+\usepackage{titlesec, blindtext, color}
+\titleformat{\part}[display]%
+    {\fontsize{38pt}{8pt}\filcenter\sffamily\selectfont\thispagestyle{empty}}
+    {\textcolor{part}{Part \thepart \vspace{6pt}\linebreak {\rule{120pt}{1pt}} \linebreak}}
+    {0pt}
+    {}
+
+\titleformat{\chapter}[hang]%
+    {\Huge\sffamily\mdseries\vspace{-20pt}}
+    {\textcolor{numbers}{\thechapter \hsp{\rule[-5pt]{1.5pt}{29pt}}\hsp}}
+    {0pt}
+    {\Huge\sffamily\mdseries}
+    [\vspace{-20pt}]
+
+\titleformat{\section}
+{\normalfont\Large\sffamily}
+{\color{numbers}\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\sffamily}
+{\color{numbers}\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\sffamily}
+{\color{numbers}\thesubsubsection}{1em}{}
+
+%Set some margins
+\usepackage[
+    left=28mm,% left margin on an odd page
+    right=41mm,% right margin on an odd page
+%    showframe,
+]{geometry}
+
+%Dates
+\usepackage{datetime}
+
+%Biblography
+\usepackage[
+    style=numeric,
+    maxnames=1,
+    backend=biber,
+    defernumbers=true,
+    hyperref=true,
+    alldates=long,
+]{biblatex}
+\bibliography{bibtex.bib}
+
+%Customize captions
+\usepackage{caption}
+\usepackage{subcaption} %Used together with caption
+
+\captionsetup{%
+    font=footnotesize,% set font size to footnotesize
+    labelfont=bf % bold label (e.g., Figure 3.2) font
+}
+\captionsetup[sub]{%
+    font=footnotesize,% set font size to footnotesize
+    labelfont=bf % bold label (e.g., Figure 3.2) font
+}
+
+%Apparently all "serious math typesetters" need this for math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%Tikz related
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{tikzscale}
+%TODO: Could we clean this up?
+\usetikzlibrary{%
+    shapes,
+    shapes.symbols,
+    arrows,
+    positioning,
+    backgrounds,
+    matrix,
+    patterns,
+    calc,
+    fit,
+    math,
+    shapes.multipart,
+    automata,
+    shadows,
+    decorations.pathreplacing,
+    external
+}
+\tikzexternalize[prefix=figures/]
+%\tikzexternaldisable{}
+\tikzexternalenable{}
+%Pgf plots is nice for making fancy plots
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+\usepgfplotslibrary{fillbetween}
+\tikzset{every picture/.style={/utils/exec={\sffamily}}}
+
+%Two uml packages. I love it
+\usepackage{packages/tikz-uml}
+\usepackage{pgf-umlsd}
+
+%Curfile stuff
+%We need this to figure out the path if a command doesn't support import
+\usepackage{currfile}
+\makeatletter
+\def\relativepath{\import@path}
+\makeatother
+
+%Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} %remove the horizontal line in the header
+\fancyhead[RE]{\color{aaublue}\small\nouppercase\leftmark}
+\fancyhead[LO]{\color{aaublue}\small\nouppercase\rightmark}
+\fancyhead[LE,RO]{\thepage} %page number on all pages
+\raggedbottom
+
+%Colors
+\usepackage{xcolor}
+\definecolor{aaublue}{gray}{0}
+\definecolor{bluekeywords}{gray}{0}
+\definecolor{greencomments}{gray}{0.5}
+\definecolor{redstrings}{gray}{0.3}
+\definecolor{codebg}{HTML}{EFEFEF}
+\definecolor{codefg}{HTML}{000000}
+\definecolor{part}{HTML}{34495E}
+\definecolor{numbers}{HTML}{34495E}
+\definecolor{smartdiagram1}{HTML}{1ABC9C}
+\definecolor{smartdiagram2}{HTML}{2ECC71}
+\definecolor{smartdiagram3}{HTML}{3498db}
+\definecolor{smartdiagram4}{HTML}{9b59b6}
+\definecolor{smartdiagram5}{HTML}{E74C3C}
+\definecolor{smartdiagram6}{HTML}{F1C40F}
+\definecolor{smartdiagram7}{HTML}{E67E22}
+\definecolor{diagramDark}{HTML}{19B5FE}
+\definecolor{diagramLight}{HTML}{6BB9F0}
+
+\definecolor{tableGoodLight}{HTML}{87D37C}
+\definecolor{tableGoodDark}{HTML}{26A65B}
+\definecolor{tableBadLight}{HTML}{EC644B}
+\definecolor{tableBadDark}{HTML}{EF4836}
+
+\definecolor{GoogleGreen}{HTML}{4CAF50}
+\definecolor{GoogleRed}{HTML}{F44336}
+\definecolor{GooglePurple}{HTML}{9C27B0}
+\definecolor{GoogleDeepPurple}{HTML}{673AB7}
+\definecolor{GoogleIndigo}{HTML}{3F51B5}
+\definecolor{GoogleBlue}{HTML}{2196F3}
+\definecolor{GoogleLightBlue}{HTML}{03A9F4}
+\definecolor{GoogleCyan}{HTML}{00BCD4}
+\definecolor{GoogleTeal}{HTML}{009688}
+\definecolor{GoogleLightGreen}{HTML}{8BC34A}
+\definecolor{GoogleLime}{HTML}{CDDC39}
+\definecolor{GoogleYellow}{HTML}{FFEB3B}
+\definecolor{GoogleAmber}{HTML}{FFC107}
+\definecolor{GoogleOrange}{HTML}{FF9800}
+\definecolor{GoogleDeepOrange}{HTML}{FF5722}
+\definecolor{GoogleBrown}{HTML}{795548}
+\definecolor{GoogleGrey}{HTML}{9E9E9E}
+\definecolor{GoogleBlueGrey}{HTML}{607D8B}
+
+\colorlet{Highlight}{GoogleBlue}
+
+%Listing & Minted
+\usepackage{shellesc}
+\usepackage{listings}
+
+%Minted makes nice looking code listings, but requires listings
+\usepackage{minted}
+\newminted[java2]{java}{frame=leftline, framesep=2mm, linenos, fontsize=\footnotesize, baselinestretch=1.1, autogobble}
+\newminted[python]{python}{frame=leftline, framesep=2mm, linenos, fontsize=\footnotesize, baselinestretch=1.1, autogobble}
+\newmintedfile{java}{frame=leftline, framesep=2mm, linenos, fontsize=\footnotesize, baselinestretch=1.1}
+\usemintedstyle{tango}
+\usepackage{tcolorbox}
+
+\usepackage{mdframed}
+\mdfsetup{topline=false, rightline=false, leftline=false, bottomline=false}
+
+%Acronyms and Fixmes
+\usepackage{acronym}
+%Fixme for configurable notes
+\usepackage{fixme}
+\fxsetup{%
+    layout={footnote, index},
+    innerlayout={inline, index},
+    theme=colorsig,
+    mode=multiuser,
+}
+
+\FXRegisterAuthor{msm}{msme}{Michno}
+% Eat some spaces
+\usepackage{xspace}
+
+%External files
+\input{preamble/fixme.tex}
+\input{preamble/commands.tex}
+\input{preamble/latexdiff.tex}
+
+%Outlines, apparently nice for nestes lists
+\usepackage{outlines}
+
+%Tables with fixed widths
+\usepackage{tabu}
+
+%Cells spanning multiple rows
+\usepackage{multirow}
+
+%I guess it allows for breaking tables
+\usepackage{longtable}
+
+\usepackage{tabularx}
+\renewcommand{\arraystretch}{1.8}
+%Used for problem statement env
+\usepackage{changepage}
+
+%For Chinese characters
+\usepackage{luatexja-fontspec}
+
+% For refs to description itmes
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+    #2%
+    \def\@currentlabel{#2}%
+    \phantomsection\label{#1}\endgroup
+}

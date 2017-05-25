@@ -1,0 +1,60 @@
+%!TEX root = main.tex
+\pdfbookmark[0]{Front page}{label:frontpage}%
+\newcommand{\titlefont}{\sffamily\fontsize{36pt}{0pt}\selectfont}
+\newcommand{\subtitlefont}{\sffamily\fontsize{26pt}{0pt}\selectfont}
+\newcommand{\smallfont}{\sffamily\fontsize{12pt}{0pt}\selectfont}
+\newgeometry{margin=1in}
+\begin{titlepage}
+    \noindent%
+        \begin{center}
+            \titlefont \TITLE\\
+            \vspace{0.2cm}
+            \rule{90pt}{1pt}\\
+            \vspace{0.2cm}
+            \subtitlefont \SUBTITLE
+        \end{center}
+    \null\vfill
+    \begin{minipage}{1\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{img/aau_logo_en.pdf}
+    \end{minipage}
+    \null\vfill
+    \vspace*{1cm}
+    \noindent
+    \begin{minipage}{0.35\linewidth}
+        \begin{flushleft}
+        \includegraphics[width=0.8\linewidth]{img/aau_logo_en.pdf}
+        \end{flushleft}
+    \end{minipage}
+    %
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+        \begin{flushright}
+        \smallfont
+        \begin{tabular}{r}
+            X\textsuperscript{th} Semester Software\\[0.2cm]
+            Project Report\\[0.2cm]
+            \GROUP
+        \end{tabular}
+        \end{flushright}
+    \end{minipage}
+    %
+    \begin{minipage}{0.02\linewidth}
+        \centering
+        \rule{1pt}{80pt}
+    \end{minipage}
+    %
+    \begin{minipage}{0.3\linewidth}
+        \begin{flushleft}
+        \smallfont
+        \begin{tabular}{l}
+            Aalborg Universitet\\[0.2cm]
+            Selma Lagerløfs Vej 300\\[0.2cm]
+            DK-9220 Aalborg
+        \end{tabular}
+        \end{flushleft}
+    \end{minipage}
+\end{titlepage}
+\restoregeometry
+\clearpage
+\cleardoublepage

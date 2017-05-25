@@ -1,0 +1,70 @@
+% chktex-file 01 chktex-file 09 chktex-file 10 chktex-file 17
+
+\newcommand{\hsp}{\hspace{20pt}}
+
+\makeatletter
+\newtcbox{\code}{
+    on line,
+    fontupper=\small\ttfamily,
+    boxrule=0.5pt,
+    arc=2pt,
+    coltext=codefg,
+    colback=codebg,
+    colframe=codebg,
+    boxsep=0pt,
+    shrink tight,
+    extrude by=2pt
+}
+\makeatother
+
+%Make \Chaptername return print the name of the chapter
+\let\Chaptermark\chaptermark
+\def\chaptermark#1{\def\Chaptername{#1}\Chaptermark{#1}}
+\let\Sectionmark\sectionmark
+\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+\let\Subsectionmark\subsectionmark
+\def\subsectionmark#1{\def\Subsectionname{#1}\Subsectionmark{#1}}
+\let\Subsubsectionmark\subsubsectionmark
+\def\subsubsectionmark#1{\def\Subsubsectionname{#1}\Subsubsectionmark{#1}}
+
+\newlist{enumberate}{enumerate}{2}
+\setlist[enumberate,1]{label=\itshape \arabic*\upshape)}
+\setlist[enumberate,2]{label=\itshape \arabic{enumberatei}.\arabic*\upshape)}
+\newlist{eletterate}{enumerate}{2}
+\setlist[eletterate,1]{label=\itshape \alph*\upshape)}
+\setlist[eletterate,2]{label=\itshape \alph{eletteratei}.\alph*\upshape)}
+\newlist{eromanrate}{enumerate}{2}
+\setlist[eromanrate,1]{label=\itshape \roman*\upshape)}
+\setlist[eromanrate,2]{label=\itshape \roman{eromanratei}.\roman*\upshape)}
+
+\newlist{enumberate*}{enumerate*}{1}
+\setlist[enumberate*]{label=\itshape \arabic*\upshape)}
+\newlist{eletterate*}{enumerate*}{1}
+\setlist[eletterate*]{label=\itshape \alph*\upshape)}
+\newlist{eromanrate*}{enumerate*}{1}
+\setlist[eromanrate*]{label=\itshape \roman*\upshape)}
+
+\SetLabelAlign{parright}{\parbox[t]{\labelwidth}{\raggedleft#1}}
+% 1st param: font style of label, 2nd param: text of longest label
+\newenvironment{dankscription}[2]{\begin{description}[labelindent=\parindent, labelwidth=\widthof{#1#2}, align=parright, font=\normalfont#1]}{\end{description}}
+
+\newcommandx{\cnameref}[1]{%
+\Cref{#1} \emph{\nameref{#1}}}
+
+\newcommandx{\myref}[2][1=]{%
+\IfStrEq{#1}{name}{\Cref{#2} \emph{\nameref{#2}} \vpageref{#2}}{\Cref{#2} \vpageref{#2}}%
+}
+
+\newcommand{\tblgrpsep}{\noalign{\vspace{.75em}}}
+
+\newenvironment{problemstatement}
+    {\begin{mdframed}[
+        linewidth=1pt,
+        linecolor=Highlight,
+        leftline=true]}
+    {\end{mdframed}}
+
+\pgfmathdeclarefunction{dnorm}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+

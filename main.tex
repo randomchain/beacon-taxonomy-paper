@@ -1,0 +1,31 @@
+\documentclass[twoside, table, final, a4paper]{report}
+
+\overfullrule=4cm
+
+\input{preamble/setup.tex}
+\input{preamble/acronyms.tex}
+\begin{document}
+\pagestyle{empty} %disable headers and footers
+\pagenumbering{roman} %use roman page numbering in the frontmatter
+\input{frontpage.tex}
+\input{titlepage.tex}
+\cleardoublepage
+\input{preface.tex}
+\cleardoublepage
+\pdfbookmark[0]{Contents}{label:tableofcontents}
+\pagestyle{fancy} %enable headers and footers again
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\pagebreak
+
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%
+%IMPORTS
+\subimport{cha/}{index.tex}
+\subimport{appendix/}{index.tex}
+
+%%%%%%%%%%%%%%%%%%%
+\end{document}

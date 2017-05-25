@@ -1,0 +1,50 @@
+%!TEX root = main.tex
+\begin{titlepage}
+    \setlength{\textwidth}{15cm}
+    \noindent
+    \begin{nopagebreak}
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/aau_logo_en.pdf}
+        \end{minipage} \hfill
+        \begin{minipage}{0.4\textwidth}
+            \flushright
+            \textbf{Aalborg University}\\
+            \textbf{Department of Computer Science}\\
+            Selma Lagerløfs Vej 300\\
+            DK-9220 Aalborg\\
+            \url{http://www.cs.aau.dk}
+        \end{minipage}\\
+        \vspace{1cm}\\
+        \begin{minipage}[t]{0.4\textwidth}
+            \begin{description}
+                \item[Title:] \hfill\\
+                    \TITLE
+                \item[Theme:] \hfill\\
+                    \THEME
+                \item[Project Period:] \hfill\\
+                    X\textsuperscript{th} Semester
+                \item[Projectgroup:] \hfill\\
+                    \GROUP
+                \item[Group Members:] \hfill\\
+                    Group member \\
+                    Group member \\
+                    Group member \\
+                    Group member \\
+                    Group member \\
+                \item[Supervisor:] \hfill\\
+                    Supervisor Name
+                \item[Number of Pages:] \hfill\\
+                    \pageref{LastPage}
+                \item[Ended:] \hfill\\
+                    \today
+            \end{description}
+        \end{minipage} \hfill
+        \begin{minipage}[t]{0.5\textwidth}
+            \textbf{Abstract:}\\
+            \begin{problemstatement}
+                \subimport{}{abstract.tex}
+            \end{problemstatement}
+        \end{minipage}
+    \end{nopagebreak}
+\end{titlepage}
