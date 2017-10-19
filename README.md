@@ -1,2 +1,3 @@
-# Template for Scientific AAU Report in LaTeX
+# Blockchain randomness - link by link
 
+[![Build Status](https://build.michno.me/job/randomchain/paper/master/badge/icon)](https://build.michno.me/job/randomchain/paper/master)
