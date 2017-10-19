@@ -1,163 +1,124 @@
 %!TEX root = ../main.tex
-\input{preamble/constants.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE LAYOUT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{typearea}
+\KOMAoptions{ % Basic page layout.
+	%draft=true,
+	paper=a4,
+	twoside=true,
+	open=right,
+	fontsize=11pt,
+	numbers=noenddot,
+	BCOR=10mm % Margin binding correction
+}
+	
+% Headers and footers
+\usepackage[automark, headsepline=.3pt:head]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\ohead{{\MakeUppercase\leftmark}\rightmark}
+\renewcommand*{\sectionmarkformat}{:\enspace}
+\renewcommand*{\chaptermarkformat}{}
+\setkomafont{pagehead}{\footnotesize\normalfont\sffamily}
+\setkomafont{pagenumber}{\footnotesize\normalfont\sffamily}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FONTS, LANGUAGE AND TYPOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage[english]{babel}
+\usepackage{fontspec}
 \usepackage[T1]{fontenc}
-\usepackage{inconsolata}
 
-%Give me those text sizes
-\usepackage[bitstream-charter]{mathdesign} % Serif font (Charter BT).
-\def\sfdefault{SourceSansPro-TLF} % Sans serif font.
+% Fonts
+\usepackage[bitstream-charter]{mathdesign} % Serif font
+\def\sfdefault{SourceSansPro-TLF} % Sans serif font
+\usepackage{inconsolata} % Mono font
 
-\usepackage{multicol}
-\renewcommand{\multicolsep}{\itemsep}
+% Typographic tweaks
+\usepackage[babel]{microtype} % Load after fonts. Yes, may be used with LuaLaTeX
 
-%Space between line commands
+% Space between line commands
 \usepackage{setspace}
 
-%Control enumerate and friends
-\usepackage[inline]{enumitem}
+% Enabling various effects, such as highlightning
+\usepackage{soulutf8}
 
-%Line numbers
-\usepackage[modulo]{lineno} %Keep before fvextra
-\usepackage{fvextra} %Keep this before csquote
-\usepackage{csquotes}
-\usepackage{graphicx}
-\usepackage{lastpage}
-\usepackage{rotating}
-\usepackage{xargs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ELEMENTS STYLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Lets get the ref working
-\usepackage[english]{varioref}
-\usepackage{hyperref}
-  \hypersetup{
-    bookmarksnumbered,
-    bookmarksdepth=1,
-    pdfauthor={\GROUP},
-    pdftitle={\TITLE},
-    pdfsubject={\SUBJECT},
-    pdfpagelayout=TwoPageRight,
-    pdfdisplaydoctitle,
-    breaklinks,
-    linktoc=all,
-    pdfprintscaling=None,
-    plainpages=false,
-    colorlinks,
-    linkcolor=aaublue,
-    citecolor=aaublue,
-    urlcolor=aaublue,
-    filecolor=aaublue
-  }
-\usepackage[english, capitalize]{cleveref}
+% Chapters style
+\setkomafont{chapter}{\normalfont\Huge\fontseries{k}\sffamily\color{chaptercolor}}
+	\renewcommand{\chapterheadstartvskip}{\vspace*{1\baselineskip}} % Spacing before chapter.
 
-%Use relative imports
-\usepackage{import}
+% Sections style
+\setkomafont{section}{\normalfont\Large\fontseries{k}\sffamily\color{sectioning}}
 
-%Fancy table layout help
+% Subsections style
+\setkomafont{subsection}{\normalfont\large\fontseries{k}\sffamily\color{subsectioning}}
+
+% Subsubsections style
+\setkomafont{subsubsection}{\normalfont\normalsize\fontseries{k}\sffamily\color{subsectioning}}
+
+% Section numbering in margin
+%\renewcommand*{\othersectionlevelsformat}[3]{%
+%  \llap{#3\autodot\enskip}}
+
+% Descriptions
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\color{descriptionlabeling}\sffamily{\textbf{#1}}}
+
+% Captions
+\KOMAoption{captions}{centeredbeside}
+\setcapindent{1em}
+\setkomafont{captionlabel}{\sffamily\color{sectioning}\bfseries}
+\setkomafont{caption}{\sffamily}
+\usepackage{subcaption} % Subfigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FLOATING ENVIRONMENTS AND LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Tables
 \usepackage{booktabs}
+\usepackage{multirow}
+\renewcommand{\arraystretch}{1.1} % Stretch arrays (in tabulars)
 
-%Set some crefs
-\crefname{appchap}{appendix}{appendices}
-\Crefname{appchap}{Appendix}{Appendices}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{outlines} % Apparently nice for nested lists
 
-%Titles and captions
-\usepackage{titlesec, blindtext, color}
-\titleformat{\part}[display]%
-    {\fontsize{38pt}{8pt}\filcenter\sffamily\selectfont\thispagestyle{empty}}
-    {\textcolor{part}{Part \thepart \vspace{6pt}\linebreak {\rule{120pt}{1pt}} \linebreak}}
-    {0pt}
-    {}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MATH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\titleformat{\chapter}[hang]%
-    {\Huge\sffamily\mdseries\vspace{-20pt}}
-    {\textcolor{numbers}{\thechapter \hsp{\rule[-5pt]{1.5pt}{29pt}}\hsp}}
-    {0pt}
-    {\Huge\sffamily\mdseries}
-    [\vspace{-20pt}]
-
-\titleformat{\section}
-{\normalfont\Large\sffamily}
-{\color{numbers}\thesection}{1em}{}
-
-\titleformat{\subsection}
-{\normalfont\large\sffamily}
-{\color{numbers}\thesubsection}{1em}{}
-
-\titleformat{\subsubsection}
-{\normalfont\normalsize\sffamily}
-{\color{numbers}\thesubsubsection}{1em}{}
-
-%Set some margins
-\usepackage[
-    left=28mm,% left margin on an odd page
-    right=41mm,% right margin on an odd page
-%    showframe,
-]{geometry}
-
-%Dates
-\usepackage{datetime}
-
-%Biblography
-\usepackage[
-    style=numeric,
-    maxnames=1,
-    backend=biber,
-    defernumbers=true,
-    hyperref=true,
-    alldates=long,
-]{biblatex}
-\bibliography{bibtex.bib}
-
-%Customize captions
-\usepackage{caption}
-\usepackage{subcaption} %Used together with caption
-
-\captionsetup{%
-    font=footnotesize,% set font size to footnotesize
-    labelfont=bf % bold label (e.g., Figure 3.2) font
-}
-\captionsetup[sub]{%
-    font=footnotesize,% set font size to footnotesize
-    labelfont=bf % bold label (e.g., Figure 3.2) font
-}
-
-%Apparently all "serious math typesetters" need this for math
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage[group-separator={,}]{siunitx}
+\usepackage{fixmath} % Ensures math is typeset according to ISO standard
 
-%Tikz related
-\usepackage{tikz}
-\usepackage{tikz-qtree}
-\usepackage{tikzscale}
-%TODO: Could we clean this up?
-\usetikzlibrary{%
-    shapes,
-    shapes.symbols,
-    arrows,
-    positioning,
-    backgrounds,
-    matrix,
-    patterns,
-    calc,
-    fit,
-    math,
-    shapes.multipart,
-    automata,
-    shadows,
-    decorations.pathreplacing,
-    external
-}
-\tikzexternalize[prefix=figures/]
-%\tikzexternaldisable{}
-\tikzexternalenable{}
-%Pgf plots is nice for making fancy plots
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.12}
-\usepgfplotslibrary{fillbetween}
-\tikzset{every picture/.style={/utils/exec={\sffamily}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MISCELLANEOUS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Two uml packages. I love it
-\usepackage{packages/tikz-uml}
-\usepackage{pgf-umlsd}
+\usepackage{multicol}
+	\renewcommand{\multicolsep}{\itemsep}
+\usepackage[modulo]{lineno}
+\usepackage{xspace}
+\usepackage{datetime}
+\usepackage{fvextra} %Keep this before csquote
+\usepackage[autostyle]{csquotes}
+\usepackage{acronym}
+\usepackage[super]{nth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LATEX BACKGROUND STUFF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xargs}
+\usepackage{import} % Use relative imports
 
 %Curfile stuff
 %We need this to figure out the path if a command doesn't support import
@@ -166,61 +127,39 @@
 \def\relativepath{\import@path}
 \makeatother
 
-%Headers and footers
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt} %remove the horizontal line in the header
-\fancyhead[RE]{\color{aaublue}\small\nouppercase\leftmark}
-\fancyhead[LO]{\color{aaublue}\small\nouppercase\rightmark}
-\fancyhead[LE,RO]{\thepage} %page number on all pages
-\raggedbottom
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRAPHICS AND COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Colors
-\usepackage{xcolor}
-\definecolor{aaublue}{gray}{0}
-\definecolor{bluekeywords}{gray}{0}
-\definecolor{greencomments}{gray}{0.5}
-\definecolor{redstrings}{gray}{0.3}
-\definecolor{codebg}{HTML}{EFEFEF}
-\definecolor{codefg}{HTML}{000000}
-\definecolor{part}{HTML}{34495E}
-\definecolor{numbers}{HTML}{34495E}
-\definecolor{smartdiagram1}{HTML}{1ABC9C}
-\definecolor{smartdiagram2}{HTML}{2ECC71}
-\definecolor{smartdiagram3}{HTML}{3498db}
-\definecolor{smartdiagram4}{HTML}{9b59b6}
-\definecolor{smartdiagram5}{HTML}{E74C3C}
-\definecolor{smartdiagram6}{HTML}{F1C40F}
-\definecolor{smartdiagram7}{HTML}{E67E22}
-\definecolor{diagramDark}{HTML}{19B5FE}
-\definecolor{diagramLight}{HTML}{6BB9F0}
+% Graphics
+\usepackage{graphicx}
+\graphicspath{{img/}}
 
-\definecolor{tableGoodLight}{HTML}{87D37C}
-\definecolor{tableGoodDark}{HTML}{26A65B}
-\definecolor{tableBadLight}{HTML}{EC644B}
-\definecolor{tableBadDark}{HTML}{EF4836}
+% Colors
+\usepackage[table]{xcolor}
+\input{preamble/colors.tex}
 
-\definecolor{GoogleGreen}{HTML}{4CAF50}
-\definecolor{GoogleRed}{HTML}{F44336}
-\definecolor{GooglePurple}{HTML}{9C27B0}
-\definecolor{GoogleDeepPurple}{HTML}{673AB7}
-\definecolor{GoogleIndigo}{HTML}{3F51B5}
-\definecolor{GoogleBlue}{HTML}{2196F3}
-\definecolor{GoogleLightBlue}{HTML}{03A9F4}
-\definecolor{GoogleCyan}{HTML}{00BCD4}
-\definecolor{GoogleTeal}{HTML}{009688}
-\definecolor{GoogleLightGreen}{HTML}{8BC34A}
-\definecolor{GoogleLime}{HTML}{CDDC39}
-\definecolor{GoogleYellow}{HTML}{FFEB3B}
-\definecolor{GoogleAmber}{HTML}{FFC107}
-\definecolor{GoogleOrange}{HTML}{FF9800}
-\definecolor{GoogleDeepOrange}{HTML}{FF5722}
-\definecolor{GoogleBrown}{HTML}{795548}
-\definecolor{GoogleGrey}{HTML}{9E9E9E}
-\definecolor{GoogleBlueGrey}{HTML}{607D8B}
+% Tikz and pgfplots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{external}
+%\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.12}
+\usetikzlibrary{%
+	calc, positioning, fit, arrows.meta
+}
+\tikzexternalize[prefix=figures/]
+\tikzexternalenable{}
 
-\colorlet{Highlight}{GoogleBlue}
+%\tikzset{every picture/.style={/utils/exec={\sffamily}}}
+
+%Two uml packages. I love it
+%\usepackage{packages/tikz-uml}
+%\usepackage{pgf-umlsd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SOURCE CODE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Listing & Minted
 \usepackage{shellesc}
@@ -237,42 +176,71 @@
 \usepackage{mdframed}
 \mdfsetup{topline=false, rightline=false, leftline=false, bottomline=false}
 
-%Acronyms and Fixmes
-\usepackage{acronym}
-%Fixme for configurable notes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FixMe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{fixme}
 \fxsetup{%
+		%status=draft,
     layout={footnote, index},
     innerlayout={inline, index},
     theme=colorsig,
     mode=multiuser,
+		silent=true
 }
 
 \FXRegisterAuthor{msm}{msme}{Michno}
-% Eat some spaces
-\usepackage{xspace}
 
-%External files
-\input{preamble/fixme.tex}
-\input{preamble/commands.tex}
-\input{preamble/latexdiff.tex}
+\input{preamble/fixme.tex} % Inputs status=draft??? Is this even necessary?
 
-%Outlines, apparently nice for nestes lists
-\usepackage{outlines}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Tables with fixed widths
-\usepackage{tabu}
+\usepackage[
+    style=numeric,
+    maxnames=1,
+    backend=biber,
+    defernumbers=true,
+    hyperref=true,
+    alldates=long,
+]{biblatex}
+\bibliography{bibtex.bib}
 
-%Cells spanning multiple rows
-\usepackage{multirow}
+\setcounter{biburlnumpenalty}{300} % Enable breaking URLs in bibliography after numbers
+\setcounter{biburlucpenalty}{300} % Enable breaking URLs in bibliography after uppercase letters
+\setcounter{biburllcpenalty}{300} % Enable breaking URLs in bibliography after lowercase letters
 
-%I guess it allows for breaking tables
-\usepackage{longtable}
 
-\usepackage{tabularx}
-\renewcommand{\arraystretch}{1.8}
-%Used for problem statement env
-\usepackage{changepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[english]{varioref} % \vref, if a thing is referred on another page.
+\usepackage{hyperref} % Load late
+\hypersetup{
+	bookmarksnumbered,
+	bookmarksdepth=1,
+	pdfauthor={\GROUP},
+	pdftitle={\TITLE},
+	pdfsubject={\SUBJECT},
+	pdfpagelayout=TwoPageRight,
+	pdfdisplaydoctitle,
+	breaklinks,
+	linktoc=all,
+	pdfprintscaling=None,
+	%plainpages=false,
+	colorlinks,
+	linkcolor=aaublue,
+	citecolor=aaublue,
+	urlcolor=aaublue,
+	filecolor=aaublue
+}
+
+\usepackage[english, capitalize]{cleveref} % Load late
+\crefname{appchap}{appendix}{appendices}
+\Crefname{appchap}{Appendix}{Appendices}
 
 % For refs to description itmes
 \makeatletter
@@ -281,3 +249,16 @@
     \def\@currentlabel{#2}%
     \phantomsection\label{#1}\endgroup
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MISCELLANEOUS TO BE LOADED LAST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{scrhack} % Load very, very late. Renews commands.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXTERNAL FILES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{preamble/commands.tex}
+\input{preamble/latexdiff.tex}
