@@ -1,50 +1,46 @@
 %!TEX root = main.tex
-\begin{titlepage}
-    \setlength{\textwidth}{15cm}
-    \noindent
-    \begin{nopagebreak}
-        \begin{minipage}{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{img/aau_logo_en.pdf}
-        \end{minipage} \hfill
-        \begin{minipage}{0.4\textwidth}
-            \flushright
-            \textbf{Aalborg University}\\
-            \textbf{Department of Computer Science}\\
-            Selma Lagerløfs Vej 300\\
-            DK-9220 Aalborg\\
-            \url{http://www.cs.aau.dk}
-        \end{minipage}\\
-        \vspace{1cm}\\
-        \begin{minipage}[t]{0.4\textwidth}
-            \begin{description}
-                \item[Title:] \hfill\\
-                    \TITLE
-                \item[Theme:] \hfill\\
-                    \THEME
-                \item[Project Period:] \hfill\\
-                    X\textsuperscript{th} Semester
-                \item[Projectgroup:] \hfill\\
-                    \GROUP
-                \item[Group Members:] \hfill\\
-                    Group member \\
-                    Group member \\
-                    Group member \\
-                    Group member \\
-                    Group member \\
-                \item[Supervisor:] \hfill\\
-                    Supervisor Name
-                \item[Number of Pages:] \hfill\\
-                    \pageref{LastPage}
-                \item[Ended:] \hfill\\
-                    \today
-            \end{description}
-        \end{minipage} \hfill
-        \begin{minipage}[t]{0.5\textwidth}
-            \textbf{Abstract:}\\
-            \begin{problemstatement}
-                \subimport{}{abstract.tex}
-            \end{problemstatement}
-        \end{minipage}
-    \end{nopagebreak}
-\end{titlepage}
+{
+    %set up various length
+    \ifx\titlepageleftcolumnwidth\undefined{}
+      \newlength{\titlepageleftcolumnwidth}
+      \newlength{\titlepagerightcolumnwidth}
+    \fi
+    \setlength{\titlepageleftcolumnwidth}{0.46\textwidth-\tabcolsep}
+    \setlength{\titlepagerightcolumnwidth}{\textwidth-2\tabcolsep-\titlepageleftcolumnwidth-1em}
+    %create title page
+    \thispagestyle{empty}
+    \noindent%
+    \begin{tabular}{@{}ll@{}}
+      \parbox{\titlepageleftcolumnwidth}{
+          \includegraphics[width=0.97\titlepageleftcolumnwidth]{img/aau_logo_en}
+      } &
+      \vspace{1cm}
+      \parbox{\titlepagerightcolumnwidth}{\raggedleft\sffamily\small
+        \textbf{Department of Computer Science}\\
+        Selma Lagerlöfs Vej 300\\
+        DK-9220 Aalborg Ø\\
+        \href{http://www.cs.aau.dk}{http://www.cs.aau.dk}
+      }\bigskip\\
+        \parbox[t]{\titlepageleftcolumnwidth}{
+        \textbf{\sffamily{Title:}}\\ \TITLE{}\bigskip\par
+        \textbf{\sffamily{Theme:}}\\ \THEME{}\bigskip\par
+        \textbf{\sffamily{Project period:}}\\ \PERIOD\bigskip\par
+        \textbf{\sffamily{Project group:}}\\ \GROUP{}\bigskip\par
+        \textbf{\sffamily{Participants:}}\\ \MEMBERS{}\bigskip\par
+        \textbf{\sffamily{Supervisor:}}\\ \SUPERVISOR\bigskip\par
+        %\textbf{\color{sectioning}\sffamily{Copies:}} \projectcopies\bigskip\par
+        \textbf{\sffamily{Pages:}}~\pageref{LastPage}\bigskip\par
+        \textbf{\sffamily{Date of completion:}}\\ \COMPLETION
+  } &
+      \parbox[t]{\titlepagerightcolumnwidth}{%
+      \textbf{\sffamily{Abstract:}}\smallskip\par{}
+        \mbox{\parbox{\titlepagerightcolumnwidth}{%
+          \subimport{}{abstract.tex}
+        }}
+      }\\
+    \end{tabular}
+    \vfill
+      \noindent{\footnotesize\emph{The content of this report is freely available, but publication (with reference) may only be pursued due to agreement with the authors.}}
+    \clearpage
+  }
+

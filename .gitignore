@@ -138,3 +138,5 @@ _minted*/
 *.auxlock
 figures/*
 !figures/.gitkeep
+*.synctex
+*.synctex(busy)
