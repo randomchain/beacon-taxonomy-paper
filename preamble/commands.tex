@@ -1,5 +1,29 @@
 % chktex-file 01 chktex-file 09 chktex-file 10 chktex-file 17
 
+% Monospaced text that is beautiful
+\newcommand*\justify{%
+	\fontdimen2\font=0.4em% interword space
+	\fontdimen3\font=0.2em% interword stretch
+	\fontdimen4\font=0.1em% interword shrink
+	\fontdimen7\font=0.1em% extra space
+	\hyphenchar\font=`\-% allowing hyphenation
+}
+\newcommand{\mono}[1]{\texttt{\justify {#1}}}
+
+% Code mono
+\newcommand{\inlinecode}[1]{\sethlcolor{clcodeshade}\hl{\texttt{\justify{#1}}}} % Yes, this line is identical to the one in \mono, however the soul-package is fragile, and cannot see into another command.
+\soulregister{\justify}{1}
+
+\newmdenv[
+  nobreak=true,
+  suppressfirstparskip,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  linewidth=2.5pt,
+  linecolor=clframe,
+  backgroundcolor=clshade]{formal}
+
 \newcommand{\hsp}{\hspace{20pt}}
 
 \makeatletter
