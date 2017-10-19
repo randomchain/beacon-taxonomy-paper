@@ -140,3 +140,4 @@ figures/*
 !figures/.gitkeep
 *.synctex
 *.synctex(busy)
+*.tcp
