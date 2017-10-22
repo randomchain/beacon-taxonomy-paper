@@ -141,3 +141,6 @@ figures/*
 *.synctex
 *.synctex(busy)
 *.tcp
+
+# Visual Studio Code
+.vscode/
