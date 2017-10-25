@@ -1,6 +1,6 @@
 ## Git
 *.orig
- 
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -141,6 +141,9 @@ figures/*
 *.synctex
 *.synctex(busy)
 *.tcp
+
+# Some mac stuff
+.DS_Store
 
 # Visual Studio Code
 .vscode/
