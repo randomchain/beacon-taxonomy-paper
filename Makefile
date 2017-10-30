@@ -9,8 +9,8 @@ CONTINUOUS=-pvc
 
 MAIN=main
 SUBDIRS :=
-CHA_SOURCE := $(shell find cha -type f -iname "*.tex")
-SOURCES=$(MAIN).tex Makefile $(CHA_SOURCE)
+CONTENT_SOURCE := $(shell find content -type f -iname "*.tex")
+SOURCES=$(MAIN).tex Makefile $(CONTENT_SOURCE)
 BIB_SOURCES := $(shell find . -type f -iname "*.bibpart")
 #FIGURES := $(shell for dir in "$(SUBDIRS)"; do find $$dir/img $$dir/fig -type f; done;)
 

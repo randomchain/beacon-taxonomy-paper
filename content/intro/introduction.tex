@@ -1,4 +1,4 @@
-\chapter{Introduction}\label{ch:introduction}
+\section{Introduction}\label{sec:introduction}
 
 Physiotherapy is an increasingly popular service offered by the Danish healthcare system. \cref{fig:physio-visits} shows the increase in people visiting a physiotherapist with public subsidy (da: offentligt tilskud) at least once a given year from 2006 to 2015~\ldots. In these years, there has been a 28.5~\% increase across all age groups, while some age groups have seen larger increases. These age groups can be seen in \ldots, which shows that physiotherapy visits of the age groups 10 -- 25 and 65 -- 99+ have increased by more than 50~\%~\ldots.
 
@@ -12,7 +12,7 @@ Physiotherapy is an increasingly popular service offered by the Danish healthcar
     height=6.4cm, % modify this to avoid "horeunger"
     % y-axis:
     %ybar,
-    ylabel={People}, 
+    ylabel={People},
     ymin=0, ymax=600000,
     ytick={0, 100000, 200000, 300000, 400000, 500000, 600000},
     % x-axis:
@@ -30,7 +30,7 @@ Physiotherapy is an increasingly popular service offered by the Danish healthcar
     axis on top,
     grid style=white,
     ymajorgrids=true
-    ]    
+    ]
     \addplot[ybar,fill=GoogleGreen, draw opacity=0, area legend] coordinates {
                 (2006,398354)
                 (2007,403436)
@@ -48,12 +48,12 @@ Physiotherapy is an increasingly popular service offered by the Danish healthcar
 \end{figure}
 
 % Terminologi --- Patient
-Depending on the setting and location of the physiotherapy, a person receiving physiotherapy is called a \emph{citizen}, \textit{patient}, or \textit{client}\footnote{\emph{Citizen} and \emph{patient} encountered in~\ldots. \emph{Client} encountered on physiotherapist websites.}. We adopt the term \emph{patient} to describe such a person, as we feel it is the most precise word in our context. The term \emph{client} may be confusing in our context because a client of our solution may be different than a client of a physiotherapist. The term \emph{citizen} can also describe regular people living in a country. 
+Depending on the setting and location of the physiotherapy, a person receiving physiotherapy is called a \emph{citizen}, \textit{patient}, or \textit{client}\footnote{\emph{Citizen} and \emph{patient} encountered in~\ldots. \emph{Client} encountered on physiotherapist websites.}. We adopt the term \emph{patient} to describe such a person, as we feel it is the most precise word in our context. The term \emph{client} may be confusing in our context because a client of our solution may be different than a client of a physiotherapist. The term \emph{citizen} can also describe regular people living in a country.
 
 \section{Report Organization}
 With compliance as our focus and a vision established, we will now approach the project in the following fashion:
 
-In \ldots, Problem Analysis, we analyze the problem from the perspective of compliance. In this chapter, we will record our ideas in terms of possible solutions. We will further look into related work to see what value they provide. In the wake of this, will discuss and provide a concrete list of features which we want our solution to contain. 
+In \ldots, Problem Analysis, we analyze the problem from the perspective of compliance. In this chapter, we will record our ideas in terms of possible solutions. We will further look into related work to see what value they provide. In the wake of this, will discuss and provide a concrete list of features which we want our solution to contain.
 
 In \ldots, Technical Analysis, we analyze the technical aspects required to design the solution. As such we will decide on smartphone application frameworks, smartwatch sensors, and technologies for the backend.
 
