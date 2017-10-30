@@ -2,11 +2,11 @@
 
 % Monospaced text that is beautiful
 \newcommand*\justify{%
-	\fontdimen2\font=0.4em% interword space
-	\fontdimen3\font=0.2em% interword stretch
-	\fontdimen4\font=0.1em% interword shrink
-	\fontdimen7\font=0.1em% extra space
-	\hyphenchar\font=`\-% allowing hyphenation
+    \fontdimen2\font=0.4em% interword space
+    \fontdimen3\font=0.2em% interword stretch
+    \fontdimen4\font=0.1em% interword shrink
+    \fontdimen7\font=0.1em% extra space
+    \hyphenchar\font=`\-% allowing hyphenation
 }
 \newcommand{\mono}[1]{\texttt{\justify {#1}}}
 
@@ -15,16 +15,14 @@
 \soulregister{\justify}{1}
 
 \newmdenv[
-  nobreak=true,
-  suppressfirstparskip,
-  topline=false,
-  rightline=false,
-  bottomline=false,
-  linewidth=2.5pt,
-  linecolor=clframe,
-  backgroundcolor=clshade]{formal}
-
-\newcommand{\hsp}{\hspace{20pt}}
+nobreak=true,
+suppressfirstparskip,
+topline=false,
+rightline=false,
+bottomline=false,
+linewidth=2.5pt,
+linecolor=clframe,
+backgroundcolor=clshade]{formal}
 
 \makeatletter
 \newtcbox{\code}{
@@ -42,8 +40,6 @@
 \makeatother
 
 %Make \Chaptername return print the name of the chapter
-\let\Chaptermark\chaptermark
-\def\chaptermark#1{\def\Chaptername{#1}\Chaptermark{#1}}
 \let\Sectionmark\sectionmark
 \def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
 \let\Subsectionmark\subsectionmark
@@ -76,19 +72,15 @@
 \Cref{#1} \emph{\nameref{#1}}}
 
 \newcommandx{\myref}[2][1=]{%
-\IfStrEq{#1}{name}{\Cref{#2} \emph{\nameref{#2}} \vpageref{#2}}{\Cref{#2} \vpageref{#2}}%
+    \IfStrEq{#1}{name}{\Cref{#2} \emph{\nameref{#2}} \vpageref{#2}}{\Cref{#2} \vpageref{#2}}%
 }
 
 \newcommand{\tblgrpsep}{\noalign{\vspace{.75em}}}
 
 \newenvironment{problemstatement}
-    {\begin{mdframed}[
+{\begin{mdframed}[
         linewidth=1pt,
         linecolor=Highlight,
-        leftline=true]}
-    {\end{mdframed}}
-
-\pgfmathdeclarefunction{dnorm}{2}{%
-  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
-}
+    leftline=true]}
+{\end{mdframed}}
 

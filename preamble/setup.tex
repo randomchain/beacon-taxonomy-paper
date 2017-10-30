@@ -6,23 +6,23 @@
 
 \usepackage{typearea}
 \KOMAoptions{ % Basic page layout.
-	%draft=true,
-	paper=a4,
-	twoside=true,
-	open=right,
-	fontsize=11pt,
-	numbers=noenddot,
-	BCOR=10mm % Margin binding correction
+    %draft=true,
+    paper=a4,
+    abstract=true,
+    twoside=true,
+    fontsize=11pt,
+    numbers=noenddot,
+    BCOR=10mm % Margin binding correction
 }
-	
+
 % Headers and footers
 \usepackage[automark, headsepline=.3pt:head]{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \ohead{{\MakeUppercase\leftmark}\rightmark}
-\renewcommand*{\sectionmarkformat}{:\enspace}
-\renewcommand*{\chaptermarkformat}{}
 \setkomafont{pagehead}{\footnotesize\normalfont\sffamily}
 \setkomafont{pagenumber}{\footnotesize\normalfont\sffamily}
+\setkomafont{author}{\small\normalfont}
+\setkomafont{date}{\small\normalfont}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FONTS, LANGUAGE AND TYPOGRAPHY
@@ -50,10 +50,6 @@
 % ELEMENTS STYLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Chapters style
-\setkomafont{chapter}{\normalfont\Huge\fontseries{k}\sffamily\color{chaptercolor}}
-	\renewcommand{\chapterheadstartvskip}{\vspace*{1\baselineskip}} % Spacing before chapter.
-
 % Sections style
 \setkomafont{section}{\normalfont\Large\fontseries{k}\sffamily\color{sectioning}}
 
@@ -62,10 +58,6 @@
 
 % Subsubsections style
 \setkomafont{subsubsection}{\normalfont\normalsize\fontseries{k}\sffamily\color{subsectioning}}
-
-% Section numbering in margin
-%\renewcommand*{\othersectionlevelsformat}[3]{%
-%  \llap{#3\autodot\enskip}}
 
 % Descriptions
 \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\color{descriptionlabeling}\sffamily{\textbf{#1}}}
@@ -104,7 +96,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{multicol}
-	\renewcommand{\multicolsep}{\itemsep}
+    \renewcommand{\multicolsep}{\itemsep}
 \usepackage[modulo]{lineno}
 \usepackage{xspace}
 \usepackage{datetime}
@@ -146,7 +138,7 @@
 %\usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.14}
 \usetikzlibrary{%
-	calc, positioning, fit, arrows.meta
+    calc, positioning, fit, arrows.meta
 }
 \tikzexternalize[prefix=figures/]
 \tikzexternalenable{}
@@ -167,10 +159,7 @@
 
 %Minted makes nice looking code listings, but requires listings
 \usepackage{minted}
-\newminted[java2]{java}{frame=leftline, framesep=2mm, linenos, fontsize=\footnotesize, baselinestretch=1.1, autogobble}
 \newminted[python]{python}{frame=leftline, framesep=2mm, linenos, fontsize=\footnotesize, baselinestretch=1.1, autogobble}
-\newmintedfile{java}{frame=leftline, framesep=2mm, linenos, fontsize=\footnotesize, baselinestretch=1.1}
-\usemintedstyle{tango}
 \usepackage{tcolorbox}
 
 \usepackage{mdframed}
@@ -182,12 +171,12 @@
 
 \usepackage{fixme}
 \fxsetup{%
-		%status=draft,
+        %status=draft,
     layout={footnote, index},
     innerlayout={inline, index},
     theme=colorsig,
     mode=multiuser,
-		silent=true
+        silent=true
 }
 
 \FXRegisterAuthor{msm}{msme}{Michno}
@@ -220,22 +209,22 @@
 \usepackage[english]{varioref} % \vref, if a thing is referred on another page.
 \usepackage{hyperref} % Load late
 \hypersetup{
-	bookmarksnumbered,
-	bookmarksdepth=1,
-	pdfauthor={\GROUP},
-	pdftitle={\TITLE},
-	pdfsubject={\SUBJECT},
-	pdfpagelayout=TwoPageRight,
-	pdfdisplaydoctitle,
-	breaklinks,
-	linktoc=all,
-	pdfprintscaling=None,
-	%plainpages=false,
-	colorlinks,
-	linkcolor=aaublue,
-	citecolor=aaublue,
-	urlcolor=aaublue,
-	filecolor=aaublue
+    bookmarksnumbered,
+    bookmarksdepth=1,
+    pdfauthor={\GROUP},
+    pdftitle={\TITLE},
+    pdfsubject={\SUBJECT},
+    pdfpagelayout=TwoPageRight,
+    pdfdisplaydoctitle,
+    breaklinks,
+    linktoc=all,
+    pdfprintscaling=None,
+    %plainpages=false,
+    colorlinks,
+    linkcolor=aaublue,
+    citecolor=aaublue,
+    urlcolor=aaublue,
+    filecolor=aaublue
 }
 
 \usepackage[english, capitalize]{cleveref} % Load late
@@ -251,14 +240,15 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% MISCELLANEOUS TO BE LOADED LAST
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{scrhack} % Load very, very late. Renews commands.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % EXTERNAL FILES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{preamble/commands.tex}
 \input{preamble/latexdiff.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MISCELLANEOUS TO BE LOADED LAST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{scrhack} % Load very, very late. Renews commands.
+

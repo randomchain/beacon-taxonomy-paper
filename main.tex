@@ -1,7 +1,7 @@
 % Enable warnings on deprecated things.
 \RequirePackage[l2tabu, orthodox]{nag}
 
-\documentclass{scrreprt}
+\documentclass{scrartcl}
 
 \overfullrule=4cm
 
@@ -10,40 +10,23 @@
 \input{preamble/acronyms.tex}
 
 \begin{document}
-%\pagestyle{empty} %disable headers and footers
-\input{frontmatter/frontpage.tex} % Yes, the front page has margins. TODO: Remove margins, or alternatively just import a PDF for a nicer-looking frontpage.
-\input{frontmatter/colophon.tex} % The page just after the frontpage.
-\cleardoublepage{}
-\pagenumbering{roman}
 \setcounter{page}{1}
 \input{frontmatter/titlepage.tex}
-\cleardoublepage{}
-\input{frontmatter/preface.tex}
-\cleardoublepage{}
-
-\pdfbookmark[0]{Contents}{label:tableofcontents}
-\setcounter{tocdepth}{1}
-\tableofcontents
-
-\cleardoublepage{}
 \pagenumbering{arabic}
 
+\maketitle
+
+\begin{abstract}
+    \subimport{frontmatter/}{abstract.tex}
+\end{abstract}
 %%%%%%%%%%%%%%%%%%%
 %IMPORTS
-\subimport{cha/}{index.tex}%
+\subimport{content/}{index.tex}%
 \label{LastPageLabel} % There must be a %-sign on the line before this.
 
-%\begingroup
-\part*{Bibliography}
-%\renewcommand{\addcontentsline}[3]{}%
-%\renewcommand{\section}[2]{}%
-%\renewcommand{\chapter}[2]{}%
-%\raggedright{}
-\phantomsection\addcontentsline{toc}{chapter}{Bibliography}%
+\section*{Bibliography}
 \label{biblo:mybiblio}
 \printbibliography{}
-
-%\endgroup
 
 \subimport{appendix/}{index.tex}
 
