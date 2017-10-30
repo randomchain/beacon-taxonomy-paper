@@ -32,8 +32,7 @@ clean:
 	rm -f figures/*.dpth figures/*.md5 figures/*.pdf figures/*.log figures/*.run.xml
 
 once: $(MAIN).tex .refresh $(SOURCES) $(FIGURES) bibtex.bib
-	./onfail.sh $(LATEXMK) $(LATEXMKOPT) -pdflatex=\"$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S\" $(MAIN) \
-		-- rubber-info $(MAIN)
+	./onfail.sh $(LATEXMK) $(LATEXMKOPT) -pdflatex=\"$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S\" $(MAIN)
 
 continuous: $(MAIN).tex .refresh $(SOURCES) $(FIGURES) bibtex.bib
 	$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \
