@@ -18,7 +18,8 @@
 % Headers and footers
 \usepackage[automark, headsepline=.3pt:head]{scrlayer-scrpage}
 \pagestyle{scrheadings}
-\ohead{{\MakeUppercase\leftmark}\rightmark}
+\ohead{{\MakeUppercase\leftmark}}
+\ihead{\rightmark}
 \setkomafont{pagehead}{\footnotesize\normalfont\sffamily}
 \setkomafont{pagenumber}{\footnotesize\normalfont\sffamily}
 \setkomafont{author}{\small\normalfont}
@@ -213,7 +214,6 @@
     bookmarksdepth=1,
     pdfauthor={\GROUP},
     pdftitle={\TITLE},
-    pdfsubject={\SUBJECT},
     pdfpagelayout=TwoPageRight,
     pdfdisplaydoctitle,
     breaklinks,
