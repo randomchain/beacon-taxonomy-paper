@@ -1,40 +1,27 @@
 \section{Introduction}\label{cha:introduction}
 
-% General scare. "Mistrust" is rising.
-Many leaks revealing aggressive espionage and misuse of information by authorities have surfaced the past decade.
-Now, more than ever, people are suspicious of large corporations and authorities, especially regarding trust.
-The financial crisis of 2008 and numerous leaks by e.g.\ WikiLeaks have fueled the fire for a debate about the issues of trust and centralization.
-Numerous leaks have shown that large authorities have wiretapped, broken encryption schemes, and compromised security measures in order to collect information.
-
-As an anti-thesis to these centralized authorities, there has been a surge of interest in decentralization and verifiability.
-Many new trustless and decentralized technologies have emerged, most prominently perhaps Bitcoin and other decentralized currencies.
-
 % Random numbers
-Much today is based on randomness, and the usage of random numbers is crucial in many applications.
-Much critical infrastructure depends on cryptographic secure protocols based on random numbers;
-lotteries \mtjnote[inline]{define different types of lotteries, e.g.\ \enquote{Lotto}, military lotteries, etc.} depends on random draws; voters for a particular cause in Switzerland are randomly selected; election voting recounts are randomly selected in the US\@; some consensus protocols depend on selecting a random participant; and many more.
-% I hate the examples part of this paragraph.
+Randomness and the ability to generate random numbers is crucial in many applications and use cases;
+ranging from lotteries and random draws, to generating complex parameters for cryptography and driving consensus algorithms.
+This dependence on randomness, merits the question of how can we trust that acclaimed randomness truly is random, and has not been manipulated to benefit some adversary.
 
-Yet, trusted random number generation is not widely used for these applications.
+% General scare. "Mistrust" is rising.
+Numerous leaks revealing aggressive espionage and misuse of information by authorities have surfaced the past decade.
+Large corporations and authorities, has on several occasions misused the trust of the people.
+In the light of events such as the unveiling of mass surveillance by the NSA or the backdoors, to commonly used systems, possessed by government agencies, a new era of mistrust has begun.
 
-\subsection{Trusted Random Number Generation} % Maybe a subsection is not needed for this. Maybe it's just a paragraph.
-\mtjnote[inline]{What is trusted randomness? E.g.\ what is decentralized verifiable}
-% What is trusted randomness?
-  % e.g. decentralized verifiable
+As an anti-thesis to the centralized organizations and authorities, there has been a surge of interest in decentralization and verifiability.
+Many new trustless and decentralized technologies have emerged, most prominently the blockchain which has brought Bitcoin and other decentralized virtual currencies.
 
+There are several approaches to providing a trustable randomness source; however, to the best of our knowledge, these solutions have not yet been classified, analysed, and compared.
+Furthermore, parameters for comparison have not been established to facilitate such a taxonomy.
 
-  %, especially regarding whether they will skew results. The National Security Agency (NSA) has been the center of many leaks detailing their practices. Their capabilities to eavesdrop world wide have been brought to light, which revealed tactics to wiretap, break encryption schemes, and compromise security measures.
+\subsection*{Contributions}\label{subsec:contributions}
+% comparison parameters
+In this paper, we establish a tangible set of parameters which can be used to classify different approaches to implement trustable randomness.
+% actual taxonomy
+Moreover, we provide the first taxonomy of such implementations alongside theoretical solutions and idea, which seeks to improve the trustability of randomness sources.
 
-  %The world of today is increasingly aware of trust. Now, more than ever, many people are suspicious of who to trust. Numerous leaks have revealed aggressive espionage by governments, and as media coverage is dedicated to the aftermath of numerous leaks by WikiLeaks, we grow more suspicious of sharing our private information. We don't trust authorities as we now know they may be corrupt.
+% blockchain magic to the rescue
+We also introduce new ways of improving existing solutions, by harnessing the immutability and consensus power of blockchain networks.
 
-  %Decentralized approaches like Bitcoin rises in popularity. People don't trust large organizations.
-
-% Why do we need publicly verifiable randomness
-%Some of these issues are dependent on randomness.
-%A subclass of these issues are related to trusting authorities to make fair decisions that will not necessarily benefit the authority in question. Examples of this are generating parameters used in cryptographic encryption schemes and
-
-% Why can we not trust a centralized randomness generator?
-
-% There are many ways to mitigate these problems. Therefore we will create a taxonomy / survey of the most prominent papers.
-
-% "To our knowledge, no survey exists"
