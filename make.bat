@@ -1,2 +1,1 @@
-@echo off
-make -f windoge.mk %*
+cmd /c "make.exe -f windoge.mk %*"
