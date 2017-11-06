@@ -1,0 +1,95 @@
+@article{cascudo2017scrape,
+  title={SCRAPE: Scalable Randomness Attested by Public Entities.},
+  author={Cascudo, Ignacio and David, Bernardo},
+  journal={IACR Cryptology ePrint Archive},
+  volume={2017},
+  pages={216},
+  year={2017}
+},
+
+@inproceedings{miller2017zero,
+  title={Zero-Collateral Lotteries in Bitcoin and Ethereum},
+  author={Miller, Andrew and Bentov, Iddo},
+  booktitle={Security and Privacy Workshops (EuroS\&PW), 2017 IEEE European Symposium on},
+  pages={4--13},
+  year={2017},
+  organization={IEEE}
+},
+
+@article{lenstra2015random,
+  title={A random zoo: sloth, unicorn, and trx.},
+  author={Lenstra, Arjen K and Wesolowski, Benjamin},
+  journal={IACR Cryptology ePrint Archive},
+  volume={2015},
+  pages={366},
+  year={2015}
+},
+
+@inproceedings{pierrot2016malleability,
+  title={Malleability of the blockchain's entropy},
+  author={Pierrot, C{\'e}cile and Wesolowski, Benjamin},
+  booktitle={ArcticCrypt 2016},
+  year={2016}
+},
+
+@inproceedings{syta2017scalable,
+  title={Scalable bias-resistant distributed randomness},
+  author={Syta, Ewa and Jovanovic, Philipp and Kogias, Eleftherios Kokoris and Gailly, Nicolas and Gasser, Linus and Khoffi, Ismail and Fischer, Michael J and Ford, Bryan},
+  booktitle={Security and Privacy (SP), 2017 IEEE Symposium on},
+  pages={444--460},
+  year={2017},
+  organization={IEEE}
+},
+
+@article{bentov2016bitcoin,
+  title={Bitcoin beacon},
+  author={Bentov, Iddo and Gabizon, Ariel and Zuckerman, David},
+  journal={arXiv preprint arXiv:1605.04559},
+  year={2016}
+},
+
+@article{bonneau2015bitcoin,
+  title={On Bitcoin as a public randomness source.},
+  author={Bonneau, Joseph and Clark, Jeremy and Goldfeder, Steven},
+  journal={IACR Cryptology ePrint Archive},
+  volume={2015},
+  pages={1015},
+  year={2015}
+},
+
+@misc{nakamoto2008bitcoin,
+  title={Bitcoin: A peer-to-peer electronic cash system},
+  author={Nakamoto, Satoshi},
+  year={2008}
+},
+
+@article{clark2010use,
+  title={On the Use of Financial Data as a Random Beacon.},
+  author={Clark, Jeremy and Hengartner, Urs},
+  journal={EVT/WOTE},
+  volume={89},
+  year={2010}
+},
+
+@article{baigneres2015trap,
+  title={Trap Me If You Can-Million Dollar Curve.},
+  author={Baign{\`e}res, Thomas and Delerabl{\'e}e, C{\'e}cile and Finiasz, Matthieu and Goubin, Louis and Lepoint, Tancr{\`e}de and Rivain, Matthieu},
+  journal={IACR Cryptology ePrint Archive},
+  volume={2015},
+  pages={1249},
+  year={2015}
+},
+
+@article{andrychowicz2014distributed,
+  title={Distributed Cryptography Based on the Proofs of Work.},
+  author={Andrychowicz, Marcin and Dziembowski, Stefan},
+  journal={IACR Cryptology ePrint Archive},
+  volume={2014},
+  pages={796},
+  year={2014}
+}
+
+@url{randao, 
+  title={RanDAO},
+  year{2016}
+}
