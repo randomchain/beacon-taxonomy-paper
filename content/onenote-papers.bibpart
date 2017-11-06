@@ -42,11 +42,18 @@
 },
 
 @article{bentov2016bitcoin,
-  title={Bitcoin beacon},
-  author={Bentov, Iddo and Gabizon, Ariel and Zuckerman, David},
-  journaltitle={arXiv preprint arXiv:1605.04559},
-  year={2016}
-},
+  author    = {Iddo Bentov and
+               Ariel Gabizon and
+               David Zuckerman},
+  title     = {Bitcoin Beacon},
+  journaltitle={CoRR},
+  volume    = {abs/1605.04559},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1605.04559},
+  archivePrefix = {arXiv},
+  eprint    = {1605.04559},
+  timestamp = {Wed, 07 Jun 2017 14:40:08 +0200},
+}
 
 @article{bonneau2015bitcoin,
   title={On Bitcoin as a public randomness source.},
