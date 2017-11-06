@@ -147,3 +147,6 @@ figures/*
 
 # Visual Studio Code
 .vscode/
+
+chktex.txt
+bitlatexcheck.html

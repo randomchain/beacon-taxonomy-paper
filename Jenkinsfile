@@ -23,6 +23,18 @@ parallel (
             }
         }
     },
+    "lint": {
+        node {
+            stage('Lint') {
+                deleteDir()
+                unstash "sources"
+                make "lint"
+                stash name: "linted"
+                archiveArtifacts 'chktex.txt'
+                archiveArtifacts 'biblatexcheck.html'
+            }
+        }
+    }
 )
 
 //Run gradle

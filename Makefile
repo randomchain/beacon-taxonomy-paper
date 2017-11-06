@@ -44,8 +44,10 @@ debug: once
 bibtex.bib: $(BIB_SOURCES)
 	cat $^ > bibtex.bib
 
-lint:
-	chktex -v0 $(shell find . -type f -name "*.tex")
+lint: bibtex.bib
+	-chktex -o chktex.txt -v0 $(shell find . -type f -name "*.tex")
+	-python biblatex_check.py -b bibtex.bib -o biblatexcheck.html
+
 
 test: clean bibtex.bib
 	latexmk -pdf -pdflatex="echo X | lualatex --draftmode --shell-escape --interaction=errorstopmode %O %S \; touch %D" $(MAIN)
