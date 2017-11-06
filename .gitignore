@@ -149,4 +149,4 @@ figures/*
 .vscode/
 
 chktex.txt
-bitlatexcheck.html
+biblatexcheck.html
