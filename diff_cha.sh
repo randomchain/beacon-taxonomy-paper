@@ -2,20 +2,37 @@
 
 set -e -x
 
+if [[ `git status --porcelain` ]]; then
+    git stash save
+    CHANGED=true
+else
+    CHANGED=false
+fi
+
 git fetch -vp
 
-changed_files=$(git diff --name-only origin/master..HEAD)
+if [[ $# == 0 ]]; then
+    ORIG="origin/master"
+else
+    ORIG=$1
+fi
+
+changed_files=$(git diff --name-only ${ORIG}..HEAD)
 
 for changed_file in $changed_files; do
-    master_file=$(mktemp)
+    orig_file=$(mktemp)
     curr_file=$(mktemp)
-    git show -s origin/master:$changed_file > $master_file
+    git show -s ${ORIG}:$changed_file > $orig_file
     mv $changed_file $curr_file
-    latexdiff --exclude-textcmd="chapter,section,subsection" $master_file $curr_file > $changed_file
-    rm $master_file
+    latexdiff --exclude-textcmd="chapter,section,subsection" $orig_file $curr_file > $changed_file
+    rm $orig_file
     rm $curr_file
 done
 
 make
 
 git reset HEAD --hard
+
+if [[ $CHANGED ]]; then
+    git stash pop
+fi
