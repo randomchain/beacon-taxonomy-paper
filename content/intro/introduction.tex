@@ -1,20 +1,24 @@
 \section{Introduction}\label{cha:introduction}
 
-% Random numbers
+% Random numbers are useful and necessary for many things.
 The ability to generate random numbers is an important, even critical, prerequisite for many use cases.
 Traditionally, lotteries have depended on randomness, and as the usage of cryptography continues to rise, random number generation is a more than ever crucial aspect for security.
 Furthermore, new use cases of randomness have emerged, e.g.\ driving fair consensus protocols.
 
+% TODO: Introduce random beacons, Rabin
+
+% TODO: Today, there exists some services, but only a few, that make random numbers.
+Indeed, randomness is either generated in a centralized and non-verifiable fashion by an authority such as NIST \mtjnote[inline]{source}, or by the people who need randomness.
+With these approaches, even though they explicitly describe their protocol of obtaining randomness, we cannot guarantee the protocol was followed as described.
+We have to trust them. \mtjnote[inline]{Rewrite and find source}
+
+% General scare --- most randomness is only random because we trust the makers to make the number "random".
 Many uses cases of randomness involve money and security, this dependence merits the question of whether we can trust that the acclaimed \enquote{randomness} is truly random and has not been manipulated to benefit some adversary.
 
 % General scare. "Mistrust" is rising.
 Numerous leaks revealing aggressive espionage and misuse of information by authorities have surfaced the past decade.
 Large corporations and authorities, have on several occasions misused the trust of the people.
 In the light of events such as the unveiling of mass surveillance by the \gls{nsa} or their numerous backdoors to commonly used systems, a new era of mistrust has begun.
-
-Indeed, randomness is either generated in a centralized and non-verifiable fashion by an authority such as \gls{nist} \mtjnote[inline]{source}, or by the people who need randomness.
-With these approaches, even though they explicitly describe their protocol of obtaining randomness, we cannot guarantee the protocol was followed as described.
-We have to trust them. \mtjnote[inline]{Rewrite and find source}
 
 As an anti-thesis to the centralized organizations and authorities, there has been a surge of interest in decentralization and verifiability.
 Many new trustless and decentralized technologies have emerged, most prominently the blockchain which has brought along \gls{btc} and other decentralized virtual currencies.
