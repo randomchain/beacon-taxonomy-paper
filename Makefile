@@ -45,8 +45,8 @@ bibtex.bib: $(BIB_SOURCES)
 	cat $^ > bibtex.bib
 
 lint: bibtex.bib
-	-chktex -o chktex.txt -v0 $(shell find . -type f -name "*.tex")
-	-python biblatex_check.py -b bibtex.bib -o biblatexcheck.html
+	-chktex -H1 -o chktex.txt -v2 -b0 $(shell find . -type f -name "*.tex")
+	-python biblatex_check.py -b bibtex.bib -a main.aux -o biblatexcheck.html
 
 
 test: clean bibtex.bib
