@@ -20,13 +20,15 @@ fi
 changed_files=$(git diff --name-only ${ORIG}..HEAD)
 
 for changed_file in $changed_files; do
-    orig_file=$(mktemp)
-    curr_file=$(mktemp)
-    git show -s ${ORIG}:$changed_file > $orig_file
-    mv $changed_file $curr_file
-    latexdiff --exclude-textcmd="chapter,section,subsection" $orig_file $curr_file > $changed_file
-    rm $orig_file
-    rm $curr_file
+    if [[ $changed_file == *.tex ]]; then
+        orig_file=$(mktemp)
+        curr_file=$(mktemp)
+        git show -s ${ORIG}:$changed_file > $orig_file
+        mv $changed_file $curr_file
+        latexdiff --exclude-textcmd="chapter,section,subsection" $orig_file $curr_file > $changed_file
+        rm $orig_file
+        rm $curr_file
+    fi
 done
 
 make
