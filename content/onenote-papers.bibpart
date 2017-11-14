@@ -5,7 +5,7 @@
   volume={2017},
   pages={216},
   year={2017}
-},
+}
 
 @inproceedings{miller2017zero,
   title={Zero-Collateral Lotteries in Bitcoin and Ethereum},
@@ -14,7 +14,7 @@
   pages={4--13},
   year={2017},
   organization={IEEE}
-},
+}
 
 @article{lenstra2015random,
   title={A random zoo: sloth, unicorn, and trx.},
@@ -23,14 +23,14 @@
   volume={2015},
   pages={366},
   year={2015}
-},
+}
 
 @inproceedings{pierrot2016malleability,
   title={Malleability of the blockchain's entropy},
   author={Pierrot, C{\'e}cile and Wesolowski, Benjamin},
   booktitle={ArcticCrypt 2016},
   year={2016}
-},
+}
 
 @inproceedings{syta2017scalable,
   title={Scalable bias-resistant distributed randomness},
@@ -39,7 +39,7 @@
   pages={444--460},
   year={2017},
   organization={IEEE}
-},
+}
 
 @article{bentov2016bitcoin,
   author    = {Iddo Bentov and
@@ -62,13 +62,13 @@
   volume={2015},
   pages={1015},
   year={2015}
-},
+}
 
 @misc{nakamoto2008bitcoin,
   title={Bitcoin: A peer-to-peer electronic cash system},
   author={Nakamoto, Satoshi},
   year={2008}
-},
+}
 
 @article{clark2010use,
   title={On the Use of Financial Data as a Random Beacon.},
@@ -76,7 +76,7 @@
   journaltitle={EVT/WOTE},
   volume={89},
   year={2010}
-},
+}
 
 @article{baigneres2015trap,
   title={Trap Me If You Can-Million Dollar Curve.},
@@ -85,7 +85,7 @@
   volume={2015},
   pages={1249},
   year={2015}
-},
+}
 
 @article{andrychowicz2014distributed,
   title={Distributed Cryptography Based on the Proofs of Work.},

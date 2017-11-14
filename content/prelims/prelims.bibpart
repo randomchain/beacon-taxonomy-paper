@@ -1,0 +1,15 @@
+@misc{randomsources,
+  title={Introduction to Randomness and Random Numbers},
+  author={Haahr, Mads}
+}
+
+@misc{nistbeacon,
+  title={NIST Randomness Beacon},
+  author={National Insitute of Standard and Technology},
+  url={https://www.nist.gov/programs-projects/nist-randomness-beacon}
+}
+
+@misc{randomorg,
+  title={Random.org},
+  url={https://www.random.org/}
+}
