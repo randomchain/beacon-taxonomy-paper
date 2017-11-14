@@ -37,21 +37,14 @@ This merits the question of whether the acclaimed randomness can be \emph{truste
 % General scare. "Mistrust" is rising.
 In the past decade, we have seen numerous leaks revealing aggressive espionage and misuse of information by authorities have surfaced the past decade.
 Large corporations and authorities, have on several occasions misused the trust of the people.
-In the light of events such as the unveiling of mass surveillance by the \gls{nsa} or their numerous back doors to commonly used systems, a new era of mistrust has begun. If we have not already redefined our picture of an adversary, we certainly should:
+In the light of events such as the unveiling of mass surveillance by the \gls{nsa} or their numerous back doors to commonly used systems, a new era of mistrust has begun. If we have not already redefined our picture of an adversary, we certainly should. It is no longer necessarily a single hacker, but instead the well-funded intelligence agency or the profit-obsessed multinational company. They have enormous budgets, control vast amounts of infrastructure, and have attorneys more than willing to interpret the law creatively. They have a huge portfolio of zerodays. Their aim is to Collect it All, Exploit it All, Know it All~\cite{rogaway2015moral}.
 
-\begin{displayquote}[\cite{nakamoto2008bitcoin}][\hfill--- Philip Rogaway]
-    \enquote{At this point, I think we would do well to put ourselves in the mindset of a real adversary, not a notional one:
-    the well-funded intelligence agency, the profit-obsessed multinational, the drug cartel.
-    You have an enormous budget. You control lots of infrastructure.
-    You have teams of attorneys more than willing to interpret the law creatively.
-    You have a huge portfolio of zerodays. You have a mountain of self-righteous conviction.
-    Your aim is to Collect it All, Exploit it All, Know it All.}
-\end{displayquote}
-
-As an anti-thesis to centralized organizations and authorities, there has been a surge of interest in decentralization and verifiability. This has roots in the \emph{cypherpunk} culture, which rose in popularity in the early days of the Internet.
-These activists advocate strong privacy tools and widespread use of strong cryptography to combat privacy-invading practices of governments and corporations~\cite{hughes1993cypherpunk}.
+%As an anti-thesis to centralized organizations and authorities, there has been a surge of interest in decentralization and verifiability. This has roots in the \emph{cypherpunk} culture, which rose in popularity in the early days of the Internet.
+%These activists advocate strong privacy tools and widespread use of strong cryptography to combat privacy-invading practices of governments and corporations~\cite{hughes1993cypherpunk}.
 
 Since many things rely on strong cryptography and randomness, we need to make sure that the randomness can be trusted. If the randomness is broken, adversaries can get an unfair advantage --- \gls{nsa} has spread much doubt about the security of some cryptographic protocols. It is an important issue, which has received some, but not much attention in the literature~\cite{lenstra2015random}.
+
+\textcolor{orange}{TODO: What is the problem? Do we want a beacon with no trusted parties? Do we also want it decentralized? because then we might get problems explaining which papers we have included.}
 
 There are several approaches to providing a trustable randomness source; however, to the best of our knowledge, these solutions have not yet been classified, analysed, and compared.
 Furthermore, parameters for comparison have not been established to facilitate such a taxonomy.

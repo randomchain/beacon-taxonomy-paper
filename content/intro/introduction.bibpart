@@ -31,3 +31,12 @@
   year={1993},
   url={https://www.activism.net/cypherpunk/manifesto.html}
 }
+
+@article{rogaway2015moral,
+  title={The Moral Character of Cryptographic Work.},
+  author={Rogaway, Phillip},
+  journal={IACR Cryptology ePrint Archive},
+  volume={2015},
+  pages={1162},
+  year={2015}
+}
