@@ -1,0 +1,33 @@
+@book{princeton2016,
+  title={Bitcoin and Cryptocurrency Technologies: A Comprehensive Introduction},
+  author={Narayanan, A. and Bonneau, J. and Felten, E. and Miller, A. and Goldfeder, S.},
+  isbn={9780691171692},
+  year={2016},
+  publisher={Princeton University Press}
+}
+
+@misc{nist2014backdoor,
+  title={NIST Removes Cryptography Algorithm from Random Number Generator Recommendations},
+  author={Jennifer Huergo},
+  url={https://www.nist.gov/news-events/news/2014/04/nist-removes-cryptography-algorithm-random-number-generator-recommendations},
+  year={2014},
+  howpublished={NIST News announcement}
+}
+
+@article{rabin1983transaction,
+  title={Transaction protection by beacons},
+  author={Rabin, Michael O},
+  journal={Journal of Computer and System Sciences},
+  volume={27},
+  number={2},
+  pages={256--267},
+  year={1983},
+  publisher={Elsevier}
+}
+
+@article{hughes1993cypherpunk,
+  title={A Cypherpunk's manifesto},
+  author={Hughes, Eric},
+  year={1993},
+  url={https://www.activism.net/cypherpunk/manifesto.html}
+}
