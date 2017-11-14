@@ -6,10 +6,11 @@
   publisher={Princeton University Press}
 }
 
-@misc{nist2014backdoor,
+@Online{nist2014backdoor,
   title={NIST Removes Cryptography Algorithm from Random Number Generator Recommendations},
   author={Jennifer Huergo},
   url={https://www.nist.gov/news-events/news/2014/04/nist-removes-cryptography-algorithm-random-number-generator-recommendations},
+  urldate={2017-11-14},
   year={2014},
   howpublished={NIST News announcement}
 }
@@ -17,7 +18,7 @@
 @article{rabin1983transaction,
   title={Transaction protection by beacons},
   author={Rabin, Michael O},
-  journal={Journal of Computer and System Sciences},
+  journaltitle={Journal of Computer and System Sciences},
   volume={27},
   number={2},
   pages={256--267},
@@ -25,18 +26,29 @@
   publisher={Elsevier}
 }
 
-@article{hughes1993cypherpunk,
+@Online{hughes1993cypherpunk,
   title={A Cypherpunk's manifesto},
   author={Hughes, Eric},
   year={1993},
-  url={https://www.activism.net/cypherpunk/manifesto.html}
+  url={https://www.activism.net/cypherpunk/manifesto.html},
+  urldate={2017-11-14}
 }
 
 @article{rogaway2015moral,
   title={The Moral Character of Cryptographic Work.},
   author={Rogaway, Phillip},
-  journal={IACR Cryptology ePrint Archive},
+  journaltitle={IACR Cryptology ePrint Archive},
   volume={2015},
   pages={1162},
   year={2015}
 }
+
+@Online{bbclotteryexploit,
+  title={US lottery security boss charged with fixing draw},
+  author={Dan Simmons},
+  editor={BBC Technology},
+  date={2015-04-14},
+  url={http://www.bbc.com/news/technology-32301117},
+  urldate={2017-11-14}
+}
+

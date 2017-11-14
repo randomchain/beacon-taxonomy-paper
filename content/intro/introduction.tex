@@ -9,12 +9,25 @@ Random numbers are useful, important, and even critical, prerequisites in many a
 %Cryptographically securing and sharing information heavily relies on random numbers, and some new fair consensus protocols are based on randomness.
 There are a number of interesting use cases that require or could benefit from randomness that is publicly available. For example, the numbered balls of lotteries are often drawn on live tv, which is a way of publicizing the random draw process and more importantly prove that the process has not been manipulated.
 
-The \gls{nba} annually holds a lottery, which decides the order of which teams get to select the top amateur players who are ready to turn into professionals. Even though the draw is performed by picking envelopes shuffled in a transparent spinning drum on live tv, fans have claimed for many years that the lottery is rigged to favor a single team~\cite{princeton2016}. Famous conspiracy theories revolve around bending corners on the envelopers, or keeping a single envelope in the freezer. It is hard to dispel these theories, and even harder to prove that the lottery is fair.
+The \gls{nba} annually holds a draft, which decides the order of what teams get to select the top amateur players who are ready to turn into professionals.
+Even though the draw is performed by picking envelopes shuffled in a transparent spinning drum on live tv, fans have claimed for many years that the draft is rigged to favor a single team~\cite{princeton2016}. Famous conspiracy theories revolve around bending corners on the envelopers, or keeping a single envelope in the freezer.
+It is hard to dispel these theories, and even harder to prove that the draft is fair.
 
-In 1969, this type of lottery was performed in the US\@. However, it was slightly more serious --- it was a conscription lottery for the US Military, and many would be sent to fight in the Vietnam war. Similarly, small capsules labelled with each day of the year were picked from a plastic drum on live tv. The ordering of the dates drawn and the birthdays of all men then determined the conscription order. The lottery was quickly proven to be botched; statisticians noticed an anomalous pattern. The broadcast was reviewed, and the drum was always turned an even number of times, such that capsules on top stayed on top. In other words, there was not sufficient mixing to make it a statistically random draw~\cite{princeton2016}.
+In 1969, this type of draft was performed in the US\@. However, it was slightly more serious --- it was a conscription draft for the US Military, and many would be sent to fight in the Vietnam war.
+Similarly, small capsules labelled with each day of the year were picked from a plastic drum on live tv.
+The ordering of the dates drawn and the birthdays of all men then determined the order of enrollment.
+The lottery was quickly proven to be botched; statisticians noticed an anomalous pattern.
+The broadcast was reviewed, and the drum was always turned an even number of times, such that capsules on top stayed on top.
+In other words, there was not sufficient mixing to make it a statistically random draw~\cite{princeton2016}.
+
+It is not only governments or large organizations, that can bias randomness.
+For example, a single adversary might be able to affect a seemingly random outcome, and thereby exploit the initial trust in an otherwise honest system.
+This happened in 2015 where the security director at Multi-State Lottery Association, successfully installed a rootkit on the trusted computer, used for generating the randomness for the lottery draw.
+He did it by exercising his privileges as security director, to temporarily disable the video surveillance, which otherwise was constantly filming the computer situated in a glass cage.
+The exploit allowed him to predict the next lottery numbers, and claim the prize of \$14.3m.
+It was later discovered that he had manipulated the system, after another video surveillance system, caught him buying the winning ticket~\cite{bbclotteryexploit}.
 
 % TODO: Give some example like lotto (and perhaps another)
-\textcolor{orange}{TODO: The guy who had access to the computer generating the lotto numbers in some US state, where he installed a rootkit in less than 2 minutes and won the next lotto.}
 
 These examples show that it is difficult to generate public randomness and convince the public that it is truly random --- the process might not be sufficiently random, or the public might not believe it.
 
