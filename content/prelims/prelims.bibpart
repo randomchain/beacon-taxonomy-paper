@@ -13,3 +13,15 @@
   urldate={2017-11-14}
 }
 
+@article{pseudorandomness,
+url = {http://dx.doi.org/10.1561/0400000010},
+year = {2012},
+volume = {7},
+journal = {Foundations and Trends® in Theoretical Computer Science},
+title = {Pseudorandomness},
+doi = {10.1561/0400000010},
+issn = {1551-305X},
+number = {1–3},
+pages = {1-336},
+author = {Salil P. Vadhan}
+}
