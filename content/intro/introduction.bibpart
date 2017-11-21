@@ -52,3 +52,11 @@
   urldate={2017-11-14}
 }
 
+@inproceedings{bernstein2015manipulate,
+  title={How to Manipulate Curve Standards: A White Paper for the Black Hat},
+  author={Bernstein, Daniel J and Chou, Tung and Chuengsatiansup, Chitchanok and H{\"u}lsing, Andreas and Lambooij, Eran and Lange, Tanja and Niederhagen, Ruben and van Vredendaal, Christine},
+  booktitle={International Conference on Research in Security Standardisation},
+  pages={109--139},
+  year={2015},
+  organization={Springer}
+}
