@@ -10,9 +10,9 @@ Both of these are also properties that a randomness beacon should exhibit, and e
         Moreover, in scenarios where the beacon is driven by a single entity, attacking the availability can also mean preventing the beacon from collecting input or publishing the outcome, thereby effectively denying service for all potential users.
 
         Examples of concrete attacks on the availability of a randomness beacon are:
-        \acrfull{dos} where an attacker overwhelms the beacon with e.g.\ input, thereby making any other user unable to supply entropy as input, a \gls{dos} attack could also be on the availability of the source of input itself; eclipse attacks where an attacker eclipses a part of the network, thus only making the beacon unavailable to some select users.
+        \acrfull{dos} where an attacker overwhelms the beacon with e.g.\ input, thereby making any other user unable to supply entropy as input. A \gls{dos} attack could also be on the availability of the source of input itself; eclipse attacks where an attacker eclipses a part of the network, thus only making the beacon unavailable to some select users.
     \item[Integrity:]
-        The integrity of a randomness beacon, determines whether or not, a given user should trust the outcome, and to what degree.
+        The integrity of a randomness beacon, determines whether or not a given user should trust the outcome and to what degree.
         Attacking the integrity is therefore, any attack which compromises the outcome of a randomness beacon.
         This can mean manipulating the input/entropy to the beacon, but also compromising the entire computation and outcome;
         as beacons can be seen as entities and not a particular actor, one might imagine a scenario where an attacker imposes themselves as the beacon.
