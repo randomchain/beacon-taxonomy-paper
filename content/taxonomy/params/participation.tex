@@ -1,14 +1,23 @@
 \subsection{Participation Model}
 \label{sub:participation_model}
-These are the categories of participation models we use for our taxonomy: 
+Beacons may exhibit different ways of participating. We distinct between two areas where user participation is possible: entropy (input) participation and execution participation.
 
+\subsubsection{Entropy Participation}
+A randomness beacon requires entropy as input. Different ways of collecting entropy are:
+   
 \begin{description}
-    \item [User Input] The protocol allows users to provide entropy for the entropy. This can open up for direct manipulation of the result by last-draw attacks and the like. If this is the only source of entropy, lack of inputs denies availability of the randomness.
-    \item [External Input] Using external input such as background radiation and output from photon splitters. These sources are, however, difficult to reproduce and verify.
+    \item [User Input] The protocol allows users to provide entropy. This can open up for direct manipulation of the result by last-draw attacks and the like. If this is the only source of entropy, lack of inputs denies availability of the randomness.
+    \item [Private External Input] Using external input such as background radiation and output from photon splitters. These sources are, however, difficult to reproduce and verify.
     \item [Publicly Available External Input] The protocol uses some publicly available external source of entropy to produce randomness. These sources can be the blockchain, financial data,or national lottery results. Anyone wishing to influence it must influence the external source.
-    \item [Distributed Computation]
-    The computation of the protocol is done in a distributed manner between a set of parties. 
-    \item [Central Operator] The protocol is computed by some central operator. For obvious reasons, this approach can not be trusted unless the computation is publicly verifiable. 
 \end{description}
 
-\mtjnote{Maybe we should split this into interaction participation and execution participation}
+\subsubsection{Execution Participation}
+Once entropy is obtained, some computation must be performed on it. We have identified the following ways of executing such a computation:
+
+\begin{description}
+    \item[Self-Announced Entity] The protocol is computed by a central entity who is providing a service in form of a complete beacon.
+    \item[Elected Leader] A user is collectively elected to be a leader to perform the computation.
+    \item[Distributed Execution]
+    The computation of the protocol is done in a distributed manner between a set of parties using e.g.\ MPC\@.
+    \item[Delegated to Users] If users can agree on the entropy, they can each perform the same execution to obtain a random value.
+\end{description}
