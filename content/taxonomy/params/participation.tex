@@ -1,14 +1,31 @@
 \subsection{Participation Model}
 \label{sub:participation_model}
-These are the categories of participation models we use for our taxonomy: 
+Beacons may have different ways for users to participate. We distinct between three areas where user participation is possible: entropy (input), execution and randomness (output) participation.
 
+\subsubsection{Entropy Participation}
+A randomness beacon requires entropy as input. Different ways of collecting entropy are:
+   
 \begin{description}
-    \item [User Input] The protocol allows users to provide entropy for the entropy. This can open up for direct manipulation of the result by last-draw attacks and the like. If this is the only source of entropy, lack of inputs denies availability of the randomness.
-    \item [External Input] Using external input such as background radiation and output from photon splitters. These sources are, however, difficult to reproduce and verify.
-    \item [Publicly Available External Input] The protocol uses some publicly available external source of entropy to produce randomness. These sources can be the blockchain, financial data,or national lottery results. Anyone wishing to influence it must influence the external source.
-    \item [Distributed Computation]
-    The computation of the protocol is done in a distributed manner between a set of parties. 
-    \item [Central Operator] The protocol is computed by some central operator. For obvious reasons, this approach can not be trusted unless the computation is publicly verifiable. 
+    \item [User Input] The protocol allows users to provide entropy. This can open up for direct manipulation of the result by last-draw attacks and the like. If this is the only source of entropy, lack of inputs denies availability of the randomness.
+    \item [Private External Input] Using external input such as background radiation and output from photon splitters. These sources are, however, difficult to reproduce and verify.
+    \item [Publicly Available External Input] The protocol uses some publicly available external source of entropy to produce randomness. These sources can be the blockchain, financial data, or national lottery results. Anyone wishing to influence it must influence the external source. 
 \end{description}
 
-\mtjnote{Maybe we should split this into interaction participation and execution participation}
+\subsubsection{Execution Participation}
+Once entropy is obtained, some computation must be performed on it. We have identified the following ways of executing such a computation:
+
+\begin{description}
+    \item[Self-Announced Entity] The protocol is computed by a central entity who provides a service in form of a complete beacon. Unless the computed randomness is publicly verifiable, this type of beacon can not be trusted. 
+    \item[Elected Leader] A user is collectively elected to be a leader to perform the computation. That user then computes the beacon protocol by itself, but the randomness must still be publicly verifiable to be trustable. 
+    \item[Distributed Execution]
+    The computation of the protocol is done in a distributed manner between a set of parties using e.g.\ MPC\@. This model can be vulnerable to last-draw attacks where the last user can bias the randomness. 
+    \item[Delegated to Users] If users can agree on the entropy, they can each perform the same execution to obtain a random value. All users execute the protocol and calculate the randomness by themselves. 
+\end{description}
+
+\subsubsection{Randomness Participation}
+The output of the computation is the randomness the beacon produces. We identify a number of ways to interact with this randomness:
+\begin{description}
+    \item [Verifiable] A user can verify the randomness to have been correctly computed from the provided entropy. This is essential to removing the need to trust a beacon operator, as malicious behaviour on their part can be detected. 
+    \item [Contestable] Users can contest the randomness of the beacon if they believe it to be wrong. The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded.  
+
+\end{description}
