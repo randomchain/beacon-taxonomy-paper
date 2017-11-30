@@ -1,9 +1,9 @@
-\subsection{Participation Model}
-\label{sub:participation_model}
+%\subsection{Participation Model}
+%\label{sub:participation_model}
 Beacons have different ways for users to participate. We distinct between three areas where user participation is possible: entropy (input), execution participation, and validation participation. These three distinctions relate to the three components of a randomness beacon, as seen in~\vref{fig:beacon}. A randomness beacon may exhibit multiple properties from the following categories.
 
-\subsubsection{Entropy Participation}
-A randomness beacon requires entropy as input. Different ways of collecting entropy are:
+\subsubsection{Entropy Sourcing}
+A randomness beacon requires entropy as input. Different ways of collecting entropy are: 
 
 \begin{description}
     \item [User Input] The protocol allows users to provide entropy. This can open up for direct manipulation of the result by last-draw attacks and the like. If this is the only source of entropy, lack of inputs denies availability of the randomness.
@@ -11,7 +11,7 @@ A randomness beacon requires entropy as input. Different ways of collecting entr
     \item [Publicly Available External Input] The protocol uses some publicly available external source of entropy to produce randomness. These sources can be the blockchain, financial data, or national lottery results. Anyone wishing to influence it must influence the external source.
 \end{description}
 
-\subsubsection{Execution Participation}
+\subsubsection{Execution Model}
 Once entropy is obtained, some computation must be performed on it. We identify the following ways of executing such a computation:
 
 \begin{description}
@@ -21,7 +21,7 @@ Once entropy is obtained, some computation must be performed on it. We identify 
     \item[Self-Service Execution] Each user performs the same execution to obtain a random value. This model does not require trust in the execution participants, but requires trust in the input entropy. Computational resources are only consumed by participants with a stake in the beacon output.
 \end{description}
 
-\subsubsection{Validation Participation}
+\subsubsection{Validation}
 The output of the computation may need validation in order to be trusted. We identify the following ways of performing this validation:
 \begin{description}
     \item [Verifiable] A user can verify the randomness to have been correctly computed from the provided entropy. \mtjnote[nofootnote,inline]{This will be futher elaborated}
