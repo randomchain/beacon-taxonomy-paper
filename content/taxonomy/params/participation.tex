@@ -1,6 +1,6 @@
 \subsection{Participation Model}
 \label{sub:participation_model}
-Beacons may have different ways for users to participate. We distinct between three areas where user participation is possible: entropy (input), execution and randomness (output) participation.
+Beacons have different ways for users to participate. We distinct between three areas where user participation is possible: entropy (input), execution participation, and validation participation. These three distinctions relate to the three components of a randomness beacon, as seen in~\vref{fig:beacon}.
 
 \subsubsection{Entropy Participation}
 A randomness beacon requires entropy as input. Different ways of collecting entropy are:
@@ -22,10 +22,10 @@ Once entropy is obtained, some computation must be performed on it. We have iden
     \item[Delegated to Users] If users can agree on the entropy, they can each perform the same execution to obtain a random value. All users execute the protocol and calculate the randomness by themselves. 
 \end{description}
 
-\subsubsection{Randomness Participation}
-The output of the computation is the randomness the beacon produces. We identify a number of ways to interact with this randomness:
+\subsubsection{Validation Participation}
+The output of the computation may need validation in order to be trusted. We identify the following ways of performing this validation:
 \begin{description}
-    \item [Verifiable] A user can verify the randomness to have been correctly computed from the provided entropy. This is essential to removing the need to trust a beacon operator, as malicious behaviour on their part can be detected. 
-    \item [Contestable] Users can contest the randomness of the beacon if they believe it to be wrong. The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded.  
-
+    \item[No Validation Needed] The output value can be trusted immediately. \mtjnote[nofootnote,inline]{I assume we need this for $\pi_\text{beacon}$?}
+    \item [Verifiable] A user can verify the randomness to have been correctly computed from the provided entropy. \mtjnote[nofootnote,inline]{Is it always output+(package of input) = verified?}
+    \item [Contestable] Users can contest the randomness of the beacon if they believe it to be wrong. The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded.
 \end{description}
