@@ -19,3 +19,22 @@ We present an overview of the classification of the papers summaries in \Vref{se
 %     \end{tabular}
 % \end{sidewaystable}
 
+\begin{table}[htbp]
+    \centering
+    \caption{Simplified classification overview of the papers}
+    \label{tab:paper_overview}
+    \begin{tabular}{@{}llll@{}}
+                               & \textbf{Entropy Sourcing}              & \textbf{Execution Model}               & \textbf{Validation}        \\
+Nist Beacon                    & Private external input                 & Self-announced entity                  & N/A                \\\midrule
+On btc                         & Public external input                  & Self-announced entity                  & Verifiable         \\\midrule
+\multirow{2}{*}{Random Zoo}    & User input                             & \multirow{2}{*}{Self-announced entity} & \multirow{2}{*}{Verifiable}         \\
+                               & Public external input                  &                                        &                    \\\midrule
+$\pi$-Beacon                   & Public external input                  & Self-service execution                 & Verifiable         \\\midrule
+\multirow{2}{*}{Proof-of-delay}& \multirow{2}{*}{Public external input} & Elected operator                       & Verifiable   \\
+                               &                                        & Distributed execution                  & Contestable  \\\midrule
+Findata                        & Public external input                  & Self-announced entity                  & Verifiable   \\\midrule
+\multirow{2}{*}{RandHound}     & \multirow{2}{*}{User input}            & Elected operator                       & Verifiable   \\
+                               &                                        & Distributed Execution                  & Contestable
+    \end{tabular}
+\end{table}
+
