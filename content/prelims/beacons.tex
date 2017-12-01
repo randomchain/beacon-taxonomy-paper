@@ -4,7 +4,7 @@ Beacons are hard to construct, and often rely on trusted third parties like the 
 If the beacon wants to avoid relying on third parties it can use publicly available data.
 An example of such data could be blocks in the Bitcoin blockchain, which has been proposed before~\cite{bonneau2015bitcoin}.
 
-A randomness beacon is constructed by, at regular intervals, applying a deterministic computation on some input (entropy), as depicted in~\cref{fig:beacon}. The output of the computation is a random value that has the property of being \emph{unpredictable}. 
+A randomness beacon is constructed by, at regular intervals, applying a deterministic computation on some input (entropy), as depicted in~\cref{fig:beacon}. The output of the computation is a random value that has the property of being \emph{unpredictable}.
 
 \begin{figure}[htb]
     \centering
@@ -15,6 +15,5 @@ A randomness beacon is constructed by, at regular intervals, applying a determin
         \path[arrow, swap] (input) -- (computation);
         \path[arrow, swap] (computation) -- (output);
     \end{tikzpicture}
-    \caption{The broad structure of a randomness beacon. A deterministic computation performed on some input entropy leads to an output of randomness. This process should be repeated at regular intervals.}
-    \label{fig:beacon}
+    \caption{The broad structure of a randomness beacon. A deterministic computation performed on some input entropy leads to an output of randomness. This process should be repeated at regular intervals.}\label{fig:beacon}
 \end{figure}
