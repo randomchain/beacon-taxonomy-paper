@@ -97,8 +97,8 @@
 }
 
 @article{bunz2017proofsof,
-  title={Proofsof-delay and randomness beacons in ethereum},
+  title={Proofs-of-delay and randomness beacons in Ethereum},
   author={B{\"u}nz, Benedikt and Goldfeder, Steven and Bonneau, Joseph},
-  journaltitle={IEEE SECURITY and PRIVACY ON THE BLOCKCHAIN (IEEE S\&B)},
+  journaltitle={IEEE Security and Privacy on the blockchain (IEEE S\&B)},
   year={2017}
 }

@@ -1,20 +1,22 @@
-\subsection*{Overview}
+\subsection{Overview}
 \label{sub:overview}
-To give an overview we have a simplified classification of the papers
+We present an overview of the classification of the papers summaries in \Vref{sec:papersummaries}.
 
-\begin{sidewaystable}[p]
+\begin{table}[htbp]
     \centering
-    \caption{Simplified classification overview of the papers}
-    \label{tab:paper_overview}
-    \begin{tabular}{@{}llllll@{}}
-               & Input type       & Affecting outcome    & Verifying/contesting outcome & Execution participation    & Trust assumption     \\
-Nist Beacon    & external         & Butterfly effect     & Not possible                 & Central closed authority   & Trust NIST (NSA)     \\
-On btc         & public external  & Indirect: btc        &                              &                            & Trust btc            \\
-Random Zoo     & any source       & Direct: Input        & Verifyable/Incontestable     & Central transparent entity & Validation           \\
-Pi Beacon      & public external  & Indirect: btc        & Consensus from btc           & Self-service               & Trust btc            \\
-Proof-of-delay & public external  & Indirect: btc        & Smart contract               & Designated compute entity  & Trust btc eventually \\
-Findata        & public external  & Indirect: stocks     & Verifiable                   & Central transparent entity & Trust stock exchange \\
-RandHound      & user supplied    & Direct: Input        & ????????????????????         & Distributed closed network & ????????
-    \end{tabular}
-\end{sidewaystable}
+    \begin{tabularx}{\textwidth}{Xlll}
+                               & \textbf{Entropy Sourcing}              & \textbf{Execution Model}               & \textbf{Validation}         \\\midrule
+NIST Beacon                    & Private external input                 & Self-announced entity                  & N/A                         \\[1.5em]
+On btc                         & Public external input                  & Self-announced entity                  & Verifiable                  \\[1.5em]
+\multirow{2}{*}{Random Zoo}    & User input                             & \multirow{2}{*}{Self-announced entity} & \multirow{2}{*}{Verifiable} \\
+                               & Public external input                  &                                        &                             \\[1.5em]
+$\pi_\text{BEACON}$                   & Public external input                  & Self-service execution                 & Verifiable                  \\[1.5em]
+\multirow{2}{*}{Proof-of-delay}& \multirow{2}{*}{Public external input} & Elected operator                       & Verifiable                  \\
+                               &                                        & Distributed execution                  & Contestable                 \\[1.5em]
+Findata                        & Public external input                  & Self-announced entity                  & Verifiable                  \\[1.5em]
+\multirow{2}{*}{RandHound}     & \multirow{2}{*}{User input}            & Elected operator                       & Verifiable                  \\
+                               &                                        & Distributed Execution                  & Contestable\\\bottomrule
+    \end{tabularx}
+    \caption{Classification overview of the papers}\label{tab:paper_overview}
+\end{table}
 
