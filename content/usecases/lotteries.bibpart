@@ -6,3 +6,20 @@
   number={2},
   year={1997}
 }
+
+@misc{lotteryscandal-eddietipton,
+  title={Man hacked random-number generator to rig lotteries, investigators say},
+  author={Samuel Gibbs and agencies},
+  url={https://www.theguardian.com/technology/2016/apr/08/man-hacked-random-number-generator-rig-lotteries-investigators-say},
+  year={2016},
+  urldate={2017-12-1},
+}
+
+@misc{lotteryscandal-666,
+  title={2 guilty of bid to rig Pennsylvania lottery},
+  author={William Robbins},
+  url={http://www.nytimes.com/1981/05/21/us/2-guilty-of-bid-to-rig-pennsylvania-lottery.html},
+  year={1981},
+  urldate={2017-12-1},
+}
+
