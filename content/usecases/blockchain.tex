@@ -2,8 +2,11 @@
 In proof-of-work blockchains, such as \gls{btc}, an adversary can perform an attack called \emph{selfish mining}.
 This is a strategy, where a miner or colluding group of miners withhold blocks they mine, and publish these blocks at certain times to gain an advantage;
 usually this means that the selfish miner can dictate the content of the blockchain.
+\stefan{explain better: how does the attack really work? maybe you need to introduce more background on blockchain also before}
 
 \citet{heilman2014one} presents a way to make selfish mining significantly harder to do;
 Previously, a selfish miner was required to possess 25~\% of the mining power to be able to carry out the attack. Heilman raises this to 35~\%.
 This is done by using unforgeable timestamps in the blocks, which means that a selfish miner will be exposed for having withheld mined blocks.
-Randomness beacons can thus be used to provide these unforgeable timestamps, given that a random number is published at sufficient intervals.
+Randomness beacons can thus be used to provide these unforgeable timestamps, given that a random number is published at sufficient intervals
+
+\stefan{Explain both percentages above}
