@@ -1,6 +1,6 @@
 %\subsection{Participation Model}
 %\label{sub:participation_model}
-Beacons have different ways for users to participate. We distinct between three areas where user participation is possible: entropy (input), execution participation, and validation participation. These three distinctions relate to the three components of a randomness beacon, as seen in~\vref{fig:beacon}. A randomness beacon may exhibit multiple properties from the following categories.
+Beacons have different ways for users to participate \stefan{participate in what? make things more clear}. We distinct between three areas where user participation is possible: entropy (input), execution participation, and validation participation. These three distinctions relate to the three components of a randomness beacon, as seen in~\vref{fig:beacon} \stefan{it could make sense to introduce this picture only here (not sure)}. A randomness beacon may exhibit multiple properties from the following categories.
 
 \subsection{Entropy Sourcing}
 A randomness beacon requires entropy as input. Different ways of collecting entropy are:
@@ -8,11 +8,11 @@ A randomness beacon requires entropy as input. Different ways of collecting entr
 \begin{description}
     \item [User Input] The protocol allows users to provide entropy. This can open up for direct manipulation of the result by last-draw attacks and the like. If this is the only source of entropy, lack of inputs denies availability of the randomness.
     \item [Private External Input] Using external input such as background radiation and output from photon splitters. These sources are, however, difficult to reproduce and verify.
-    \item [Publicly Available External Input] The protocol uses some publicly available external source of entropy to produce randomness. These sources can be the blockchain, financial data, or national lottery results. Anyone wishing to influence it must influence the external source.
+    \item [Publicly Available External Input] The protocol uses some publicly available external source of entropy to produce randomness. These sources can be the blockchain, financial data, or national lottery results. Anyone wishing to influence it must influence the external source. \stefan{okay but then everybody can also predict the next number no? and this is exactly what we do not want? make these things clear}
 \end{description}
 
 \subsubsection{Execution Model}
-Once entropy is obtained, some computation must be performed on it. We identify the following ways of executing such a computation:
+Once entropy is obtained, some computation must be performed on it \stefan{why? before you say HOW, say WHY}. We identify the following ways of executing such a computation:
 
 \begin{description}
     \item[Self-Announced Entity] The protocol is computed by a central entity who provides a service in form of a complete beacon. This type of execution requires verifiability or complete trust in the central entity.
@@ -27,3 +27,5 @@ The output of the computation may need validation in order to be trusted. We ide
     \item [Verifiable] A user can verify the randomness to have been correctly computed from the provided entropy. \mtjnote[nofootnote,inline]{This will be futher elaborated}
     \item [Contestable] Users can contest the randomness of the beacon if they believe it to be wrong. The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote[nofootnote,inline]{This will be futher elaborated}
 \end{description}
+
+\stefan{what is the conclusion of this section?}
