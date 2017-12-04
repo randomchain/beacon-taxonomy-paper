@@ -11,7 +11,7 @@ A randomness beacon requires entropy as input. Different ways of collecting entr
     \item [Publicly Available External Input] The protocol uses some publicly available external source of entropy to produce randomness. These sources can be the blockchain, financial data, or national lottery results. Anyone wishing to influence it must influence the external source. \stefan{okay but then everybody can also predict the next number no? and this is exactly what we do not want? make these things clear}
 \end{description}
 
-\subsubsection{Execution Model}
+\subsection{Execution Model}
 Once entropy is obtained, some computation must be performed on it \stefan{why? before you say HOW, say WHY}. We identify the following ways of executing such a computation:
 
 \begin{description}
@@ -21,11 +21,11 @@ Once entropy is obtained, some computation must be performed on it \stefan{why? 
     \item[Self-Service Execution] Each user performs the same execution to obtain a random value. This model does not require trust in the execution participants, but requires trust in the input entropy. Computational resources are only consumed by participants with a stake in the beacon output.
 \end{description}
 
-\subsubsection{Validation}
+\subsection{Validation}
 The output of the computation may need validation in order to be trusted. We identify the following ways of performing this validation:
 \begin{description}
     \item [Verifiable] A user can verify the randomness to have been correctly computed from the provided entropy. \mtjnote[nofootnote,inline]{This will be futher elaborated}
     \item [Contestable] Users can contest the randomness of the beacon if they believe it to be wrong. The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote[nofootnote,inline]{This will be futher elaborated}
 \end{description}
 
-\stefan{what is the conclusion of this section?}
+\stefan{what is the conclusion of this section?} \todo{Skriv evt.\ bedre i starten, hvad dette afsnit går ud på. Skriv evt.\ noget metatekst her, der diskuterer det lidt (?) og afrunder før næste afsnit.}
