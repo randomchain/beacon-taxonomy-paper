@@ -1,29 +1,4 @@
-% \subsection{Randomness Beacon Technology}
-% A randomness beacon is a method, possibly involving a trusted party, of generating uniform random strings that are unknown before the moment of their generation~\cite{andrychowicz2014distributed}
-% \stefan{what does "are not know" mean: cannot be known (due to entropy) or impossible to compute (due to NP-hardness) or? Whenever you are not concrete, then at least say "informally, ..."}
-% \stefan{is that all? should it not have additional properties like "verifiability"?}.
-% Beacons are hard to construct, and often rely on trusted third parties like the \acrfull{nist}~\cite{nistbeacon} or Random.org\footnote{\url{https://www.random.org}}.
-% If the beacon wants to avoid relying on third parties it can use publicly available data.
-% An example of such data could be blocks in the Bitcoin blockchain, which has been proposed before~\cite{bonneau2015bitcoin} \stefan{i think this sentence should go in intro. here in the background section you should rather focus on defining requirements}.
-
-% A randomness beacon is constructed by, at regular intervals, applying a deterministic computation on some input (entropy), as depicted in~\cref{fig:beacon}. The output of the computation is a random value that has the property of being \emph{unpredictable} \todo{Define what this means}.
-
-% \begin{figure}[htb]
-% \centering
-% \begin{tikzpicture}[auto]
-%     \node[block] (input) {Entropy\\(input)};
-%     \node[block, right=1cm of input] (computation) {Computation};
-%     \node[block, right=1cm of computation] (output) {Randomness (output)};
-%     \path[arrow, swap] (input) -- (computation);
-%     \path[arrow, swap] (computation) -- (output);
-% \end{tikzpicture}
-% \caption{The broad structure of a randomness beacon. A deterministic computation performed on some input entropy leads to an output of randomness. This process should be repeated at regular intervals. \stefan{explain these components and why they are needed. Why not directly use the entropy? what properties should the computation have? what properties the randomness at the outbut? }}\label{fig:beacon}
-% \end{figure}
-
-% \todo{Define more properties: Availability, Integrity}
-
-
-% Randomness beacon technology
+% Randomness beacons
 \section{Randomness Beacons}
 %   What is a beacon?
 In the context of this paper, we define a beacon as an entity, which publishes some data, at a regular known interval.
@@ -74,7 +49,7 @@ Each term embodies multiple attacks and requirements for fulfillment, however, d
         if the operator of the beacon is malicious, they might be able to generate a seemingly fair and random outcome by corrupting the computation of the beacon.
 
         The integrity also relies on the beacon being unpredictable, i.e.\ no adversary should be able to predict the outcome before it is too late to manipulate it.
-        Finally, integrity also embodies the fact that the outcome should be unbiased and uniformly distributed.
+        Finally, integrity also embodies the fact that the outcome should be unbiased and uniformly distributed; any detectable statistical bias should be negligible.
 
 \end{description}
 
@@ -92,12 +67,17 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
         Secondly, the user must be able to reason about the entropy level of the input.
 
     \item [Verifiability:]
-        For a beacon to display verifiability, its user must be able to verify correct execution of the beacon protocol.
+        For a beacon to display verifiability, any user must be able to verify correct execution of the beacon protocol.
         This includes being able to check input sources to the randomness beacon;
-        consequently the input to the beacon must be available for it to be verifiable, unless the beacon is able to produce a proof, which then allows users to verify with zero-knowledge\msmnote{this could be interesting to expand upon, to allow for anonymized beacon interaction}.
+        consequently the input to the beacon must be available for it to be verifiable, unless the beacon is able to produce a proof, which then allows users to verify with zero-knowledge \msmnote[nofootnote, inline]{this could be interesting to expand upon, to allow for anonymized beacon interaction}.
 
         The most straight forward process of verification for randomness beacons, is the ability for anyone to run the same computation on the same input.
         However, in some cases this may be impractical or the input should remain secret; thereby calling for another approach to proofing validity of the outcome.
+
+        An example of verifiability outside beacons, is in the blockchain, where the validity of a block can be verified by anyone using the block itself and a \acrfull{sha}.
+        Here the verifiability removes the need to trust any participating miners in the blockchain.
+
+        Verifiability can eliminate the need for trust in participants, while ensuring the trustworthiness of the outcome.
 
     \item [Input Reasoning:]
         Being able to reason about the input is somewhat coupled to the two previous trust assumptions.
@@ -112,13 +92,99 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
 
 %   Settings for beacons:
 \subsection{Settings for Randomness Beacons}
-%       Private
-%       Public
-%       Trustable?
-%       In relation to specifications
+Since a randomness beacon is a versatile and broad concept, it can be deployed in a myriad of vastly different settings.
+These settings all alter the way the beacon operates and how users interact with it.
+Furthermore, it affects which shape the beacon implementation takes, i.e.\ different technologies fits in varying settings.
+
+\msmnote[nofootnote, inline]{EXPAND DONG!}
+\begin{itemize}
+    \item Private --- trust that nobody will be obviously malicious, but might try to manipulate outcome
+    \item Public --- do not trust anything!
+    \item Scalable setting?
+\end{itemize}
+
+%   Properties of beacons
+\subsection{Properties of Randomness Beacons}
+Based on the specifications and different settings, we define three sets of properties, which can be compiled to describe different types of randomness beacons.
+These sets of properties covers \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}.
+In the later taxonomy of current randomness beacons approaches, these properties will also be used for classification.
+
+%       Entropy sourcing
+\subsection{Entropy Sourcing}
+The input of a randomness beacon at a given time, $I_t$, is essentially the grounds for the entropy of the outcome.
+The following three points describe different ways for a randomness beacon to source the input, i.e.\ entropy.
+\begin{description}
+    \item[User Input:]
+        The protocol allows users to provide entropy.
+        This can open up for direct manipulation of the result by last-draw attacks, if not handled properly.
+        If user input is the only source of entropy, lack of users denies availability of the beacons outcome, and thereby availability of the randomness beacon.
+
+        User input can potentially become a bottleneck depending on the number of users wanting to supply randomness.
+        This can result in input sourcing cutoff, which means that not all user inputs will be used in the computation of the outcome, thereby tarnishing those users' ability to trust the given iteration of the beacon.
+
+    \item[Private External Input:]
+        Using external input such as background radiation and output from photon splitters.
+        These sources are often of significantly high entropy, however, difficult if not impossible to reproduce and verify for users.
+        Moreover, it is virtually impossible for users of the beacon to reason about the validity of the input; hence complete trust in the honesty of the beacon operator is required.
+
+    \item[Publicly Available External Input:]
+        For input to be publicly available, it must be accessible to the general public, and consistent over a period of time.
+        These sources can be the blockchain, financial data, or national lottery results.
+
+        Anyone wishing to manipulate it must do it through the external source.
+        An external source, which the public can influence might be susceptible to an adversary trying to bias the beacon outcome, therefore it is important to analyse the integrity of the external source when looking at the integrity of the randomness beacon itself.
+
+        It is important to note that publicly available external input does not make the outcome predictable --- i.e.\ an adversary will not be able to predict the beacon outcome before it is expected to be know.
+        Furthermore, any user of the beacon will be able to verify that the acclaimed input has been used to generate the outcome.
+
+\end{description}
+
+%       Execution model
+\subsection{Execution Model}
+Once entropy is obtained, some computation is performed, $f(I_t)$, to ensure the entropy level and uniform distribution of the outcome.
+We identify the following ways of executing such a computation in a randomness beacon protocol:
+
+\begin{description}
+    \item[Self-Announced Entity:]
+        The protocol is computed by a central entity who provides a service in form of a complete beacon.
+        This type of execution requires verifiability or complete trust in the central entity.
+
+        The entity, while self-announced, can be driven by a community, authority, or single person, but is always controlled by the same entity.
+        Availability is a major concern with this type of execution, since it imposes a single-point-of-failure, if not for computation then for trust.
+
+    \item[Elected Operator:]
+        A user is collectively elected to be the operator which performs the computation.
+        That user then executes the beacon protocol as a public good.
+        This type of execution participation requires that the operator has an incentive to carry out the beacon protocol, and may hurt availability if the operator leaves their role.
+    \item[Distributed Execution:]
+        The computation of the protocol is done in a distributed manner between a set of parties e.g.\ using \gls{mpc} and/or smart contracts.
+        This model does potentially not require trust in any other participant depending on the execution scheme.
+        However, scalability to larger settings may prove difficult, and participants with byzantine behaviour must be accounted for, which can hurt availability.
+    \item[Self-Service Execution:]
+        Each user performs the same execution to obtain a random value.
+        This model does not require trust in the execution participants, but requires trust in the input entropy, and last-draw attacks and manipulating can become prevalent with potential predictability if using user input.
+        Computational resources are only consumed by participants with a stake in the beacon output.
+\end{description}
+
+%       Validation
+\subsection{Validation}
+The output of the computation in the randomness beacon need some form of validation in order to be trustworthy.
+We identify the following ways of performing this validation:
+\begin{description}
+    \item[Verifiable:]
+        A user can verify the randomness to have been correctly computed from the provided entropy.
+        This is directly related to the verifiability in the aforementioned trust assumptions.
+    \item[Contestable:]
+        Users can contest the randomness of the beacon if they believe it to be wrong.
+        The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote[nofootnote,inline]{This will be futher elaborated}
+\end{description}
 
 %   Beacon types
 \subsection{Types of Randomness Beacon}
+We present some archetypes of randomness beacons derived from combinations of the above properties.
+Moreover, we briefly describe the main strengths and weaknesses for each archetype.
+They will later be related to approaches in the taxonomy of current randomness beacons.
+
 %       Specialised protocol with MPC / homomorpgic encryption
 %       Closed source entropy authority
 %       External consensus driven, blockchain!
