@@ -6,23 +6,24 @@ This constant stream of data is the opposite of \emph{on-demand}, which does not
 A \emph{randomness} beacon is therefore defined as some entity publishing \emph{random} data, at a regular known interval.
 Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$ and $f$ is some computation, then $R$ is the random outcome.
 For $B$ to be a beacon it is then run at every $t_\Delta$ time interval, with new input $I_t$.
-The function $f$ can be an extractor function, which takes some input $x$ and outputs $y$, trading length of output for a higher level of entropy.
-Extractor functions and their properties are further explained by \citet{bonneau2015bitcoin}.\msmnote{maybe expand on extractor functions in some Entropy section?}
+The function $f$ can be an extractor function, %which takes some input $x$ and outputs $y$, trading length of output for a higher level of entropy,
+as explained in \todo{Insert cref to correct section}.
+%Extractor functions and their properties are further explained by \citet{bonneau2015bitcoin}.\msmnote{maybe expand on extractor functions in some Entropy section?}
 
-The definition of a \emph{randomness beacon} does not specify any properties about, interaction, security, nor execution of the beacon and its protocol.
+The definition of a \emph{randomness beacon} does not specify any properties about interaction, security, nor execution of the beacon and its protocol.
 These properties rely on the setting and requirements of a given beacon.
 However, all randomness beacon approaches must address the following specifications.
 
 \subsection{Specifications of a Randomness Beacon}
 %   Beacon specifications
-When dealing with specifications of a randomness beacon, we focus on two main perspectives, namely \emph{security objectives}, and \emph{trust assumptions}.
+When dealing with specifications of a randomness beacon, we focus on two main perspectives, namely \emph{security objectives} and \emph{trust assumptions}.
 These describe what a randomness beacon must take into account regarding security and attacks, and what assumptions can be made about the trustworthiness of said beacon.
 Security and trust are two sides of the same coin, which means that the approach a given beacons takes to handling the security objectives will influence and define the trust assumptions about it;
 but also that a beacon aiming for a given set of trust assumptions, must implement specific security measures.
 %       Security objectives
 \subsubsection{Security Objectives}\label{ssub:security_objectives}
-For randomness beacons there exists two prevalent concepts when it comes to security objectives: \emph{availability} and \emph{integrity}.
-Each term embodies multiple attacks and requirements for fulfillment, however, different randomness beacon approaches assigns different priorities to these.
+For randomness beacons there exist two prevalent concepts when it comes to security objectives: \emph{availability} and \emph{integrity}.
+Each term embodies multiple attacks and requirements for fulfillment, however, different randomness beacon approaches assign different priorities to these.
 
 \begin{description}
 
@@ -34,22 +35,22 @@ Each term embodies multiple attacks and requirements for fulfillment, however, d
         generally these vulnerabilities are present in the same scenarios as direct attacks.
         Therefore, a randomness beacon prioritizing availability, can choose to focus on robustness, redundancy, and failover, to mitigate failures and attacks on availability.
 
-        Examples of concrete attacks on the availability of a randomness beacon are:
-        \acrfull{dos} where an attacker overwhelms the beacon with e.g.\ input, thereby making any other user unable to supply entropy as input. A \gls{dos} attack could also be on the availability of the source of input itself; eclipse attacks where an attacker eclipses a part of the network, thus only making the beacon unavailable to some select users.
+        An example of concrete attacks on the availability of a randomness beacon is a
+        \acrfull{dos} where an attacker overwhelms the beacon with e.g.\ input, thereby making any other user unable to supply entropy as input. A \gls{dos} attack can also be on the availability of the source of input itself. Another example is an eclipse attack where an attacker eclipses a part of the network, thus only making the beacon unavailable to some select users.
 
     \item[Integrity:]
-        The integrity of a randomness beacon, determines whether a given user should trust the outcome and to what degree.
-        Attacking the integrity is therefore, any attack which compromises the outcome of a randomness beacon.
+        The integrity of a randomness beacon determines whether a given user should trust the outcome and to what degree.
+        Attacking the integrity is therefore any attack which compromises the outcome of a randomness beacon.
         This can mean manipulating the input/entropy to the beacon, but also compromising the entire computation and outcome;
         as beacons can be seen as entities and not a particular actor, one might imagine a scenario where an attacker imposes themselves as the beacon.
         As with availability, the integrity can also be influenced by bugs in the implementation.
-        Moreover, if the implementation is closed sources / proprietary, the beacon loses transparency and the integrity will be questionable at best.
+        Moreover, if the implementation is closed sources or proprietary, the beacon loses transparency and the integrity will be questionable at best.
 
-        Attacks on the integrity could be: successfully supplying valid input, which is able to bias the outcome, e.g.\ last draw attacks, where an adversary supplies the last input and therefore potentially is able to choose some input beneficial to them;
+        An attacks on the integrity could be successfully supplying valid input, which is able to bias the outcome, e.g.\ last draw attacks, where an adversary supplies the last input and therefore potentially is able to choose some input beneficial to them. Another example is
         if the operator of the beacon is malicious, they might be able to generate a seemingly fair and random outcome by corrupting the computation of the beacon.
 
-        The integrity also relies on the beacon being unpredictable, i.e.\ no adversary should be able to predict the outcome before it is too late to manipulate it.
-        Finally, integrity also embodies the fact that the outcome should be unbiased and uniformly distributed; any detectable statistical bias should be negligible.
+        The integrity also relies on the beacon being unpredictable, i.e.\ no adversary \mtjnote[nofootnote, inline]{Only adversaries? All users I suppose?} should be able to predict the outcome before it is too late to manipulate it.
+        Finally, integrity also embodies the fact that the outcome should be unbiased and uniformly distributed --- any detectable statistical bias should be negligible. A well-chosen extractor function will provide this.
 
 \end{description}
 
@@ -58,7 +59,7 @@ Each term embodies multiple attacks and requirements for fulfillment, however, d
 As stated previously, the prioritization of the aforementioned security objectives establishes the assumptions one can make about the trustworthiness of a randomness beacon.
 Moreover, the trust assumptions also depend on the interaction with, and execution of the beacon, as well as the source of entropy of the beacon.
 The following trust assumptions are from a users point of view, unless otherwise stated.
-A user is anyone with a stake in the outcome of the beacon, both through direct use, but also indirect/inferred usage.
+A user is anyone with a stake in the outcome of the beacon, both through direct use, but also indirect or inferred usage.
 \begin{description}
 
     \item [Guaranteed Entropy Level:]
@@ -71,22 +72,22 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
         This includes being able to check input sources to the randomness beacon;
         consequently the input to the beacon must be available for it to be verifiable, unless the beacon is able to produce a proof, which then allows users to verify with zero-knowledge \msmnote[nofootnote, inline]{this could be interesting to expand upon, to allow for anonymized beacon interaction}.
 
-        The most straight forward process of verification for randomness beacons, is the ability for anyone to run the same computation on the same input.
-        However, in some cases this may be impractical or the input should remain secret; thereby calling for another approach to proofing validity of the outcome.
+        The most straight forward process of verification for randomness beacons is the ability for anyone to run the same computation on the same input.
+        However, in some cases this may be impractical or the input should remain secret; thereby calling for another approach to proofing \mtjnote[nofootnote,inline]{proving?} validity of the outcome.
 
-        An example of verifiability outside beacons, is in the blockchain, where the validity of a block can be verified by anyone, using the block itself and a \acrfull{sha}.
+        An example of verifiability outside beacons is in the blockchain, where the validity of a block can be verified by anyone, using the block itself and a \acrfull{sha}.
         Here the verifiability removes the need to trust any participating miners in the blockchain.
 
         Verifiability can eliminate the need for trust in participants, while ensuring the trustworthiness of the outcome.
 
     \item [Input Reasoning:]
         Being able to reason about the input is somewhat coupled to the two previous trust assumptions.
-        But assuming that we can trust the entropy level of the input, what assumptions are users able to make about the bias of the input.
-        This mainly relates to beacons where the input is supplied by users, i.e.\ users which does not necessarily trust each other.
+        Assuming we can trust the entropy level of the input, what assumptions are users able to make about the bias of the input \msmnote[nofootnote, inline]{I'M A DRUNK BOI. I MAKES NO SENSE}.
+        This mainly relates to beacons where the input is supplied by users, i.e.\ users which do not necessarily trust each other.
 
         A given user might not need to worry about the input, even if everybody else is colluding against said user.
         This is true in a scenario where said user is able to contribute with their own input, and the beacon's computation is fair
-        --- i.e.\ no one user's input affects the outcome differently.
+        --- i.e.\ the input of any user cannot affect the outcome differently than other inputs.
 
 \end{description}
 
