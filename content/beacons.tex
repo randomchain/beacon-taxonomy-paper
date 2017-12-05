@@ -49,7 +49,7 @@ Each term embodies multiple attacks and requirements for fulfillment, however, d
         An attacks on the integrity could be successfully supplying valid input, which is able to bias the outcome, e.g.\ last draw attacks, where an adversary supplies the last input and therefore potentially is able to choose some input beneficial to them. Another example is
         if the operator of the beacon is malicious, they might be able to generate a seemingly fair and random outcome by corrupting the computation of the beacon.
 
-        The integrity also relies on the beacon being unpredictable, i.e.\ no adversary \mtjnote[nofootnote, inline]{Only adversaries? All users I suppose?} should be able to predict the outcome before it is too late to manipulate it.
+        The integrity also relies on the beacon being unpredictable, i.e.\ no one should be able to predict the outcome before it is too late to manipulate it.
         Finally, integrity also embodies the fact that the outcome should be unbiased and uniformly distributed --- any detectable statistical bias should be negligible. A well-chosen extractor function will provide this.
 
 \end{description}
@@ -73,7 +73,7 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
         consequently the input to the beacon must be available for it to be verifiable, unless the beacon is able to produce a proof, which then allows users to verify with zero-knowledge \msmnote[nofootnote, inline]{this could be interesting to expand upon, to allow for anonymized beacon interaction}.
 
         The most straight forward process of verification for randomness beacons is the ability for anyone to run the same computation on the same input.
-        However, in some cases this may be impractical or the input should remain secret; thereby calling for another approach to proofing \mtjnote[nofootnote,inline]{proving?} validity of the outcome.
+        However, in some cases this may be impractical or the input should remain secret; thereby calling for another approach to proving validity of the outcome.
 
         An example of verifiability outside beacons is in the blockchain, where the validity of a block can be verified by anyone, using the block itself and a \acrfull{sha}.
         Here the verifiability removes the need to trust any participating miners in the blockchain.
@@ -82,7 +82,7 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
 
     \item [Input Reasoning:]
         Being able to reason about the input is somewhat coupled to the two previous trust assumptions.
-        Assuming we can trust the entropy level of the input, what assumptions are users able to make about the bias of the input \msmnote[nofootnote, inline]{I'M A DRUNK BOI. I MAKES NO SENSE}.
+        Assuming we can trust the entropy level of the input as per \emph{Guharanteed Entropy Level}, this trust assumption asks what users are able to assume about the bias of the input.
         This mainly relates to beacons where the input is supplied by users, i.e.\ users which do not necessarily trust each other.
 
         A given user might not need to worry about the input, even if everybody else is colluding against said user.
