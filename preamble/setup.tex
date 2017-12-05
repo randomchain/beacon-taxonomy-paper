@@ -179,9 +179,11 @@
 
 \usepackage{fixme}
 \fxsetup{%
-    %status=draft,
-    layout={footnote, index},
-    innerlayout={inline, index},
+    status=draft,
+    footnote=false,
+    inline=true,
+    margin=false,
+    marginclue=true,
     theme=colorsig,
     mode=multiuser,
     silent=true
@@ -190,8 +192,6 @@
 \FXRegisterAuthor{msm}{msme}{Michno}
 \FXRegisterAuthor{mtj}{mtje}{Michael}
 \FXRegisterAuthor{srk}{srke}{Sebastian}
-
-\input{preamble/fixme.tex} % Inputs status=draft??? Is this even necessary?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BIBLIOGRAPHY
