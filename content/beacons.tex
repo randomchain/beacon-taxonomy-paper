@@ -32,13 +32,13 @@ Each term embodies multiple attacks and requirements for fulfillment, however, d
         In scenarios where the beacon is driven by a single entity, attacking the availability can also mean preventing the beacon from collecting input or publishing the outcome, thereby effectively denying service for all potential users.
         Besides attacks, bugs in the implementation or network failures can result in degraded availability;
         generally these vulnerabilities are present in the same scenarios as direct attacks.
-        Therefore a randomness beacon prioritizing availability, can choose to focus on robustness, redundancy, and failover, to mitigate failures and attacks on availability.
+        Therefore, a randomness beacon prioritizing availability, can choose to focus on robustness, redundancy, and failover, to mitigate failures and attacks on availability.
 
         Examples of concrete attacks on the availability of a randomness beacon are:
         \acrfull{dos} where an attacker overwhelms the beacon with e.g.\ input, thereby making any other user unable to supply entropy as input. A \gls{dos} attack could also be on the availability of the source of input itself; eclipse attacks where an attacker eclipses a part of the network, thus only making the beacon unavailable to some select users.
 
     \item[Integrity:]
-        The integrity of a randomness beacon, determines whether or not a given user should trust the outcome and to what degree.
+        The integrity of a randomness beacon, determines whether a given user should trust the outcome and to what degree.
         Attacking the integrity is therefore, any attack which compromises the outcome of a randomness beacon.
         This can mean manipulating the input/entropy to the beacon, but also compromising the entire computation and outcome;
         as beacons can be seen as entities and not a particular actor, one might imagine a scenario where an attacker imposes themselves as the beacon.
@@ -74,7 +74,7 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
         The most straight forward process of verification for randomness beacons, is the ability for anyone to run the same computation on the same input.
         However, in some cases this may be impractical or the input should remain secret; thereby calling for another approach to proofing validity of the outcome.
 
-        An example of verifiability outside beacons, is in the blockchain, where the validity of a block can be verified by anyone using the block itself and a \acrfull{sha}.
+        An example of verifiability outside beacons, is in the blockchain, where the validity of a block can be verified by anyone, using the block itself and a \acrfull{sha}.
         Here the verifiability removes the need to trust any participating miners in the blockchain.
 
         Verifiability can eliminate the need for trust in participants, while ensuring the trustworthiness of the outcome.
@@ -85,7 +85,7 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
         This mainly relates to beacons where the input is supplied by users, i.e.\ users which does not necessarily trust each other.
 
         A given user might not need to worry about the input, even if everybody else is colluding against said user.
-        This is true in a scenario where said user is able to contribute with their own input, and the beacons computation is fair
+        This is true in a scenario where said user is able to contribute with their own input, and the beacon's computation is fair
         --- i.e.\ no one user's input affects the outcome differently.
 
 \end{description}
@@ -96,17 +96,35 @@ Since a randomness beacon is a versatile and broad concept, it can be deployed i
 These settings all alter the way the beacon operates and how users interact with it.
 Furthermore, it affects which shape the beacon implementation takes, i.e.\ different technologies fits in varying settings.
 
-\msmnote[nofootnote, inline]{EXPAND DONG!}
-\begin{itemize}
-    \item Private --- trust that nobody will be obviously malicious, but might try to manipulate outcome
-    \item Public --- do not trust anything!
-    \item Scalable setting?
-\end{itemize}
+There are two main distinctions when dealing with settings of a randomness beacon --- \emph{private} and \emph{public}.
+Within these categories are then different views on trust, scalability, intent, and incentives.
+
+\begin{description}
+    \item[Private:]
+        In a private setting it is safe to assume that no participant will be obviously malicious, i.e.\ an adversary will not risk being caught rred-handed since it would exclude him from the network.
+        However, we can suspect that an adversary will try to manipulate the outcome of a randomness beacon if possible --- all users are anticipated to seek whatever benefits themselves.
+        This means that all detectable manipulation and malicious activities will be avoided by the participants of the private network.
+
+        We also assume that the continuous operation of a randomness beacon is a requirement for the private network, which means that all participants has an incentive to ensure timely execution.
+        Unless a participant can benefit from the beacon not outputting, in which case they might simulate e.g.\ network issues to abrupt the beacon if possible.
+
+        Scalability might be an issue in larger private networks, however, generally private networks are sufficiently small such that scaling is not a concern.
+    \item[Public:]
+        All bets are off, when in comes to public networks, such as the internet.
+        Here we can assume that all participants will try to manipulate the beacon outcome to their advantage, no matter the cost.
+        Whether they have the resources available to do so, is besides the point.
+        Likewise, any individual user might also in some cases suspect that all other users are colluding against them.
+
+        In the public setting, it might not be all participants that have a stake in the randomness beacon operating constantly.
+        Therefore, it is important to have established incentives for both users to use the beacon, but also for the execution of the beacon protocol.
+
+        Because public settings are almost infinitely large, i.e.\ any user should be able to join, scalability is a key concern --- availability requires scalability.
+\end{description}
 
 %   Properties of beacons
 \subsection{Properties of Randomness Beacons}
 Based on the specifications and different settings, we define three sets of properties, which can be compiled to describe different types of randomness beacons.
-These sets of properties covers \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}.
+These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}.
 In the later taxonomy of current randomness beacons approaches, these properties will also be used for classification.
 
 %       Entropy sourcing
@@ -117,7 +135,7 @@ The following three points describe different ways for a randomness beacon to so
     \item[User Input:]
         The protocol allows users to provide entropy.
         This can open up for direct manipulation of the result by last-draw attacks, if not handled properly.
-        If user input is the only source of entropy, lack of users denies availability of the beacons outcome, and thereby availability of the randomness beacon.
+        If user input is the only source of entropy, lack of users denies availability of the beacon's outcome, and thereby availability of the randomness beacon.
 
         User input can potentially become a bottleneck depending on the number of users wanting to supply randomness.
         This can result in input sourcing cutoff, which means that not all user inputs will be used in the computation of the outcome, thereby tarnishing those users' ability to trust the given iteration of the beacon.
@@ -128,10 +146,10 @@ The following three points describe different ways for a randomness beacon to so
         Moreover, it is virtually impossible for users of the beacon to reason about the validity of the input; hence complete trust in the honesty of the beacon operator is required.
 
     \item[Publicly Available External Input:]
-        For input to be publicly available, it must be accessible to the general public, and consistent over a period of time.
+        For input to be publicly available, it must be accessible to the public, and consistent over a period.
         These sources can be the blockchain, financial data, or national lottery results.
 
-        Anyone wishing to manipulate it must do it through the external source.
+        Anyone who wishes to manipulate it must do it through the external source.
         An external source, which the public can influence might be susceptible to an adversary trying to bias the beacon outcome, therefore it is important to analyse the integrity of the external source when looking at the integrity of the randomness beacon itself.
 
         It is important to note that publicly available external input does not make the outcome predictable --- i.e.\ an adversary will not be able to predict the beacon outcome before it is expected to be know.
@@ -156,10 +174,12 @@ We identify the following ways of executing such a computation in a randomness b
         A user is collectively elected to be the operator which performs the computation.
         That user then executes the beacon protocol as a public good.
         This type of execution participation requires that the operator has an incentive to carry out the beacon protocol, and may hurt availability if the operator leaves their role.
+
     \item[Distributed Execution:]
         The computation of the protocol is done in a distributed manner between a set of parties e.g.\ using \gls{mpc} and/or smart contracts.
         This model does potentially not require trust in any other participant depending on the execution scheme.
         However, scalability to larger settings may prove difficult, and participants with byzantine behaviour must be accounted for, which can hurt availability.
+
     \item[Self-Service Execution:]
         Each user performs the same execution to obtain a random value.
         This model does not require trust in the execution participants, but requires trust in the input entropy, and last-draw attacks and manipulating can become prevalent with potential predictability if using user input.
@@ -170,10 +190,12 @@ We identify the following ways of executing such a computation in a randomness b
 \subsection{Validation}
 The output of the computation in the randomness beacon need some form of validation in order to be trustworthy.
 We identify the following ways of performing this validation:
+
 \begin{description}
     \item[Verifiable:]
         A user can verify the randomness to have been correctly computed from the provided entropy.
         This is directly related to the verifiability in the aforementioned trust assumptions.
+
     \item[Contestable:]
         Users can contest the randomness of the beacon if they believe it to be wrong.
         The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote[nofootnote,inline]{This will be futher elaborated}
@@ -185,7 +207,40 @@ We present some archetypes of randomness beacons derived from combinations of th
 Moreover, we briefly describe the main strengths and weaknesses for each archetype.
 They will later be related to approaches in the taxonomy of current randomness beacons.
 
-%       Specialised protocol with MPC / homomorpgic encryption
-%       Closed source entropy authority
-%       External consensus driven, blockchain!
+\subsubsection{Autocratic Collector}\label{ssub:autocratic}
+The most naïve implementation of a randomness beacon, is an autocratic beacon, which collects input from an external private source.
+This means that a single entity governs the randomness beacon with complete authority, meaning that no transparency is required.
+Randomness beacons of this type are highly scalable, since a multiple instance setup only needs coordination with itself.
+Moreover, there is no bottleneck in collecting entropy as input, since it only relies on measuring something in the real world e.g.\ background radiation.
+
+However, autocratic beacons are untrustworthy in nature, since the entity has total self-governing.
+There is no validation present in this type, it is neither verifiable nor contestable, not even if the input entropy is published as proof.
+This is because the private external input source which itself cannot be verified by users.
+
+A well-known analogue of a \emph{autocratic collector} beacon is a web blog.
+Here, the author/administrator of the blog is in total control of the content of the blog.
+They may claim that the input/background of the posts stems from somewhere, but there is usually not way of validating this claim.
+As a reader you have to trust the author, as a user of this beacon type has to trust the governing entity.
+
+\subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
+To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc} can be deployed.
+This eliminates the need for trust between individual participants.
+A beacon of this type will source its entropy from user input during the execution of the \gls{mpc} beacon protocol.
+The randomness outcome can therefore be trusted by any user to be unbiased, if and only if said user participated in the \gls{mpc} protocol.
+Effectively this means that while this type does not require absolute trust it requires absolute participation --- all users wanting a trustworthy outcome must participate.
+
+As a consequence, the availability can be severely hindered if one or multiple adversaries decides to drop out mid-execution.
+Because of this, a specialized \gls{mpc} beacon is best suited for a private setting, where we can assume that participants will carry out the computation, and ban anyone who tries to corrupt the beacon.
+
+Scaling \gls{mpc} protocols, can also be cumbersome if not outright impossible, especially in relation to a beacon, where the outcome is required to be published at a given time.
+
+\subsubsection{Transparent Authority}\label{ssub:transparent_authority}
+As a middle ground between the two previous beacon archetype, the transparent authority beacon, aims to provide both scalability, availability and trustworthiness.
+This is probable since the beacon displays transparency in both entropy sourcing and execution, i.e.\ using publicly available external or user generated input, and enabling validation of the execution and outcome.
+However, the transparency of the authority behind the beacon can still be a self-announced entity, as long as validation is possible, the execution model is irrelevant.
+
+If the execution of the beacon protocol is to be done by a single entity, it is important to have a solid incentive for running it --- as well as an incentive for the operator to be honest.
+This can be as simple as a community funded entity serving a \enquote{public good} as discussed by \citet{bunz2017proofsof}.
+
+Because this beacon type uses publicly available or user generated input, entropy source manipulation from adversaries must be taken into account --- often resolving in a probabilistic trust assumption, where the probability of a biased outcome is negligible.
 
