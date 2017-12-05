@@ -1,7 +1,15 @@
 \subsection{Cryptography}\label{subsec:usecase_cryptography}
-Many cryptographic algorithms contain hard-coded seeds. There are essentially two ways an algorithm designer can provide these \cite{baigneres2015trap}: (i) arbitrarily choosing a value, or (ii) randomly choosing a value that can be verified \emph{a posteriori}.
-The first approach is used in many algorithms --- as an example, all hash functions in the SHA family use round constants, and in case of the Dual-EC-DRBG pseudo-random number generator, it has been shown that if the constant has been generated in a certain way, the knowledge of this alone can be used to predict all future outputs~\cite{dualec-paper}.
-The second approach is utilized to limit arbitrary choices; assuming hash functions cannot be inverted, a hash function applied to some data can provide a seemingly random seed. For example, one may use the hash of some digits of $\pi$. This is known as \enquote{Nothing Up My Sleeve-numbers}. \citet{bernstein2015manipulate} criticizes this approach: why exactly $\pi$, and not $e$, $\sin(1)$, or another seemingly innocent input --- and why \emph{this} hash function and not \emph{that} hash function?
+Many cryptographic algorithms contain hard-coded seeds.
+There are essentially two ways an algorithm designer can provide these~\cite{baigneres2015trap}:
+\begin{enumberate*}
+    \item arbitrarily choosing a value, or
+    \item randomly choosing a value that can be verified \emph{a posteriori}
+\end{enumberate*}.
+The first approach is used in many algorithms --- as an example, all hash functions in the \gls{sha} family use round constants, and in case of the Dual-EC-DRBG pseudo-random number generator, it has been shown that if the constant has been generated in a certain way, the knowledge of this alone can be used to predict all future outputs~\cite{dualec-paper}.
+The second approach is utilized to limit arbitrary choices; assuming hash functions cannot be inverted, a hash function applied to some data can provide a seemingly random seed.
+For example, one may use the hash of some digits of $\pi$. This is known as \enquote{nothing up my sleeve-numbers}.
+\citet{bernstein2015manipulate} criticizes this approach: why exactly $\pi$, and not $e$, $\sin(1)$, or another seemingly innocent input --- and why \emph{this} hash function and not \emph{that} hash function?
 \citet{backdoorsupmysleeve} illustrates with a working code example that there is a great amount of freedom in choosing these seemingly innocent constants.
 
-Instead, \citet{baigneres2015trap} essentially proposes using a randomness beacon (though, in their use case, only utilized once). The idea is that, if the algorithm designer announces \enquote{at time $T$ in the future, I will use the beacon output to produce my seed for my algorithm}, the only way for the seed to be manipulated is if the beacon has been manipulated.
+Instead, \citet{baigneres2015trap} essentially proposes using a randomness beacon (though, in their use case, only utilized once).
+The idea is that, if the algorithm designer announces: \enquote{at time $T$ in the future, I will use the beacon output to produce my seed for my algorithm}, the only way for the seed to be manipulated is if the beacon has been manipulated.
