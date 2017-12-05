@@ -179,7 +179,7 @@ We identify the following ways of executing such a computation in a randomness b
     \item[Distributed Execution:]
         The computation of the protocol is done in a distributed manner between a set of parties e.g.\ using \gls{mpc} and/or smart contracts.
         This model does potentially not require trust in any other participant depending on the execution scheme.
-        However, scalability to larger settings may prove difficult, and participants with byzantine behaviour must be accounted for, which can hurt availability.
+        However, scalability to larger settings may prove difficult, and participants with byzantine behavior must be accounted for, which can hurt availability.
 
     \item[Self-Service Execution:]
         Each user performs the same execution to obtain a random value.
@@ -209,19 +209,16 @@ Moreover, we briefly describe the main strengths and weaknesses for each archety
 They will later be related to approaches in the taxonomy of current randomness beacons.
 
 \subsubsection{Autocratic Collector}\label{ssub:autocratic}
-The most naïve implementation of a randomness beacon, is an autocratic beacon, which collects input from an external private source.
+The most naïve implementation of a randomness beacon is an autocratic beacon, which collects input from an external private source.
 This means that a single entity governs the randomness beacon with complete authority, meaning that no transparency is required.
-Randomness beacons of this type are highly scalable, since a multiple instance setup only needs coordination with itself.
+Randomness beacons of this type are highly scalable, since scaling of the output publication is trivial.
 Moreover, there is no bottleneck in collecting entropy as input, since it only relies on measuring something in the real world e.g.\ background radiation.
 
 However, autocratic beacons are untrustworthy in nature, since the entity has total self-governing.
 There is no validation present in this type, it is neither verifiable nor contestable, not even if the input entropy is published as proof.
 This is because the private external input source which itself cannot be verified by users.
 
-A well-known analogue of a \emph{autocratic collector} beacon is a web blog.
-Here, the author/administrator of the blog is in total control of the content of the blog.
-They may claim that the input/background of the posts stems from somewhere, but there is usually not way of validating this claim.
-As a reader you have to trust the author, as a user of this beacon type has to trust the governing entity.
+An example fitting this archetype is the \gls{nist} beacon~\cite{nistbeacon}.
 
 \subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
 To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc} can be deployed.
@@ -236,12 +233,11 @@ Because of this, a specialized \gls{mpc} beacon is best suited for a private set
 Scaling \gls{mpc} protocols, can also be cumbersome if not outright impossible, especially in relation to a beacon, where the outcome is required to be published at a given time.
 
 \subsubsection{Transparent Authority}\label{ssub:transparent_authority}
-As a middle ground between the two previous beacon archetype, the transparent authority beacon, aims to provide both scalability, availability and trustworthiness.
-This is probable since the beacon displays transparency in both entropy sourcing and execution, i.e.\ using publicly available external or user generated input, and enabling validation of the execution and outcome.
-However, the transparency of the authority behind the beacon can still be a self-announced entity, as long as validation is possible, the execution model is irrelevant.
+As a middle ground between the two previous beacon archetypes, the transparent authority beacon aims to provide both scalability, availability, and trustworthiness.
+This is possible since the beacon displays transparency in both entropy sourcing and execution, i.e.\ using publicly available external or user generated input, and enabling validation of the execution and outcome.
+However, the transparency of the authority behind the beacon can still be a self-announced entity --- as long as validation is possible, the execution model is irrelevant.
 
 If the execution of the beacon protocol is to be done by a single entity, it is important to have a solid incentive for running it --- as well as an incentive for the operator to be honest.
 This can be as simple as a community funded entity serving a \enquote{public good} as discussed by \citet{bunz2017proofsof}.
 
 Because this beacon type uses publicly available or user generated input, entropy source manipulation from adversaries must be taken into account --- often resolving in a probabilistic trust assumption, where the probability of a biased outcome is negligible.
-
