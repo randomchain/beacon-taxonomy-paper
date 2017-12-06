@@ -8,9 +8,9 @@ Random numbers are useful, important, and even critical, prerequisites in many a
 %Today, there are many additional uses of randomness.
 %Cryptographically securing and sharing information heavily relies on random numbers, and some new fair consensus protocols are based on randomness.
 %There are a number of interesting use cases that require or could benefit from randomness that is publicly available.
-
+%
 %Usecases - currently with no vietnam
- For example they are utilized in lotteries, where numbered balls are drawn on live television. This is a way of publicizing the random draw process and more importantly showing that the process is not being manipulated.
+For example they are utilized in lotteries, where numbered balls are drawn on live television. This is a way of publicizing the random draw process and more importantly showing that the process is not being manipulated.
 
 % Give some example like lotto (and perhaps another)
 %The \gls{nba} annually holds a draft, which decides the order of what teams get to select the top amateur players who are ready to turn into professionals.
@@ -34,14 +34,13 @@ Here randomness is used to determine the exact parameters describing the ellipti
 %The exploit allowed him to predict the next lottery numbers, and claim the prize of \$14.3m.
 %It was later discovered that he had manipulated the system, after another video surveillance system, caught him buying the winning ticket~\cite{bbclotteryexploit}.
 
-These examples show some of the challenges associated with generating randomness. Allowing a third party, trusted or not, to generate the randomness gives them the power to bias the randomness to their benefits.
+These examples show some of the challenges associated with generating randomness. Allowing a third party, trusted or not, to generate the randomness gives them the power to bias the randomness to their benefit.
 
 %What is randomness
 Randomness is uniformly distributed information, where all outcomes are equally likely. Due to its unpredictability it is used as a source of fair decisions. Even today with computers available, creating randomness is not easy, as computers are inherently deterministic. Making it publicly trustable is even harder. 
 
 %Beacons
 Michael Rabin introduced the term \emph{beacon}~\cite{rabin1983transaction}, a trusted service to provide fresh randomness at regular intervals. The beacons has a number of properties such at being unpredictable, meaning its output can not be predicted before time, its output is uniformly distributed or close to. To make a public beacon trustable, it can also be verifiable, meaning that users can verify the computations that produced the randomness. 
-
 Having a trusted beacon available eliminates the need to entrust randomness generation to other parties.
 
 %Nist is not trusted
