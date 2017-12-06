@@ -29,7 +29,7 @@ The following three points describe different ways for a randomness beacon to so
         Anyone who wishes to manipulate it must do it through the external source.
         An external source, which the public can influence might be susceptible to an adversary trying to bias the beacon outcome, therefore it is important to analyze the integrity of the external source when looking at the integrity of the randomness beacon itself.
 
-        It is important to note that publicly available external input does not make the outcome predictable --- i.e.\ an adversary will not be able to predict the beacon outcome before it is expected to be known. \mtjnote[nofootnote, inline]{Why not?}
+        It is important to note that publicly available external input does not make the outcome predictable, since the time advantage an adversary would have relative to everyone else is negligible regardless of computing resources.
         Furthermore, any user of the beacon will be able to verify that the acclaimed input has been used to generate the outcome.
 
 \end{description}
