@@ -1,0 +1,17 @@
+% Randomness beacons
+\section{Randomness Beacons}
+%   What is a beacon?
+In the context of this paper, we define a beacon as an entity, which publishes some data, at a regular known interval.
+This constant stream of data is the opposite of \emph{on-demand}, which does not have a set interval, and must be triggered to output data.
+A \emph{randomness} beacon is therefore defined as some entity publishing \emph{random} data, at a regular known interval.
+Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$ and $f$ is some computation, then $R$ is the random outcome.
+For $B$ to be a beacon it is then run at every $t_\Delta$ time interval, with new input $I_t$.
+The function $f$ can be an extractor function, %which takes some input $x$ and outputs $y$, trading length of output for a higher level of entropy,
+as explained in \Cref{sub:prelims_randomness}.
+%Extractor functions and their properties are further explained by \citet{bonneau2015bitcoin}.\msmnote{maybe expand on extractor functions in some Entropy section?}
+
+The definition of a \emph{randomness beacon} does not specify any properties about interaction, security, nor execution of the beacon and its protocol.
+These properties rely on the setting and requirements of a given beacon.
+However, all randomness beacon approaches must address the following specifications.
+
+

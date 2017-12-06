@@ -1,6 +1,15 @@
 \subsection{Cryptography}\label{subsec:usecase_cryptography}
-Randomness and unpredictability are important parts of modern cryptography. 
-%The strength of security protocols is often expressed as a number of bits an attacker needs to guess to execute a successful attack. It follows, that the harder it is to guess a bit, i.e.\ the higher the entropy of your data, the more secure your protocol is.
- However you must trust the source of randomness to not be biased or controlled by an adversary to trust the encryption. This makes a publicly verifable randomness beacon an excellent source of randomness for cryptography. A straightforward use would be a protocol where participants need to agree on some random number - they can simply commit to the output of a beacon at some previously agreed timestamp. 
-However, randomness is not usable for all kinds of cryptography --- e.g.\ private encryption keys should used from publicly available randomness. 
-%Randomness is also used as the foundation of cryptographic primitives like zk-SNARKs \srknote[inline]{TODO: Source}. The randomness at the foundation of this primitive allows proving information without revealing it.
+Many cryptographic algorithms contain hard-coded seeds.
+There are essentially two ways an algorithm designer can provide these~\cite{baigneres2015trap}:
+\begin{enumberate*}
+    \item arbitrarily choosing a value, or
+    \item randomly choosing a value that can be verified \emph{a posteriori}
+\end{enumberate*}.
+The first approach is used in many algorithms --- as an example, all hash functions in the \gls{sha} family use round constants, and in case of the Dual-EC-DRBG pseudo-random number generator, it has been shown that if the constant has been generated in a certain way, the knowledge of this alone can be used to predict all future outputs~\cite{dualec-paper}.
+The second approach is utilized to limit arbitrary choices; assuming hash functions cannot be inverted, a hash function applied to some data can provide a seemingly random seed.
+For example, one may use the hash of some digits of $\pi$. This is known as \enquote{nothing up my sleeve-numbers}.
+\citet{bernstein2015manipulate} criticizes this approach: why exactly $\pi$, and not $e$, $\sin(1)$, or another seemingly innocent input --- and why \emph{this} hash function and not \emph{that} hash function?
+\citet{backdoorsupmysleeve} illustrates with a working code example that there is a great amount of freedom in choosing these seemingly innocent constants.
+
+Instead, \citet{baigneres2015trap} essentially proposes using a randomness beacon (though, in their use case, only utilized once).
+The idea is that, if the algorithm designer announces: \enquote{at time $T$ in the future, I will use the beacon output to produce my seed for my algorithm}, the only way for the seed to be manipulated is if the beacon has been manipulated.
