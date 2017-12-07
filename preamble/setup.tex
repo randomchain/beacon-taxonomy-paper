@@ -60,14 +60,17 @@
 % Subsubsections style
 \setkomafont{subsubsection}{\normalfont\normalsize\fontseries{k}\sffamily\color{subsectioning}}
 
+% Subsubsections style
+\setkomafont{paragraph}{\normalfont\normalsize\fontseries{k}\sffamily\color{subsectioning}}
+
 % Descriptions
 \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\color{descriptionlabeling}\sffamily{\textbf{#1}}}
 
 % Captions
 \KOMAoption{captions}{centeredbeside}
 \setcapindent{1em}
-\setkomafont{captionlabel}{\sffamily\color{sectioning}\bfseries}
-\setkomafont{caption}{\sffamily}
+\setkomafont{captionlabel}{\sffamily\footnotesize\color{sectioning}\bfseries}
+\setkomafont{caption}{\sffamily\footnotesize}
 \usepackage{subcaption} % Subfigures
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,11 +140,11 @@
 % Tikz and pgfplots
 \usepackage{tikz}
 \usepackage{pgfplots}
-\usepgfplotslibrary{external}
+\usepgfplotslibrary{external, fillbetween}
 %\usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.14}
 \usetikzlibrary{%
-    calc, positioning, fit, arrows.meta
+    calc, positioning, fit, arrows.meta, backgrounds, math, external
 }
 \tikzexternalize[prefix=figures/]
 \tikzexternalenable{}
@@ -152,7 +155,7 @@
 %\tikzstyle{block-textdepthfix} = [rectangle, draw, thick, fill=clcodeshade, text width=7.5em, text centered, minimum height=3em, text depth=.25ex]
 \tikzstyle{block} = [rectangle, draw, thick, fill=clcodeshade, text width=7.5em, text centered, minimum height=3em]
 \tikzstyle{arrow} = [draw, -{Stealth[length=2mm, width=2mm]}, thick]
-
+\tikzstyle{container} = [draw=GoogleLightGreen, fill=GoogleLightGreen!40, dashed, inner sep=0.3cm]
 %Two uml packages. I love it
 %\usepackage{packages/tikz-uml}
 %\usepackage{pgf-umlsd}
