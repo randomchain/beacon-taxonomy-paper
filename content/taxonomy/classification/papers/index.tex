@@ -1,18 +1,30 @@
 \subsection{Paper Summaries}\label{sec:papersummaries}
-We will shortly summarize the papers, to establish a ground for further analytic expansion.
+We will shortly summarize the papers that we analyze as part of our taxonomy.
 
 \stefan{all of a sudden we mainly (only) talk about blockchains / bitcoin. that is unexpected as so far blockchains were not important. please omtivate this bbetter}
 
 \fxfatal{Maybe we should not introduce the papers in a description of each? Instead, we could introduce them more "fluently" like "A does this, B improves on this, while another approach is C. D combines the results from A and C." }
 
-%here goes the papers
+%foreach(p in papers){
+%   write(p.motivation);
+%   write(p.contribution);
+%   write(p.evaluation);
+%   write(p.connectionToOurBeaconDefs);
+
+%}
+%yes im aware the syntax could be better, but it organizes thoughts.
+
+%here goes the papers - need to fiddle with order to deliver message.
+%Maybe we should also add NIST beacon, since we use it to compare. Also RANDAO?
 \begin{description}
-    \subimport{}{pibeacon.tex}
-    \subimport{}{randzoo.tex}
-    \subimport{}{onbitcoin.tex}
-    %\subimport{}{mildollarcurve.tex}
-    \subimport{}{randhound.tex}
-    \subimport{}{proofofdelay.tex}
+    \subimport{}{randomservice.tex}
     \subimport{}{findata.tex}
+    \subimport{}{mildollarcurve.tex}
+    \subimport{}{onbitcoin.tex}
+    \subimport{}{pibeacon.tex}
+    \subimport{}{randhound.tex}
+    \subimport{}{scrape.tex}
+    \subimport{}{randzoo.tex}
+    \subimport{}{proofofdelay.tex}
 \end{description}
 

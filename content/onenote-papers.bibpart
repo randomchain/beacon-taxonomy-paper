@@ -102,3 +102,29 @@
   journaltitle={IEEE Security and Privacy on the blockchain (IEEE S\&B)},
   year={2017}
 }
+
+@article{hayes2001randomresource,
+ ISSN = {00030996},
+ URL = {http://www.jstor.org/stable/27857495},
+ author = {Brian Hayes},
+ journal = {American Scientist},
+ number = {4},
+ pages = {300-304},
+ publisher = {Sigma Xi, The Scientific Research Society},
+ title = {Computing Science: Randomness as a Resource},
+ volume = {89},
+ year = {2001}
+}
+
+@inproceedings{fischer2011publicrandomnessservice, 
+author={M. J. Fischer and M. Iorga and R. Peralta}, 
+booktitle={Proceedings of the International Conference on Security and Cryptography}, 
+title={A public randomness service}, 
+year={2011}, 
+volume={}, 
+number={}, 
+pages={434-438}, 
+keywords={Cryptography;Noise;Electronic commerce;Electronic voting;Randomness server}, 
+doi={}, 
+ISSN={}, 
+month={July},}
