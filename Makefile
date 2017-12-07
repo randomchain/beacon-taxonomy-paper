@@ -30,6 +30,7 @@ clean:
 	rm -f main.auxlock
 	rm -f bibtex.bib
 	rm -f figures/*.dpth figures/*.md5 figures/*.pdf figures/*.log figures/*.run.xml
+	rm -f chktex.txt biblatexcheck.html
 
 once: $(MAIN).tex .refresh $(SOURCES) $(FIGURES) bibtex.bib
 	./onfail.sh $(LATEXMK) $(LATEXMKOPT) -pdflatex=\"$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S\" $(MAIN)
