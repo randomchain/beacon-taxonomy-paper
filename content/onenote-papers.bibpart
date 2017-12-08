@@ -116,15 +116,12 @@
  year = {2001}
 }
 
-@inproceedings{fischer2011publicrandomnessservice, 
-author={M. J. Fischer and M. Iorga and R. Peralta}, 
-booktitle={Proceedings of the International Conference on Security and Cryptography}, 
-title={A public randomness service}, 
-year={2011}, 
-volume={}, 
-number={}, 
-pages={434-438}, 
-keywords={Cryptography;Noise;Electronic commerce;Electronic voting;Randomness server}, 
-doi={}, 
-ISSN={}, 
-month={July},}
+@inproceedings{fischer2011publicrandomnessservice,
+    author={M. J. Fischer and M. Iorga and R. Peralta},
+    booktitle={Proceedings of the International Conference on Security and Cryptography},
+    title={A public randomness service},
+    year={2011},
+    month={07},
+    pages={434--438},
+    keywords={Cryptography;Noise;Electronic commerce;Electronic voting;Randomness server},
+}
