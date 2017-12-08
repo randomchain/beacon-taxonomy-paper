@@ -9,9 +9,7 @@ but also that a beacon aiming for a given set of trust assumptions, must impleme
 For randomness beacons there exist two prevalent concepts when it comes to security objectives: \emph{availability} and \emph{integrity}.
 Each term embodies multiple attacks and requirements for fulfillment, however, different randomness beacon approaches assign different priorities to these.
 
-\begin{description}
-
-    \item[Availability:]
+\paragraph{Availability:}
         Attacks on the availability essentially prevent a set of users from being able to gain access to a given randomness beacon.
         This can be both their ability to contribute with input, or discover the output.
         In scenarios where the beacon is driven by a single entity, attacking the availability can also mean preventing the beacon from collecting input or publishing the outcome, thereby effectively denying service for all potential users.
@@ -22,7 +20,7 @@ Each term embodies multiple attacks and requirements for fulfillment, however, d
         An example of concrete attacks on the availability of a randomness beacon is a
         \acrfull{dos} where an attacker overwhelms the beacon with e.g.\ input, thereby making any other user unable to supply entropy as input. A \gls{dos} attack can also be on the availability of the source of input itself. Another example is an eclipse attack where an attacker eclipses a part of the network, thus only making the beacon unavailable to some select users.
 
-    \item[Integrity:]
+    \paragraph{Integrity:}
         The integrity of a randomness beacon determines whether a given user should trust the outcome and to what degree.
         Attacking the integrity is therefore any attack which compromises the outcome of a randomness beacon.
         This can mean manipulating the input/entropy to the beacon, but also compromising the entire computation and outcome;
@@ -35,8 +33,6 @@ Each term embodies multiple attacks and requirements for fulfillment, however, d
 
         The integrity also relies on the beacon being unpredictable, i.e.\ no one should be able to predict the outcome before it is too late to manipulate it.
         Finally, integrity also embodies the fact that the outcome should be unbiased and uniformly distributed --- any detectable statistical bias should be negligible. A well-chosen extractor function will provide this.
-
-\end{description}
 
 %       Trust assumptions
 \subsubsection{Trust Assumptions}\label{ssub:trust_assumptions}
