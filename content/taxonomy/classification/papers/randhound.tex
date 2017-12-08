@@ -1,2 +1,4 @@
 \item[Scalable Bias-Resistant Distributed Randomness]
-\citet{syta2017scalable} design a protocol, Randhound, for producing randomness on demand and at predefined intervals. They make the protocol scalable by using sharding. 
+\citet{syta2017scalable} design a pair of \gls{mpc} protocols for producing randomness on demand, RandHound,  and at predefined intervals, Randherd. 
+Their protocols guarantee unbiasability, unpredictability and availability, and are based on publicly verifiable secret sharing schemes. They make the protocol scalable by using sharding.
+The output of the RandHerd beacon protocol is also verifiable. Both protocols can have their availability compromised by having too many malicious nodes involved.  
