@@ -126,3 +126,10 @@
     keywords={Cryptography;Noise;Electronic commerce;Electronic voting;Randomness server},
 }
 
+@misc{randao,
+  title={RANDAO: A DAO working as RNG of Ethereum},
+  author={randao},
+  date={2016-11-02},
+  url={https://github.com/randao/randao},
+  urldate={2017-12-11}
+}
