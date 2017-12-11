@@ -10,8 +10,9 @@
 @article{kokoris2017omniledger,
   title={OmniLedger: A Secure, Scale-Out, Decentralized Ledger.},
   author={Kokoris-Kogias, Eleftherios and Jovanovic, Philipp and Gasser, Linus and Gailly, Nicolas and Ford, Bryan},
-  journal={IACR Cryptology ePrint Archive},
+  journaltitle={IACR Cryptology ePrint Archive},
   volume={2017},
   pages={406},
   year={2017}
 }
+

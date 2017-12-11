@@ -79,7 +79,7 @@
 }
 
 @article{baigneres2015trap,
-  title={Trap Me If You Can-Million Dollar Curve.},
+  title={Trap Me If You Can --- Million Dollar Curve.},
   author={Baign{\`e}res, Thomas and Delerabl{\'e}e, C{\'e}cile and Finiasz, Matthieu and Goubin, Louis and Lepoint, Tancr{\`e}de and Rivain, Matthieu},
   journaltitle={IACR Cryptology ePrint Archive},
   volume={2015},
@@ -107,7 +107,7 @@
  ISSN = {00030996},
  URL = {http://www.jstor.org/stable/27857495},
  author = {Brian Hayes},
- journal = {American Scientist},
+ journaltitle = {American Scientist},
  number = {4},
  pages = {300-304},
  publisher = {Sigma Xi, The Scientific Research Society},
@@ -127,8 +127,9 @@
 }
 
 @misc{randao,
-title={RANDAO: A DAO working as RNG of Ethereum},
-author={randao},
-url={https://github.com/randao/randao},
-urldate={2017.12.11}
+  title={RANDAO: A DAO working as RNG of Ethereum},
+  author={randao},
+  date={2016-11-02},
+  url={https://github.com/randao/randao},
+  urldate={2017-12-11}
 }

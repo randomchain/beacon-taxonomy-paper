@@ -1,8 +1,8 @@
 \subsection{Settings for Randomness Beacons}
 %   Settings for beacons:
-Since a randomness beacon is a versatile and broad concept, it can be deployed in a myriad of vastly different settings.
+Since randomness beacons are a versatile and broad concept, they can be deployed in vastly different settings.
 These settings all alter the way the beacon operates and how users interact with it.
-Furthermore, it affects which shape the beacon implementation takes, i.e.\ different technologies fit in varying settings.
+Furthermore, it affects which shape the beacon implementation takes, i.e.\ different technologies better suit varying settings.
 
 There are two main distinctions when dealing with settings of a randomness beacon --- \emph{private} and \emph{public}.
 Within these categories are then different views on trust, scalability, intent, and incentives.
@@ -12,19 +12,19 @@ In a private setting it is safe to assume that no participant will be obviously 
 However, we can suspect that an adversary will try to manipulate the outcome of a randomness beacon if possible --- all users are anticipated to seek whatever benefits themselves.
 This means that all detectable manipulation and malicious activities will be avoided by the participants of the private network.
 
-We also assume that the continuous operation of a randomness beacon is a requirement for the private network, which means that all participants has an incentive to ensure timely execution.
-Unless a participant can benefit from the beacon not outputting, in which case they might simulate e.g.\ network issues to abrupt the beacon if possible.
+We also assume that the continuous operation of a randomness beacon is a requirement for the private network, which means that all participants have an incentive to ensure timely execution.
+Unless a participant can benefit from the beacon not outputting, in which case they might simulate e.g.\ network issues to disrupt the beacon.
 
-Scalability might be an issue in larger private networks, however, generally private networks are sufficiently small such that scaling is not a concern.
+Scalability might be an issue in larger private networks, however, generally private networks are small enough that scaling is not a great concern.
 
 \subsubsection{Public Setting}
 No guarantees can be made when it comes to public networks, such as the internet.
-Here we can assume that all participants will try to manipulate the beacon outcome to their advantage, no matter the cost.
+We can assume that all participants will try to manipulate the beacon outcome to their advantage, no matter the cost.
 Whether they have the resources available to do so, is besides the point.
 Likewise, any individual user might also in some cases suspect that all other users are colluding against them.
 
-In the public setting, it might not be all participants that have a stake in the randomness beacon operating constantly.
-Therefore, it is important to have established incentives for both users to use the beacon, but also for the execution of the beacon protocol.
+In the public setting, all participants may not have a stake in the randomness beacon operating constantly.
+Therefore, it is important to have established incentives for both users to use the beacon, but also for the execution of the beacon protocol if it relies on users.
 
 Because public settings are almost infinitely large, i.e.\ any user should be able to join, scalability is a key concern --- availability requires scalability.
 
