@@ -20,14 +20,18 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
         For a beacon to display verifiability, a user must be able to verify correct execution of the beacon protocol.
         The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify. \msmnote[nofootnote, inline]{this could be interesting to expand upon, to allow for anonymized beacon interaction}.
 
-        The most straight forward verification for randomness beacons is for a user to run the same computation on the same input. However, this may be impractical or the input may be secret, which would require different approaches. This could include using proofs or functions that can rapidly be verified.
+        The most straight forward verification for randomness beacons is for a user to run the same computation on the same input.
+However, this may be impractical or the input may be secret, which would require different approaches.
+This could include using proofs or functions that can rapidly be verified.
 
         Verifiability can eliminate the need for trust in participants, while ensuring the trustworthiness of the outcome.
 
     \item[Input Reasoning]
-        Being able to reason about the input is coupled to the two previous trust assumptions. This trust assumption concerns what users can assume about the bias of the input.
+        Being able to reason about the input is coupled to the two previous trust assumptions.
+This trust assumption concerns what users can assume about the bias of the input.
         The easier it is for adversaries to bias the input, the easier they can bias the randomness.
-        This assumption may also change significantly if the input is purely user-supplied. As long a given user contributes their own input, the others may not be able to bias the randomness against him.
+        This assumption may also change significantly if the input is purely user-supplied.
+As long a given user contributes their own input, the others may not be able to bias the randomness against him.
 
 \end{description}
 
@@ -35,7 +39,6 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
 %       Security objectives
 \subsubsection{Attacks}\label{ssub:security_objectives}
 For randomness beacons there exist two main venues of attack: \emph{availability} and \emph{integrity}
-\msmnote{this is first mention about integrity, and no further explanation is ever given}.
 Each term contains multiple types of attacks and requirements for fulfillment, and will not all be effective versus all beacons different randomness beacon approaches assign different priorities to these.
 
 We identify the following attacks on the availability of a beacon:
@@ -43,16 +46,21 @@ We identify the following attacks on the availability of a beacon:
 \begin{description}
     \item[\Acrfull{dos}] The attacker prevents users from accessing the output by overwhelming the operator with network traffic, or manipulating the network with an eclipse attack to prevent certain users from accessing the beacon output.
     \item[Preventing Protocol Execution] Some \gls{mpc} protocols rely on having an honest majority to complete --- an attacker or group of attackers could outnumber the honest parties, preventing the protocol from delivering an output.
-    \item[Denial of Input] For beacons that use user input, the attacker can overwhelm the operator with input, preventing other users from contributing, and potentially biasing the input, violating the unpredictability and randomness properties of the beacon. While this does not prevent the beacons output, it prevents users from interacting with the beacon according to protocol, hence why it is classified as an attack on availability.
+    \item[Denial of Input] For beacons that use user input, the attacker can overwhelm the operator with input, preventing other users from contributing, and potentially biasing the input, violating the unpredictability and randomness properties of the beacon.
+        While this does not prevent the beacons output, it prevents users from interacting with the beacon according to protocol, hence why it is classified as an attack on availability.
 \end{description}
 
 \noindent%
 We also identify the following attacks on the integrity of a beacon:
 
 \begin{description}
-    \item[Input Bias Attack] For beacons that use some external public source for input, an adversary can attempt to bias the results by controlling the state of that source, violating the unpredictability of the beacon. The difficulty of this type of attack depends on the malleability of the input.
-    \item[Last Draw Attack] In beacons using multiple inputs, one of these inputs will be the last input before the beacon generates the output. A last draw attack happens if an adversary influences the outcome by carefully choosing the last input. This requires that the adversary can see the other inputs.
-    \item[Hijacking Attack] For beacons with elected operators, an adversary can attempt to have themselves elected, and then operate the beacon to their own benefit. This could include publishing false results, denying user inputs or not extracting randomness according to protocol, and could potentially violate all properties of the beacon. %However, such tampering can be detected if the beacon incorporates some form of verification, which should reveal any divergence from the operating protocol.
+    \item[Input Bias Attack] For beacons that use some external public source for input, an adversary can attempt to bias the results by controlling the state of that source, violating the unpredictability of the beacon.
+        The difficulty of this type of attack depends on the malleability of the input.
+    \item[Last Draw Attack] In beacons using multiple inputs, one of these inputs will be the last input before the beacon generates the output.
+        A last draw attack happens if an adversary influences the outcome by carefully choosing the last input.
+        This requires that the adversary can see the other inputs, and that computing the outcome can be done before the deadline for input submission.
+    \item[Hijacking Attack] For beacons with elected operators, an adversary can attempt to have themselves elected, and then operate the beacon to their own benefit.
+        This could include publishing false results, denying user inputs or not extracting randomness according to protocol, and could potentially violate all properties of the beacon. %However, such tampering can be detected if the beacon incorporates some form of verification, which should reveal any divergence from the operating protocol.
 
 \end{description}
 
