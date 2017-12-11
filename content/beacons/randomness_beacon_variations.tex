@@ -1,6 +1,6 @@
 \subsection{Randomness Beacon Variations}
 %   Properties of beacons
- To understand different types of beacons, we define three categories, which can be used to describe properties that vary between different types of beacons. 
+ To understand different types of beacons, we define three categories, which can be used to describe properties that vary between different types of beacons.
 These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}.
 In the later taxonomy of current randomness beacons approaches, these properties will also be used for classification.
 
@@ -12,20 +12,20 @@ The following points describe different ways for a randomness beacon to source t
     \item[User Input:]
         The protocol allows users to provide entropy.
         This can open up for direct manipulation of the result using last-draw attacks.
-        If user input is the only source of entropy, lack of users prevent the beacon from operating, denying availability. 
+        If user input is the only source of entropy, lack of users prevent the beacon from operating, denying availability.
 
         There can also be too many inputs, resulting in input sourcing cutoff. Not all user inputs will be used in the computation of the outcome, thereby tarnishing those users' ability to trust the current output of the beacon.
 
     \item[Private External Input:]
         The beacon uses external input such as background radiation or output from photon splitters.
-        These sources often provide high entropy, but are difficult if not impossible to reproduce and verify for users. Hence complete trust in the honesty of the beacon operator is required.
+        These sources often provide high entropy, but are difficult if not impossible to reproduce and verify for users. Hence, complete trust in the honesty of the beacon operator is required.
 
     \item[Publicly Available External Input:]
         The beacon uses some publicly available data for input. For input to be considered publicly available, it must be accessible to the public and consistent over a period.
         These sources can for example be the bitcoin blockchain, financial data, or national lottery results.
 
         Anyone who wishes to manipulate the beacon's output must do so through the external source.
-        For this type of source it is important to analyze the integrity of the source to understand the integrity of the randomness beacon itself.
+        For this type of source it is important to analyze the integrity of the source to understand the integrity of the randomness beacon itself.\msmnote{this is the last mention of integrity}
 
         It is important to note that publicly available external input does not violate the unpredictability property of the beacon, since the time advantage an adversary has over regular users is negligible regardless of computing resources.
         Furthermore, any user of the beacon will be able to verify that the input has been used to generate the outcome.
@@ -56,7 +56,7 @@ We identify the following ways of executing such a computation in a randomness b
         However, scalability to larger settings may prove difficult, and participants with byzantine behavior must be accounted for, which can hurt execution time and availability.
 
     \item[Self-Service Execution:]
-        Each user performs the same execution to obtain a random value. The beacon is provided as a self service function.
+        Each user performs the same execution to obtain a random value. The beacon is provided as a self-service function.
         This model does not require trust in the executing participants, only in the input entropy, and last-draw attacks and manipulation can become prevalent with potential predictability if using user input.
         Computational resources are only consumed by participants with a stake in the beacon output.
 \end{description}
@@ -69,11 +69,10 @@ We identify the following ways of validating a beacon:
 \begin{description}
     \item[Verifiable:]
         A user can verify the randomness to have been correctly computed from the provided entropy.
-        This is directly related to the verifiability in the earlier trust assumptions. 
+        This is directly related to the verifiability in the earlier trust assumptions.
 
     \item[Contestable:]
         Users can contest the randomness of the beacon if they believe it to be wrong.
-        The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote[nofootnote,inline]{This will be futher elaborated}
+        The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote{This will be futher elaborated}
 \end{description}
-
 

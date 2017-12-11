@@ -1,6 +1,6 @@
 \subsection{Archetypes of Randomness Beacon}
 %   Beacon types
-We present some archetypes of randomness beacons derived from beacon variations. 
+We present some archetypes of randomness beacons derived from beacon variations.
 We briefly describe the main strengths and weaknesses for each archetype,  and they will later be used in the taxonomy of current randomness beacons.
 
 \subsubsection{Autocratic Collector}\label{ssub:autocratic}
@@ -52,7 +52,6 @@ An example of a specialized \gls{mpc} beacon protocol can be seen in \Vref{fig:m
 In the figure, $i_{u,t}$ denotes a single user's $u$ input, and $R'$ the output of a given iteration.
 The sequential computation then performs $f'(I'_t)$, where $I'_t$ is the outcome of prevoius iteration and the current user's input, i.e.\ $R' \times i_{u,t} = I'_t$.
 In the last step of the sequential \gls{mpc} protocol the final beacon outcome $R$ is published to all users.
-\msmnote{not sure about iterative math}
 
 \begin{figure}[htb]\pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
@@ -77,7 +76,7 @@ In the last step of the sequential \gls{mpc} protocol the final beacon outcome $
 \subsubsection{Transparent Authority}\label{ssub:transparent_authority}
 As a middle ground between the two previous beacon archetypes, the transparent authority beacon aims to provide both scalability, availability, and trustworthiness.
 This is possible since the beacon displays transparency in both entropy sourcing and execution, i.e.\ using publicly available external or user generated input, and enabling validation of the execution and outcome.
-However, the the authority behind the beacon can still be a self-announced entity --- as long as validation is possible, the execution model is irrelevant.
+However, the authority behind the beacon can still be a self-announced entity --- as long as validation is possible, the execution model is irrelevant.
 
 If the execution of the beacon protocol is to be done by a single entity, it is important to have a solid incentive for running it --- as well as an incentive for the operator to be honest.
 This can be as simple as a community funded entity serving a \enquote{public good} as discussed by \citet{bunz2017proofsof}.
@@ -86,7 +85,7 @@ Because this beacon type uses publicly available or user generated input, entrop
 
 In \Vref{fig:transparent_beacon} we show an example of a beacon of transparent authority, where the green markings indicate where the authority has power to affect the outcome.
 As can be seen on the figure, the authority has to commit the input $I_t$, at a given time $t$.
-This input is verifiable, and there fore the outcome will also be verifiable, due to the nature of a transparent authority.
+This input is verifiable, and therefore the outcome will also be verifiable, due to the nature of a transparent authority.
 
 
 \begin{figure}[htb]\pgfdeclarelayer{background}
