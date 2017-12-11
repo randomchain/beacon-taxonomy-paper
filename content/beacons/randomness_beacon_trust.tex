@@ -11,12 +11,12 @@ The following trust assumptions are from the users' point of view, unless otherw
 A user is anyone with a stake in the outcome of the beacon, both through direct use, but also indirect or inferred usage.
 \begin{description}
 
-    \item[Guaranteed Entropy Level:]
+    \item[Guaranteed Entropy Level]
         Assumptions about the level of entropy in the outcome, relies on the entropy of the input and the properties of the computation which generates the outcome, e.g.\ an extractor function.
         Users must be able to reason about the entropy level of the input, through documentation or otherwise.
         The entropy source and extractor function must be publicly available, such that users can verify the level of entropy.
 
-    \item[Verifiability:]
+    \item[Verifiability]
         For a beacon to display verifiability, a user must be able to verify correct execution of the beacon protocol.
         The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify. \msmnote[nofootnote, inline]{this could be interesting to expand upon, to allow for anonymized beacon interaction}.
 
@@ -24,7 +24,7 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
 
         Verifiability can eliminate the need for trust in participants, while ensuring the trustworthiness of the outcome.
 
-    \item[Input Reasoning:]
+    \item[Input Reasoning]
         Being able to reason about the input is coupled to the two previous trust assumptions. This trust assumption concerns what users can assume about the bias of the input.
         The easier it is for adversaries to bias the input, the easier they can bias the randomness.
         This assumption may also change significantly if the input is purely user-supplied. As long a given user contributes their own input, the others may not be able to bias the randomness against him.
@@ -41,7 +41,7 @@ Each term contains multiple types of attacks and requirements for fulfillment, a
 We identify the following attacks on the availability of a beacon:
 
 \begin{description}
-    \item[\acrfull{dos}] The attacker prevents users from accessing the output by overwhelming the operator with network traffic, or manipulating the network with an eclipse attack to prevent certain users from accessing the beacon output.
+    \item[\Acrfull{dos}] The attacker prevents users from accessing the output by overwhelming the operator with network traffic, or manipulating the network with an eclipse attack to prevent certain users from accessing the beacon output.
     \item[Preventing Protocol Execution] Some \gls{mpc} protocols rely on having an honest majority to complete --- an attacker or group of attackers could outnumber the honest parties, preventing the protocol from delivering an output.
     \item[Denial of Input] For beacons that use user input, the attacker can overwhelm the operator with input, preventing other users from contributing, and potentially biasing the input, violating the unpredictability and randomness properties of the beacon. While this does not prevent the beacons output, it prevents users from interacting with the beacon according to protocol, hence why it is classified as an attack on availability.
 \end{description}
