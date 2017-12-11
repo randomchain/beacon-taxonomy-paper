@@ -47,12 +47,12 @@ We identify the following attacks on the availability of a beacon:
 \end{description}
 
 \noindent%
-We also identify the following attack on the integrity of a beacon:
+We also identify the following attacks on the integrity of a beacon:
 
 \begin{description}
     \item[Input Bias Attack] For beacons that use some external public source for input, an adversary can attempt to bias the results by controlling the state of that source, violating the unpredictability of the beacon. The difficulty of this type of attack depends on the malleability of the input.
-    \item[Last Draw Attack] For beacons that use user input, an adversary can attempt to commit an input that will bias the randomness towards him as the last user to contribute, ensuring it will not be changed before it is posted. This attack relies on the adversary's ability to pre-compute the randomness extracted from current inputs, and therefore violates the unpredictability of the beacon.
-    \item[Hijacking Attack] For beacons with elected operators, an adversary can attempt to have themselves elected, and then operate the beacon to their own benefit. This could include publishing false results, denying user inputs or not extracting randomness according to protocol, and could potentially violate all properties of the beacon. However, such tampering can be detected if the beacon incorporates some form of verification, which should reveal any divergence from the operating protocol.
+    \item[Last Draw Attack] In beacons using multiple inputs, one of these inputs will be the last input before the beacon generates the output. A last draw attack happens if an adversary influences the outcome by carefully choosing the last input. This requires that the adversary can see the other inputs.
+    \item[Hijacking Attack] For beacons with elected operators, an adversary can attempt to have themselves elected, and then operate the beacon to their own benefit. This could include publishing false results, denying user inputs or not extracting randomness according to protocol, and could potentially violate all properties of the beacon. %However, such tampering can be detected if the beacon incorporates some form of verification, which should reveal any divergence from the operating protocol.
 
 \end{description}
 
