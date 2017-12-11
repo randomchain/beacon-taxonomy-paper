@@ -19,14 +19,6 @@ The definition is expanded upon by \citet{bonneau2015bitcoin}, who describe a de
 It is a function that returns an $m$-bit near-uniformly random value $r$ at each time interval $t$.
 No assumptions are made on the source of randomness beyond a lower bound on minimum entropy.
 The $m$-bit value is computed from a sample of the source at time $t$, $D_t$, using an extractor function.
-The beacon should also satisfy the following security properties from~\cite{bonneau2015bitcoin}:
-
-\begin{description}
-    \item[Unpredictability] Any adversary's ability to predict any information about $r$ before time $t$ is negligible.
-    \item[Unbiased] $r$ is statistically close to an $m$-bit uniformly random string.
-    \item[Universally sampleable] After time $t$ any party can efficiently compute $\text{beacon}(t)$.
-    \item[Universally verifiable] The sample $D_t$ can be verified to be unknown to any party before time $t$.
-\end{description}\msmnote{could this description not be deleted? It is all described in the text before and after.}
 
 They describe a beacon as a function rather than a service, but capture an element necessary for a trustless randomness beacon, namely verifiability --- the ability to verify certain properties of the output.
 They also relax the requirement on randomness, as the output must simply be statistically close to random.
