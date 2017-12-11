@@ -25,9 +25,9 @@ The beacon should also satisfy the following security properties from~\cite{bonn
 \begin{description}
     \item[Unpredictability] Any adversary's ability to predict any information about $r$ before time $t$ is negligible.
     \item[Unbiased] $r$ is statistically close to an $m$-bit uniformly random string.
-    \item[Universally sampleable] After time $t$ any party can efficiently compute $beacon(t)$.
+    \item[Universally sampleable] After time $t$ any party can efficiently compute $\text{beacon}(t)$.
     \item[Universally verifiable] The sample $D_t$ can be verified to be unknown to any party before time $t$.
-\end{description}
+\end{description}\msmnote{could this description not be deleted? It is all described in the text before and after.}
 
 They describe a beacon as a function rather than a service, but capture an element necessary for a trustless randomness beacon, namely verifiability --- the ability to verify certain properties of the output.
 They also relax the requirement on randomness, as the output must simply be statistically close to random.
