@@ -6,3 +6,12 @@
   year={2014},
   organization={Springer}
 }
+
+@inproceedings{eyal2014majority,
+  title={Majority is not enough: Bitcoin mining is vulnerable},
+  author={Eyal, Ittay and Sirer, Emin G{\"u}n},
+  booktitle={International conference on financial cryptography and data security},
+  pages={436--454},
+  year={2014},
+  organization={Springer}
+}
