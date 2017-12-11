@@ -1,12 +1,1 @@
-@article{rabin1983beacon,
-title = "Transaction protection by beacons",
-journal = "Journal of Computer and System Sciences",
-volume = "27",
-number = "2",
-pages = "256 - 267",
-year = "1983",
-issn = "0022-0000",
-doi = "https://doi.org/10.1016/0022-0000(83)90042-9",
-url = "http://www.sciencedirect.com/science/article/pii/0022000083900429",
-author = "Michael O. Rabin"
-}
+
