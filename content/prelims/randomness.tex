@@ -15,8 +15,8 @@ As such, it is able to convert weak random sources into a highly random output, 
 \citet{dodis2004randomness} define min-entropy as the minimum integer $m$ such that for all bit strings $x$ in a probability distribution $\chi$, $\text{Pr}_\chi(x) \leq 2^{-m}$.
 In other words, it is the least amount of bits required to describe the worst-case output.
 Therefore it is a conservative way of measuring unpredictability.
-The min-entropy of a coin toss ($p = \frac{1}{2}$) is $-\log_2(\frac{1}{2}) = 1$ bit. Similarly, throwing a dice will require $-\log_2(\frac{1}{6}) \approx 2.6$ bits to describe (and since min-entropy is the minimum \emph{integer}, 3 bits are needed).
-If the dice is loaded, such that one outcome is more likely, the min-entropy of will be the number of bits required to describe the most likely outcome.
+The min-entropy of a coin toss ($p = \frac{1}{2}$) is $-\log_2(\frac{1}{2}) = 1$ bit. Similarly, throwing a die will require $-\log_2(\frac{1}{6}) \approx 2.6$ bits to describe (and since min-entropy is the minimum \emph{integer}, 3 bits are needed).
+If the die is loaded, such that one outcome is more likely, the min-entropy of will be the number of bits required to describe the most likely outcome.
 
 %Randomness can be seen as unpredictable information. Ideally, it can not be predicted or influenced in any way, hence why it can be used as a source of impartial decisions, e.g.\ for lotteries.
 %However, computers are not random. Computers are intrinsically deterministic, and thus can not produce true randomness. Instead, they can generate it by observing highly unpredictable information like atmospheric noise and radioactive decay, or use complicated algorithms to generate pseudorandomness that seems unpredictable~\cite{randomsources}.
