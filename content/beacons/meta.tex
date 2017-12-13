@@ -4,7 +4,7 @@
 
 In the context of this paper, we seek to define a randomness beacon.
 The term was originally introduced by \citet{rabin1983transaction}, who describes it as a trusted third party that emits random numbers at a set interval as a way to enable fair contract signing and secret disclosure.
-He establishes a number of criteria for the beacon to be honest:
+He assumes that beacon is managed by a trusted third party and as such behaves \enquote{honestly}. He furthermore argues for a number of criteria for the beacon:
 
 \begin{description}
     \item[Unpredictability] The output of the beacon should be unpredictable before it is published.
@@ -16,7 +16,7 @@ As stated, this definition requires trust in a third party, with no way to ensur
 Since we do not want to trust blindly in a third party, we will look for an alternative definition.
 
 The definition is expanded upon by \citet{bonneau2015bitcoin}, who describe a decentralized beacon based on the bitcoin blockchain.
-It is a function that returns an $m$-bit near-uniformly random value $r$ at each time interval $t$.
+It is a function that returns an $m$-bit near-uniformly distributed random value $r$ at each time interval $t$.
 No assumptions are made on the source of randomness beyond a lower bound on minimum entropy.
 The $m$-bit value is computed from a sample of the source at time $t$, $D_t$, using an extractor function.
 
