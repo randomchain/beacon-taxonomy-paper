@@ -1,7 +1,7 @@
 \subsection{Randomness Beacon Variations}
 %   Properties of beacons
  To understand different types of beacons, we define three categories, which can be used to describe properties that vary between different types of beacons.
-These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}.
+These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}, and will also be tied back to the security properties of beacons. 
 In the later taxonomy of current randomness beacons approaches, these properties will also be used for classification.
 
 %       Entropy sourcing
@@ -16,18 +16,18 @@ The following points describe different ways for a randomness beacon to source t
 
         There can also be too many inputs, resulting in input sourcing cutoff. Not all user inputs will be used in the computation of the outcome, thereby tarnishing those users' ability to trust the current output of the beacon.
 
-    \item[Private External Input:]
-        The beacon uses external input such as background radiation or output from photon splitters.
+    \item[Internal Input:]
+        The beacon uses input such as background radiation or output from photon splitters, measured with some local device.
         These sources often provide high entropy, but are difficult if not impossible to reproduce and verify for users. Hence, complete trust in the honesty of the beacon operator is required.
 
-    \item[Publicly Available External Input:]
+    \item[External Input:]
         The beacon uses some publicly available data for input. For input to be considered publicly available, it must be accessible to the public and consistent over a period.
         These sources can for example be the bitcoin blockchain, financial data, or national lottery results.
 
         Anyone who wishes to manipulate the beacon's output must do so through the external source.
         For this type of source it is important to analyze the integrity of the source to understand the integrity of the randomness beacon itself.
 
-        It is important to note that publicly available external input does not violate the unpredictability property of the beacon, since the time advantage an adversary has over regular users is negligible regardless of computing resources.
+        It is important to note that external input does not violate the unpredictability property of the beacon, since the time advantage an adversary has over regular users is negligible regardless of computing resources.
         Furthermore, any user of the beacon will be able to verify that the input has been used to generate the outcome.
 
 \end{description}
@@ -76,3 +76,29 @@ We identify the following ways of validating a beacon:
         The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote{This will be futher elaborated}
 \end{description}
 
+\subsubsection{Effects on Properties}
+We evaluate each type of property based on their effect on the previously defined security properties for randomness beacons. We present this evaluation in a table of variations and their effects on properties. We use \emph{+} to indicate that a variation improves or supports a given property, and vice versa with \emph{-}. Each field also contains reasons for their score. 
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+    \centering
+    \caption{My caption}
+    \label{my-label}
+    \begin{tabular}{@{}lllll@{}}
+    \toprule
+                           & Unpredictability                                                          & Randomness                             & Availability                                           & Verifiablity                                                     \\ \midrule
+    User Input             & - Relies on many inputs to be unpredictable.                              & - No guarantee for entropy level       & - Requires user inputs                                 & + Commit to user inputs for verification                         \\
+    External Input         & - Possible to predict negligable time before beacon publishes             & +- Choice of source influences entropy & - Depends on source availability and update frequency. & + Source is public.                                              \\
+    Internal Input         & + Unavailable to adversaries                                              & + Typically high entropy               & + Stability and control of source.                     & - Requires proofs if source is private.                          \\
+    Self-announced entity  & N/A                                                                       & N/A                                    & - Single point of failure                              & N/A                                                              \\
+    Elected Operator       & N/A                                                                       & N/A                                    & - Single point of failure                              & N/A                                                              \\
+    Distributed Execution  & - Participants may have intermediate information to predict.              & N/A                                    & - Can fail or be corrupted by adversaries.             & + Participants guaranteed correctness                            \\
+    Self-service Execution & + Beacon is defined by the source data, no way to compute faster than it. & N/A                                    & + Only source can fail.                                & - Requires everyone that uses randomness to compute it to agree. \\
+    Verifiable             & N/A                                                                       & N/A                                    & N/A                                                    & + Fundamental                                                    \\
+    Contestable            & N/A                                                                       & N/A                                    & - Contesting may temporarily bring down beacon         & + Challenge beacon on correctness.                               \\ \bottomrule
+    \end{tabular}
+    \end{table}
+
+    Based on this evaluation we will later determine how specific beacon implementations. 
