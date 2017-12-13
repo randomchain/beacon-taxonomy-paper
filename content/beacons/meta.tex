@@ -29,7 +29,7 @@ A \emph{randomness} beacon is an entity that publishes \emph{random} data, compu
 Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is some computation, and $R$ is the random outcome.
 For $B$ to be a beacon it is then run at every $t_\Delta$ time interval, with new input $I_t$.
 The function $f$ can be an extractor function, as explained in \Cref{sub:prelims_randomness}.
-The beacon must have the following security properties, as in this definition:
+The beacon must fulfill the following specification:
 
 \begin{description}
     \item[Unpredictability] The output of the beacon at time $t$ cannot be known before time $t$.
@@ -44,4 +44,3 @@ It also generalizes the verifiability to simply concern the correctness of the o
 
 The definition does not specify any properties about interaction, security, nor execution of the beacon and its protocol.
 These properties rely on the setting and requirements of a given beacon.
-However, all randomness beacon approaches must address the following specifications.
