@@ -1,7 +1,7 @@
 \subsection{Randomness Beacon Variations}
 %   Properties of beacons
  To understand different types of beacons, we define three categories, which can be used to describe properties that vary between different types of beacons.
-These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}, and will also be tied back to the security properties of beacons. 
+These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}, and will also be tied back to the security properties of beacons.
 In the later taxonomy of current randomness beacons approaches, these properties will also be used for classification.
 
 %       Entropy sourcing
@@ -77,28 +77,48 @@ We identify the following ways of validating a beacon:
 \end{description}
 
 \subsubsection{Effects on Properties}
-We evaluate each type of property based on their effect on the previously defined security properties for randomness beacons. We present this evaluation in a table of variations and their effects on properties. We use \emph{+} to indicate that a variation improves or supports a given property, and vice versa with \emph{-}. Each field also contains reasons for their score. 
+We evaluate each type of property based on their effect on the previously defined security properties for randomness beacons. We present this evaluation in a table of variations and their effects on properties. We use \emph{+} to indicate that a variation improves or supports a given property, and vice versa with \emph{-}. Each field also contains reasons for their score.
 
+\newcommand{\good}[1]{$+$#1}
+\newcommand{\baad}[1]{$-$#1}
+\newcommand{\neut}[1]{$\pm$#1}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[]
+\begin{table}[htb]
     \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{XXXXX}
+        \toprule
+                       & Unpredictability                                                 & Randomness                       & Availability                           & Verifiability                             \\ \midrule
+User Input             & \baad{Needs many inputs}%{why? Two is enough}
+                       & \baad{No guarantees on entropy}%{isn't it guaranteed to be as high as highest input}
+                       & \baad{Requires user inputs}
+                       & \good{Commit to inputs}%{what about verifying computation on the inputs}
+\\
+External Input         & \baad{Can predict negligible time before beacon}%{is this bad?}
+                       & \neut{Source determines entropy}
+                       & \baad{Depends on source availability}
+                       & \good{Source is public}                   \\
+Internal Input         & \good{Unavailable to adversaries}%{what if the beacon is an adversary!?}
+                       & \good{Typically high entropy}%{how can that even be guaranteed?}
+                       & \good{Stability and control of source}
+                       & \baad{Requires proofs}%{And complete blind trust, since proofs say nothing}
+\\
+Self-announced entity  & N/A                                                              & N/A                              & \baad{Single point of failure}         & N/A                                       \\
+Elected Operator       & N/A                                                              & N/A                              & \baad{Single point of failure}         & N/A                                       \\
+Distributed Execution  & \baad{Participants may use intermediate information to predict}%{how? it requires all participants to get correct outcome, no?}
+                       & N/A
+                       & \baad{Can fail or be corrupted}%{if participants drop out}
+                       & \good{Participants guaranteed correctness}\\
+Self-service Execution & \good{Beacon is the source data, so can only predict that}
+                       & N/A
+                       & \good{Only source can fail}%{doesn't this mean single point of failure?}
+                       & \baad{All users must agree on randomness}%{isn't that the point of the beacon?}
+\\
+Verifiable             & N/A                                                              & N/A                              & N/A                                    & \good{Fundamental}                        \\
+Contestable            & N/A                                                              & N/A                              & \baad{Contesting may interrupt}        & \good{Challenge beacon on correctness}    \\ \bottomrule
+    \end{tabularx}
     \caption{My caption}
     \label{my-label}
-    \begin{tabular}{@{}lllll@{}}
-    \toprule
-                           & Unpredictability                                                          & Randomness                             & Availability                                           & Verifiablity                                                     \\ \midrule
-    User Input             & - Needs many inputs.                    .                                 & - No guarantees on entropy.            & - Requires user inputs                                 & + Commit to inputs                                               \\
-    External Input         & - Can predict negligible time before beacon                               & +- Source determines entropy           & - Depends on source availability.                      & + Source is public.                                              \\
-    Internal Input         & + Unavailable to adversaries                                              & + Typically high entropy               & + Stability and control of source.                     & - Requires proofs.                                               \\
-    Self-announced entity  & N/A                                                                       & N/A                                    & - Single point of failure                              & N/A                                                              \\
-    Elected Operator       & N/A                                                                       & N/A                                    & - Single point of failure                              & N/A                                                              \\
-    Distributed Execution  & - Participants may use intermediate information to predict.               & N/A                                    & - Can fail or be corrupted.                            & + Participants guaranteed correctness                            \\
-    Self-service Execution & + Beacon is the source data, so can only predict that.                    & N/A                                    & + Only source can fail.                                & - All users must agree on randomness.                            \\
-    Verifiable             & N/A                                                                       & N/A                                    & N/A                                                    & + Fundamental                                                    \\
-    Contestable            & N/A                                                                       & N/A                                    & - Contesting may interrupt.                            & + Challenge beacon on correctness.                               \\ \bottomrule
-    \end{tabular}
-    \end{table}
+\end{table}
 
-    Based on this evaluation we will later determine how specific beacon implementations affect the properties given their variations. 
+    Based on this evaluation we will later determine how specific beacon implementations affect the properties given their variations.
