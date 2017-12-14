@@ -2,9 +2,9 @@
 \section{Randomness Beacons}\label{sec:beacons}
 %   What is a beacon?
 
-In the context of this paper, we seek to define a randomness beacon.
+In the context of this paper \mtjnote{What does this mean?}, we seek to define a randomness beacon.
 The term was originally introduced by \citet{rabin1983transaction}, who describes it as a trusted third party that emits random numbers at a set interval as a way to enable fair contract signing and secret disclosure.
-He assumes that beacon is managed by a trusted third party and as such behaves \enquote{honestly}. He furthermore argues for a number of criteria for the beacon:
+He assumes that beacon is managed by a trusted third party and behaves \enquote{honestly}. He furthermore argues for a number of criteria for the beacon:
 
 \begin{description}
     \item[Unpredictability] The output of the beacon should be unpredictable before it is published.
@@ -17,30 +17,32 @@ Since we do not want to trust blindly in a third party, we will look for an alte
 
 The definition is expanded upon by \citet{bonneau2015bitcoin}, who describe a decentralized beacon based on the bitcoin blockchain.
 It is a function that returns an $m$-bit near-uniformly distributed random value $r$ at each time interval $t$.
-No assumptions are made on the source of randomness beyond a lower bound on minimum entropy.
+No assumptions are made on the source of randomness beyond a lower bound on min-entropy.
 The $m$-bit value is computed from a sample of the source at time $t$, $D_t$, using an extractor function.
 
-They describe a beacon as a function rather than a service, but capture an element necessary for a trustless randomness beacon, namely verifiability --- the ability to verify certain properties of the output.
+They describe a beacon as a function rather than a service \mtjnote{what is the difference?}, but capture an element necessary for a trustless randomness beacon, namely verifiability --- the ability to verify certain properties of the output.
 They also relax the requirement on randomness, as the output must simply be statistically close to random.
 
-From these definitions we synthesize our own definition, which will be used forward in this paper:
+Their beacon definition is however not broad enough to allow for some solutions. Specifically, they require the input to be unknown before time $t$, and they require that any user can compute the output after time $t$ --- two things that are not necessarily required in some solutions.
 
-A \emph{randomness} beacon is an entity that publishes \emph{random} data, computed from some input, at a regular known interval.
-Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is some computation, and $R$ is the random outcome.
+We therefore synthesize our own definition, which will be used forward in this paper:
+
+A \emph{randomness} beacon is a service that publishes random data with a known min-entropy. The random data is computed from some input, at a regular known interval.
+Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is an extractor function, and $R$ is the random outcome.
 For $B$ to be a beacon it is then run at every $t_\Delta$ time interval, with new input $I_t$.
-The function $f$ can be an extractor function, as explained in \Cref{sub:prelims_randomness}.
-The beacon must fulfill the following specification:
+%The function $f$ can be an extractor function, as explained in \Cref{sub:prelims_randomness}.
+A beacon must exhibit the following properties:
 
 \begin{description}
-    \item[Unpredictability] The output of the beacon at time $t$ cannot be known before time $t$.
-    \item[Randomness] The output is statistically close to being uniformly distributed.
+    \item[Unpredictability] Any user is unable to predict any information about the output of the beacon prior to time $t$. This indirectly also makes the beacon unmanipulatable, as manipulation would lead to predictability for some user(s).
+    \item[Random] The output is statistically close to samplings from a uniform distribution.
     \item[Availability] All users in a given setting has access to the randomness beacon.
-    This means both their ability to contribute with input if applicable, and discover the output.
-    \item[Verifiability] All users in a given setting should be able to verify that the output has not been compromised --- i.e.\ the input and output has not been manipulated and the computation has been executed correctly.
+    This means both their ability to contribute with input, if applicable, and their access to the output.
+    \item[``Proof of Honesty/Correctness''] Users should not trust \emph{any} output. A beacon needs to be designed such that it can prove its honesty instead of requiring blind trust. This proof can for example be a clever design enforcing unmanipulatable output, or accompanying the output with a proof that can be used to verify the correctness of the output.
 \end{description}
 
 This definition is more flexible than the predecessors, as it does not require a \emph{randomness beacon} to be publicly available, but rather introduces the term setting as beacons could also see use in non-public settings.
-It also generalizes the verifiability to simply concern the correctness of the output, which can vary between different beacons.
+%It also generalizes the verifiability to simply concern the honesty of the beacon.
 
-The definition does not specify any properties about interaction, security, nor execution of the beacon and its protocol.
+The definition does not specify any properties about interaction, security, or execution of the beacon and its protocol --- only that it somehow has to prove its honesty.
 These properties rely on the setting and requirements of a given beacon.
