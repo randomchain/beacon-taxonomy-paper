@@ -1,7 +1,7 @@
 \subsection{Randomness Beacon Variations}
 %   Properties of beacons
  To understand different types of beacons, we define three categories, which can be used to describe properties that vary between different types of beacons.
-These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}.
+These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}, and will also be tied back to the security properties of beacons.
 In the later taxonomy of current randomness beacons approaches, these properties will also be used for classification.
 
 %       Entropy sourcing
@@ -9,26 +9,43 @@ In the later taxonomy of current randomness beacons approaches, these properties
 The input of a randomness beacon at a given time, $I_t$, is the source the entropy of the outcome.
 The following points describe different ways for a randomness beacon to source the input.
 \begin{description}
-    \item[User Input:]
+    \item[User Input]
         The protocol allows users to provide entropy.
-        This can open up for direct manipulation of the result using last-draw attacks.
-        If user input is the only source of entropy, lack of users prevent the beacon from operating, denying availability.
+        This can potentially open up for direct manipulation of the result using last-draw attacks, which in turn can enable adversaries to overcome the \emph{unpredictability}.
+        The \emph{min-entropy} of the inputs is dependent of the computation, i.e.\ aggregation of inputs and extraction of randomness.
+        Using \enquote{exclusive or} to combine the inputs guarantees that the lower bound of entropy is set by the input with the highest entropy;
+        this means that a user providing good entropy, can be sure that the outcome will have at least the same level of entropy.
 
-        There can also be too many inputs, resulting in input sourcing cutoff. Not all user inputs will be used in the computation of the outcome, thereby tarnishing those users' ability to trust the current output of the beacon.
+        Usually, the beacon must commit to a set of user inputs before beginning the randomness computation, thereby making users able to reason about the inputs used.
+        This means that user will be able to \emph{verify} that a committed set of inputs has been used in the computation of the outcome.
 
-    \item[Private External Input:]
-        The beacon uses external input such as background radiation or output from photon splitters.
-        These sources often provide high entropy, but are difficult if not impossible to reproduce and verify for users. Hence, complete trust in the honesty of the beacon operator is required.
+        If user input is the only source of entropy, lack of users prevent the beacon from operating, denying \emph{availability}.
+        There can also be too many inputs, resulting in input sourcing cutoff ---
+        the input of some users will then not be used in computing the outcome, thereby undermining that set of users ability to trust the given outcome.
+        This is because a given user must be able to identify the presence of a trusted input in the committed set of inputs, to trust the beacon outcome.
 
-    \item[Publicly Available External Input:]
-        The beacon uses some publicly available data for input. For input to be considered publicly available, it must be accessible to the public and consistent over a period.
+    \item[Internal Input]
+        The beacon uses input such as background radiation or output from photon splitters, measured with some local device.
+        These sources potentially provide high entropy, but are impossible to reproduce and \emph{verify} for users.
+        This means that the claimed input from a supposedly random source, could be entirely fabricated by the beacon operator to bias or even have total control over the outcome.
+        Hence, complete trust in the honesty of the beacon operator is required.
+        Moreover, the \emph{unpredictability} can never be guaranteed, since the beacon operator potentially could have precomputed the outcomes from seemingly random inputs.
+
+        An upside to using internal input is that the \emph{availability} does not depend on some outside force, as seen from the perspective of the beacon operator.
+
+    \item[External Input]
+        The beacon uses some publicly available data for input.
+        Publicly available input means that it must be accessible to the public and consistent over a period.
+        Hence, the \emph{availability} of the beacon is dictated by the availability of the source of external input.
+        Moreover, the \emph{min-entropy} is also determined by the external input, which should be scrutinized to guarantee the lower bound of entropy.
         These sources can for example be the bitcoin blockchain, financial data, or national lottery results.
+        \msmnote{Maybe talk about guaranteed entropy level in e.g.\ bitcoin hash, or save for later?}
 
         Anyone who wishes to manipulate the beacon's output must do so through the external source.
         For this type of source it is important to analyze the integrity of the source to understand the integrity of the randomness beacon itself.
 
-        It is important to note that publicly available external input does not violate the unpredictability property of the beacon, since the time advantage an adversary has over regular users is negligible regardless of computing resources.
-        Furthermore, any user of the beacon will be able to verify that the input has been used to generate the outcome.
+        It is important to note that external input does not violate the \emph{unpredictability} property of the beacon, since the time advantage an adversary has over other users is negligible regardless of computing resources.
+        Furthermore, any user of the beacon will be able to \emph{verify} that the input has been used to generate the outcome.
 
 \end{description}
 
@@ -38,27 +55,37 @@ Once the input entropy is obtained, some computation is performed, $f(I_t)$, to 
 We identify the following ways of executing such a computation in a randomness beacon protocol:
 
 \begin{description}
-    \item[Self-Announced Entity:]
+    \item[Self-Announced Entity]
         The protocol is computed by a central entity who provides a service in form of a beacon.
-        This type of execution requires verifiability or complete trust in the central entity.
+        This type of execution requires \emph{verifiability} or complete trust in the central entity.
 
         The entity, while self-announced, can be driven by a community, authority, or single person, but is always controlled by that entity.
-        Availability is a major concern with this type of execution, since it imposes a single point of failure, if not for computation then for trust.
+        \emph{Availability} can be major concern with this type of execution, since it imposes a single point of failure, if not for computation then for trust.
 
-    \item[Elected Operator:]
+        Users of a beacon operated by a self-announced entity, should consider the \emph{unpredictability} of the beacon, since the self-announced entity inherently will know the outcome before publishing.
+        This can be mitigated by the operator by committing to a given input before performing the computation.
+        However, this only guarantees that no input manipulation by the operator has happened between the commitment and publishing the outcome.
+
+    \item[Elected Operator]
         A user is collectively elected to be the operator which performs the computation.
         That user then executes the beacon protocol as a public good.
-        This type of execution participation requires that the operator has an incentive to carry out the beacon protocol, and may hurt availability if the operator is unable to complete.
+        This type of execution participation requires that the operator has an incentive to carry out the beacon protocol, and may hurt \emph{availability} if the operator is unable or unwilling to complete.
 
-    \item[Distributed Execution:]
+        The same question of \emph{unpredictability} arises as with the self-announced entity, and must be addressed by the beacon protocol to ensure trustworthiness.
+
+    \item[Distributed Execution]
         The computation of the protocol is done in a distributed manner between a set of parties e.g.\ using \gls{mpc} and/or smart contracts.
         This model potentially does not require trust in any other participant depending on the execution scheme.
-        However, scalability to larger settings may prove difficult, and participants with byzantine behavior must be accounted for, which can hurt execution time and availability.
+        However, scalability to larger settings may prove difficult, and participants with byzantine behavior must be accounted for, which can hurt execution time and \emph{availability}.
 
-    \item[Self-Service Execution:]
+    \item[Self-Service Execution]
         Each user performs the same execution to obtain a random value. The beacon is provided as a self-service function.
-        This model does not require trust in the executing participants, only in the input entropy, and last-draw attacks and manipulation can become prevalent with potential predictability if using user input.
+        This model does not require trust in the executing participants, only in the input entropy, and last-draw attacks and manipulation can become prevalent with potential \emph{predictability} if using user input.
         Computational resources are only consumed by participants with a stake in the beacon output.
+
+        Uniquely, the \emph{availability} of this execution model is solely determined by the input source.
+        Also, this model requires users to \emph{verify} each other's outcome, if they are required to agree on it.
+
 \end{description}
 
 %       Validation
@@ -67,12 +94,60 @@ The output of the computation in the randomness beacon need some form of validat
 We identify the following ways of validating a beacon:
 
 \begin{description}
-    \item[Verifiable:]
-        A user can verify the randomness to have been correctly computed from the provided entropy.
-        This is directly related to the verifiability in the earlier trust assumptions.
+    \item[Verifiable]
+        Any user can verify the randomness outcome to have been correctly computed from the provided entropy input.
+        In some cases, the verification process might include correlating the outcome with a input set, of which the beacon has committed to.
+        This is directly related to the \emph{verifiability} in the earlier beacon definition.
 
-    \item[Contestable:]
+    \item[Contestable]
         Users can contest the randomness of the beacon if they believe it to be wrong.
         The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote{This will be futher elaborated}
+        This can potentially degrade the beacon \emph{availability}, depending on how the contesting process is handled and executed.
 \end{description}
 
+% \subsubsection{Effects on Properties}
+% We evaluate each type of property based on their effect on the previously defined security properties for randomness beacons. We present this evaluation in a table of variations and their effects on properties. We use \emph{+} to indicate that a variation improves or supports a given property, and vice versa with \emph{-}. Each field also contains reasons for their score.
+
+% \newcommand{\good}[1]{$+$#1}
+% \newcommand{\baad}[1]{$-$#1}
+% \newcommand{\neut}[1]{$\pm$#1}
+
+% \begin{table}[htb]
+%     \centering
+%     \footnotesize
+%     \begin{tabularx}{\textwidth}{XXXXX}
+%         \toprule
+%                        & Unpredictability                                                 & Randomness                       & Availability                           & Verifiability                             \\ \midrule
+% User Input             & \baad{Needs many inputs}%{why? Two is enough}
+%                        & \baad{No guarantees on entropy}%{isn't it guaranteed to be as high as highest input}
+%                        & \baad{Requires user inputs}
+%                        & \good{Commit to inputs}%{what about verifying computation on the inputs}
+% \\
+% External Input         & \baad{Can predict negligible time before beacon}%{is this bad?}
+%                        & \neut{Source determines entropy}
+%                        & \baad{Depends on source availability}
+%                        & \good{Source is public}                   \\
+% Internal Input         & \good{Unavailable to adversaries}%{what if the beacon is an adversary!?}
+%                        & \good{Typically high entropy}%{how can that even be guaranteed?}
+%                        & \good{Stability and control of source}
+%                        & \baad{Requires proofs}%{And complete blind trust, since proofs say nothing}
+% \\
+% Self-announced entity  & N/A                                                              & N/A                              & \baad{Single point of failure}         & N/A                                       \\
+% Elected Operator       & N/A                                                              & N/A                              & \baad{Single point of failure}         & N/A                                       \\
+% Distributed Execution  & \baad{Participants may use intermediate information to predict}%{how? it requires all participants to get correct outcome, no?}
+%                        & N/A
+%                        & \baad{Can fail or be corrupted}%{if participants drop out}
+%                        & \good{Participants guaranteed correctness}\\
+% Self-service Execution & \good{Beacon is the source data, so can only predict that}
+%                        & N/A
+%                        & \good{Only source can fail}%{doesn't this mean single point of failure?}
+%                        & \baad{All users must agree on randomness}%{isn't that the point of the beacon?}
+% \\
+% Verifiable             & N/A                                                              & N/A                              & N/A                                    & \good{Fundamental}                        \\
+% Contestable            & N/A                                                              & N/A                              & \baad{Contesting may interrupt}        & \good{Challenge beacon on correctness}    \\ \bottomrule
+%     \end{tabularx}
+%     \caption{My caption}
+%     \label{my-label}
+% \end{table}
+
+%     Based on this evaluation we will later determine how specific beacon implementations affect the properties given their variations.
