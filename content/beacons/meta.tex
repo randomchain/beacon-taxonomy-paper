@@ -31,8 +31,9 @@ We therefore synthesize our own definition, which will be used forward in this p
 
 A trustworthy randomness beacon is a service that publishes random data at a known interval.
 Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is a suitable function for generating randomness (such as an extractor function), and $R$ is the random outcome.
-The quality of $R$ depend on the quality of $I$. It is, however, difficult to quantify these qualities without making assumptions on the function $f$ or assumptions about the applications using the output of the beacon \mtjnote{Maybe another part of the model should be how each solution quantifies this?}.
 For $B$ to be a beacon, it is then run at a known, regular interval, $\delta$, such that $t+n\delta$ for any $n>0$ are valid times.
+The quality of $R$ depends on the quality of $I$. It is, however, difficult to quantify these qualities without making assumptions on the function $f$ or assumptions about the applications using the output of the beacon --- we will therefore not require a quantity, but rather allow for reasoning about the quality of a given beacon.
+
 
 To describe a trustworthy randomness beacon, we present the following attributes. Each of these attributes may or may not be fulfilled to some degree --- however an ideal trustworthy randomness beacon should have all of these attributes.
 
