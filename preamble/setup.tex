@@ -4,22 +4,24 @@
 % PAGE LAYOUT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{typearea}
+\usepackage[twocolumn=true]{typearea}
 \KOMAoptions{ % Basic page layout.
     %draft=true,
     paper=a4,
     abstract=true,
-    twoside=true,
+    twoside=false,
     fontsize=11pt,
     numbers=noenddot,
-    BCOR=10mm % Margin binding correction
+    DIV=16,
+    % BCOR=10mm % Margin binding correction
 }
 
 % Headers and footers
 \usepackage[automark, headsepline=.3pt:head]{scrlayer-scrpage}
 \pagestyle{scrheadings}
+\clearscrheadfoot
 \ohead{{\MakeUppercase\leftmark}}
-\ihead{\rightmark}
+\cfoot[\pagemark]{\pagemark}
 \setkomafont{pagehead}{\footnotesize\normalfont\sffamily}
 \setkomafont{pagenumber}{\footnotesize\normalfont\sffamily}
 \setkomafont{author}{\small\normalfont}

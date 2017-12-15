@@ -18,7 +18,7 @@ There is no validation in this type, as it is neither verifiable nor contestable
 A general example of autocratic collector beacon types can be seen in \Cref{fig:autocratic_beacon}, where the green marking depicts the components under total control of the beacon operator.
 It can also be seen that the output of the private external entropy source, $I_t$, can be manipulated or even manufactured by the autocratic beacon operator; without users being able to detect it.
 
-\begin{figure}[htb]
+\begin{figure*}[htb]
     \pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
     \centering
@@ -35,7 +35,7 @@ It can also be seen that the output of the private external entropy source, $I_t
         \end{pgfonlayer}
     \end{tikzpicture}
     \caption{An autocratic collector beacon}\label{fig:autocratic_beacon}
-\end{figure}
+\end{figure*}
 
 
 \subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
@@ -61,8 +61,7 @@ In the figure, $i_{u,t}$ denotes a single user's $u$ input, and $R'$ the output 
 The sequential computation then performs $f'(I'_t)$, where $I'_t$ is the outcome of previous iteration and the current user's input, i.e.\ $R' \times i_{u,t} = I'_t$.
 In the last step of the sequential \gls{mpc} protocol the final beacon outcome $R$ is published to all users.
 
-\begin{figure}[htb]
-    \pgfdeclarelayer{background}
+\begin{figure*}[hbt]\pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
     \centering
     \footnotesize
@@ -79,7 +78,7 @@ In the last step of the sequential \gls{mpc} protocol the final beacon outcome $
         \end{pgfonlayer}
     \end{tikzpicture}
     \caption{Example of a specialized \gls{mpc} beacon protocol}\label{fig:mpc_beacon}
-\end{figure}
+\end{figure*}
 
 
 \subsubsection{Transparent Authority}\label{ssub:transparent_authority}
@@ -99,8 +98,7 @@ As can be seen on the figure, the authority has to commit the input $I_t$, at a 
 This input is verifiable, and therefore the outcome will also be verifiable, due to the nature of a transparent authority.
 
 
-\begin{figure}[htb]
-    \pgfdeclarelayer{background}
+\begin{figure*}[hbt]\pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
     \centering
     \footnotesize
@@ -116,4 +114,5 @@ This input is verifiable, and therefore the outcome will also be verifiable, due
         \end{pgfonlayer}
     \end{tikzpicture}
     \caption{Example of a transparent authority beacon}\label{fig:transparent_beacon}
-\end{figure}
+\end{figure*}
+
