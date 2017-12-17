@@ -5,10 +5,11 @@ These settings all alter the way the beacon operates and how users interact with
 Furthermore, it affects which shape the beacon implementation takes, i.e.\ different technologies better suit varying settings.
 
 There are two main distinctions when dealing with settings of a randomness beacon --- \emph{private} and \emph{public}.
+\stefan{hmm... private and public is a bit confusing. because private can be more than a single person? maybe permissioned and permissionless? hmm... or why not make it general: define a set S of users, and if S is not everybody, we call it private, otherwise public?}
 Within these categories are then different views on trust, scalability, intent, and incentives.
 
 \subsubsection{Private Setting}
-In a private setting it is safe to assume that no participant will be obviously malicious, i.e.\ an adversary will not risk being caught red-handed since it would exclude him from the network.
+In a private setting it is safe to assume \stefan{I disagree. why in a private setting there may not be cheaters!?} that no participant will be obviously malicious, i.e.\ an adversary will not risk being caught red-handed since it would exclude him from the network.
 However, we can suspect that an adversary will try to manipulate the outcome of a randomness beacon if possible --- all users are anticipated to seek whatever benefits themselves.
 This means that all detectable manipulation and malicious activities will be avoided by the participants of the private network.
 

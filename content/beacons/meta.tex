@@ -6,12 +6,14 @@ As part of the goal of this paper, we model attributes a trustworthy randomness 
 These attributes need to be sufficiently general to encompass a variety of implementations.
 However before doing so, we will draw inspiration from earlier definitions.
 
+\stefan{perhaps you could move the subsection on randomness of Section 3 as a first subsection here}
+
 The term \emph{beacon} was originally introduced by \citet{rabin1983transaction}, who describes it as a trusted third party that emits random numbers at a set interval as a way to enable fair contract signing and secret disclosure.
 He assumes that beacon is provided as a service by a trusted third party and behaves \enquote{honestly}.
 He furthermore argues for a number of criteria for the beacon:
 
 \begin{description}
-    \item[Unpredictability] The output of the beacon should be unpredictable before it is published.
+    \item[Unpredictability] The output of the beacon should be unpredictable before it is published. \stefan{did Rabin really say this already?}
     \item[Random] The beacon should use some physical method to produce random numbers.
     \item[Availability] The beacon should be publicly available, and could have backups in case of failure or jamming.
 \end{description}
@@ -22,7 +24,8 @@ Since we do not want to trust blindly in a third party, we will look for an alte
 \citet{bonneau2015bitcoin} extends this description to describe a decentralized beacon based on the bitcoin blockchain.
 It is a function that returns an $m$-bit near-uniformly distributed random value $r$ at each time interval $t$.
 An assumption on the min-entropy of the input is made.
-The $m$-bit value is computed from a sample of the source at time $t$, $D_t$, using an extractor function.
+\stefan{i would define min-entropy here, not in the background section}
+The $m$-bit value is computed from a sample of the source at time $t$, $D_t$, using an extractor function. \stefan{give some intuition what is hard about making it decentralized}
 
 They describe a beacon as a function applied regularly to some input with a known min-entropy.
 They capture an element necessary for a trustless randomness beacon, namely verifiability --- the ability to verify certain properties of the output.
@@ -31,35 +34,45 @@ They also differ in the requirement on randomness, as the output must simply be 
 Their beacon definition is, however, tailored to describe their solution, and is as such not broad enough to allow for other solutions.
 Specifically, they require the input to be unknown before time $t$, and they require that any user can compute the output after time $t$ --- two things that are not necessarily required in some solutions.
 
+\stefan{are these two papers the only ones that matter? otherwise list all the other papers too and put them in some categories}
+
 We therefore synthesize our own definition, which will be used forward in this paper:
 
-A trustworthy randomness beacon is a service that publishes random data at a known interval.
-Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is a suitable function for generating randomness (such as an extractor function), and $R$ is the random outcome.
-For $B$ to be a beacon, it is then run at a known, regular interval, $\delta$, such that $t+n\delta$ for any $n \in \mathbb{N}$ are valid times.
+A trustworthy \stefan{is trustworthy not a property you want to mention later? better delete it then here} randomness beacon is a service that publishes random data at a known interval.
+Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is a suitable function for generating randomness (such as an extractor function) \stefan{define extractor function only here quickly}, and $R$ is the random outcome.
+For $B$ to be a beacon, it is then run at a known, regular interval, $\delta$, such that $t+n\delta$ for any $n \in \mathbb{N}$ are valid times \stefan{i dont understand}.
 The quality of $R$ depends on the quality of $I$.
+\stefan{does the quality only depend on I or also on other things? also define quality... also: give some examples of what I\_t could be, to make things more concrete. you should also say that sometimes you want users to contribute to this input}
 It is, however, difficult to quantify these qualities without making assumptions on the function $f$ or assumptions about the applications using the output of the beacon --- we will therefore not require a quantity, but rather allow for reasoning about the quality of a given beacon.
 
 
 To describe a trustworthy randomness beacon, we present the following attributes.
 Each of these attributes may or may not be fulfilled to some degree --- however an ideal trustworthy randomness beacon should have all of these attributes.
+\stefan{so what are the minimal properties one needs to call it "random beacon"? without any of the properties below is it still a random beacon?}
 
 \begin{description}
     \item[Unpredictable]
         Any user should not be able to predict any information about the output of the beacon prior to time $t$ --- or more precisely, a user should not be able to predict the output with a larger probability than sampling a uniform distribution.
         This indirectly also makes the beacon unmanipulatable, as manipulation would lead to some degree of predictability for some user(s).
     \item[Min-Entropy Reasoning]
-        The output should be reasoned about to make sure it contains enough min-entropy.
+				\stefan{not a good word (also it seems focusing on min-entropy is unnecessarily restrictive?)}
+        The output should be reasoned about \stefan{too vague, elaborate / formalize} to make sure it contains enough min-entropy.
         This is a way of guaranteeing some level of randomness.
     \item[Availability]
         All users in a given setting should have access to the randomness beacon.
-        This means both their ability to contribute with input, if applicable, and their access to the output.
+        This means both their ability to contribute with input \stefan{the fact that maybe someone has to contribute input comes out of the blue. introduce it earlier in the text already (but of course keep what you have here)}, if applicable, and their access to the output.
     \item[\enquote{Proof of Honesty}]
-        Users should not trust \emph{any} output.
+				\stefan{not a good word. find a better one, e.g. "Verifiability"?}
+        Users should not trust \stefan{should not *need* to trust} \emph{any} output.
         A beacon needs to be designed such that it can prove its honesty instead of requiring blind trust.
         This proof can for example be accompanying the output with a proof that can be used to verify the correctness of the output, or giving the users to ability to contest the correctness of the output.
 \end{description}
 
 This definition is more flexible than the predecessors, as it does not require a randomness beacon to be publicly available, but rather introduces a \emph{setting} since beacons could also see use in non-public settings.
+\stefan{well, a beacon needs to be available to some people. so maybe you need to fomally introduce two groups of users:
+- user set O who should be able to get the output of the beacon
+- user set I who should be able to provide inputs to the beacon
+... and then argue about those (maybe for some beacons I may not be defined, for others it is)}
 However, it also poses a more strict definition of correctness, since it must be proved.
 %It also generalizes the verifiability to simply concern the honesty of the beacon.
 
