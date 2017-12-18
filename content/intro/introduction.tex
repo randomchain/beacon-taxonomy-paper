@@ -1,110 +1,71 @@
 \section{Introduction}\label{cha:introduction}
 
-% Random numbers are useful, important, and necessary for many things.
+% Intro + brief use cases
 Random numbers are useful, important, and even critical, prerequisites in many areas.
-%Even before computers, randomness was used in ancient Athens, Greece to randomly sample citizens of power in a democracy.
-%Lotteries have been around for a long time, too, and depend on randomly selecting winners, for example by picking numbered balls from a rotating cage.
-% Randomness is in particular important for security
-%Today, there are many additional uses of randomness.
-%Cryptographically securing and sharing information heavily relies on random numbers, and some new fair consensus protocols are based on randomness.
-%There are a number of interesting use cases that require or could benefit from randomness that is publicly available.
-%
-%Usecases - currently with no vietnam
-For example they are utilized in lotteries, where numbered balls are drawn on live television. This is a way of publicizing the random draw process and more importantly showing that the process is not being manipulated.
+Lotteries~\cite{grumbach2017distributed}, sport and military drafts~\cite{nbalottery, starr1997nonrandom}, and games and gambling~\cite{randomnumbersgames} all rely on random numbers.
+Cryptographic schemes used in e.g.\ modern communication contain constants that exhibit randomness~\cite{baigneres2015trap}.
+Also in academia, random numbers are required in e.g.\ randomized trials~\cite{kim2014random} and simulations of unpredictable processes~\cite{heath2002scientific}, and in computer science, using randomized algorithms~\cite[Section~5.3]{cormen2009introduction} is one use case.
 
-% Give some example like lotto (and perhaps another)
-%The \gls{nba} annually holds a draft, which decides the order of what teams get to select the top amateur players who are ready to turn into professionals.
-%Even though the draw is performed by picking envelopes shuffled in a transparent spinning drum on live tv, fans have claimed for many years that the draft is rigged to favor a single team~\cite{princeton2016}. Famous conspiracy theories revolve around bending corners on the envelopers, or keeping a single envelope in the freezer.
-%It is hard to dispel these theories, and even harder to prove that the draft is fair.'
+% Integrity is important
+Many of these examples happen in a public setting where people depend on the outcome of the random draw --- in other words, they have a stake in the value of the random number.
+This can for example be a monetary prize, an advantage, or a disadvantage, and in the case of cryptography, randomly chosen constants help guard confidential information.
+Thus, the quality and integrity of such number is important, and since money, advantages, disadvantages, and information is at stake, adversaries should be assumed to be ready to manipulate the randomness in every way imaginable.
 
-%In 1969, a conscription draft for the US Military was held to determine who would be sent to fight in the Vietnam war. Small capsules labelled with each day of the year were picked from a plastic drum on live television.
-%The ordering of the dates drawn and the birthdays of all men determined the order of enrollment.
-%Afterwards, the lottery was proven to be botched; statisticians noticed an anomalous pattern.
-%The broadcast was reviewed, and the drum was always turned an even number of times, such that capsules initially on top stayed on top.
-%In other words, there was not sufficient mixing to make it a statistically random draw~\cite{princeton2016}.
+% Examples of intern manipulation and outside manipulation
+As a recent example, the information security director of the American Multi-State Lottery Association, Eddie Tipton, was charged with installing a rootkit on the computer generating the random numbers, resulting in him winning the \$14.3 million prize~\cite{lotteryscandal-eddietipton}.
+Another famous example is from 1980, where the host of lottery television broadcast switched out some ping pong balls with slightly heavier ones, resulting in a highly biased draw~\cite{lotteryscandal-666}.
+As seen in these lottery examples, people within the entity generating the random numbers may manipulate the result, but powerful outside entities may also have an interest.
+Such an entity is the \gls{nsa}, and leaks about them in the past decade revealing massive manipulation and the deliberate inclusion of backdoors in cryptographic schemes~\cite{nytimes-nsabackdoors} have aggravated the question of trust.
+In any case, having blind faith in an entity is not desirable --- people should not \emph{need} to trust an entity to do it right.
 
+To our knowledge, random draws in many use cases are usually performed on-demand.
+When lottery entities need the result, they perform the draw of some ping pong balls or use a computer to generate a random number. When cryptographic designers need a constant, they generate one~\cite{baigneres2015trap}.
+Even though they may describe their process, it is difficult for them to prove their execution of it, and even if they can prove the execution, on-demand random numbers are still not trustworthy. To cheat, they could keep generating an on-demand value until a \enquote{satisfactory} one is found and then publish it.
 
-An area which relies heavily on true randomness is cryptography, where random numbers are a key part of generating parameters for encryption schemes, e.g.\ \gls{ecc}.
-Here randomness is used to determine the exact parameters describing the elliptical curve, and a manipulated randomness would give an adversary an advantage in breaking the encryption scheme~\cite{bernstein2015manipulate}.
+The solution to the problem of trustworthy randomness could be to use a \emph{randomness beacon}.
+Michael Rabin introduced this term in 1983~\cite{rabin1983transaction} to describe a trusted public service that provides fresh randomness at regular intervals.
+An entity wishing to use a random number should then:
+\begin{eromanate*}
+    \item announce a function mapping the beacon output space to their desired space; this desired space could for example be lottery numbers between 1 and 36, and
+    \item announce a specific time in the future at which point the beacon output will be used.
+\end{eromanate*}
+This tactic delegates the trust issue to the randomness beacon.
+The entity commits to using a future unknown random number which effectively makes the entity unable to keep requesting values until a satisfactory value is found.
+Furthermore, anyone can see the same random value of the beacon and verify the outcome by using the announced mapping (and of course verifying the mapping is fair).
 
-%It is not only governments or large organizations, that can bias randomness.
-%For example, a single adversary might be able to affect a seemingly random outcome, and thereby exploit the initial trust in an otherwise honest system.
-%This happened in 2015 where the security director at Multi-State Lottery Association, successfully installed a rootkit on the trusted computer, used for generating the randomness for the lottery draw.
-%He did it by exercising his privileges as security director, to temporarily disable the video surveillance, which otherwise was constantly filming the computer situated in a glass cage.
-%The exploit allowed him to predict the next lottery numbers, and claim the prize of \$14.3m.
-%It was later discovered that he had manipulated the system, after another video surveillance system, caught him buying the winning ticket~\cite{bbclotteryexploit}.
+This still leaves the problem of trusting the beacon to not bias the random number.
+As an example, the \gls{nist} in USA, runs a randomness beacon.
+To generate the random value, they use a setup that measures quantum mechanical effects.
+There is, however, no proof that the value has been generated by the quantum mechanical procedure as they claim.
+Users have to blindly trust that the value is generated as described.
+Furthermore, the reputation of the \gls{nist} is somewhat tarnished, as they were involved in the publication of the Dual Elliptic Curve PRNG standard, which they now have admitted contained a backdoor~\cite{nist2014backdoor}.
+While there to our knowledge, exists no cases where \gls{nist} have biased the outcome, they have the ability to.
 
-These examples show some of the challenges associated with generating randomness. Allowing a third party, trusted or not, to generate the randomness gives them the power to bias the randomness to their benefit.
-
-%What is randomness
-Randomness is uniformly distributed information, where all outcomes are equally likely. Due to its unpredictability it is used as a source of fair decisions. Even today with computers available, creating randomness is not easy, as computers are inherently deterministic. Making it publicly trustable is even harder. 
-
-%Beacons
-Michael Rabin introduced the term \emph{beacon}~\cite{rabin1983transaction}, a trusted service to provide fresh randomness at regular intervals. The beacons has a number of properties such at being unpredictable, meaning its output can not be predicted before time, its output is uniformly distributed or close to. To make a public beacon trustable, it can also be verifiable, meaning that users can verify the computations that produced the randomness. 
-Having a trusted beacon available eliminates the need to entrust randomness generation to other parties.
-
-%Nist is not trusted
-The \gls{nist} beacon is perhaps the most recognized and public randomness beacon available.
-It is run by the US Government, and broadcasts 512 random bits every minute.
-If this beacon could be trusted, it would be universally usable. The random bits are trivially converted into numbers, and are easily usable by national lotteries and even in your local bingo club every Wednesday night.
-However, there is no proof that the bits have been generated by the quantum machine as they claim. Users have to blindly trust that the bits are generated as described.
-The reputation of the \gls{nist} is somewhat tarnished, as they were involved in the publication of the Dual Elliptic Curve PRNG standard, which they now have admitted contained a back door~\cite{nist2014backdoor}. This makes the output of the beacon hard to trust for randomness that you do not want the US Government to be able to bias.
-%Furthermore, a centralized beacon may also be unreliable --- the \gls{nist} beacon was offline during the 2013 US Government shutdown~\cite{bonneau2015bitcoin}.
-
-
-% Adversaries.
-Generally, use cases of randomness often involve money, benefits, disadvantages, or securing secrets cryptographically. Therefore, adversaries have a clear interest in manipulating randomness to their own advantage.
-This merits the question of whether a given source of randomness can be \emph{trusted}.
-
-% More adversaries. "Mistrust" is rising.
-This is further emphasized as the past decade has had numerous leaks revealing aggressive espionage and misuse of information by authorities.
-%¤Large corporations and authorities have on several occasions misused trust to pursue their own interests.
-In the light of events such as the unveiling of mass surveillance by the \gls{nsa} a new era of mistrust has begun.
-If we have not already redefined our picture of an adversary, we certainly should;
-Philip Rogaway states in his paper \textit{The Moral Character of Cryptographic Work}~\cite{rogaway2015moral}:
-\enquote{%
-    At this point, I think we would do well to put ourselves in the mindset of a real adversary, not a notional one:
-    the well-funded intelligence agency, the profit-obsessed multinational, the drug cartel.
-    You have an enormous budget. You control lots of infrastructure.
-    You have teams of attorneys more than willing to interpret the law creatively.
-    You have a huge portfolio of zerodays. You have a mountain of self-righteous conviction.
-    Your aim is to Collect it All, Exploit it All, Know it All.}%
-
-%As an anti-thesis to centralized organizations and authorities, there has been a surge of interest in decentralization and verifiability. This has roots in the \emph{cypherpunk} culture, which rose in popularity in the early days of the Internet.
-%These activists advocate strong privacy tools and widespread use of strong cryptography to combat privacy-invading practices of governments and corporations~\cite{hughes1993cypherpunk}.
-
-%Protect from adversaries, possible us
-To protect ourselves against adversaries, we can use cryptography, and it is tied strongly to randomness. Thus we need to make sure that randomness can be trusted. If it can be biased, adversaries can obtain advantages and compromise cryptographic security.
-
-There are several approaches to providing a trustable randomness source, such as a public and verifiable randomness beacon; however, to the best of our knowledge, these solutions have not yet been classified, analysed, and compared.
-Furthermore, parameters for comparison have not been established to facilitate such a taxonomy.
+Some literature exists on making randomness beacons more trustable, and we find it desirable to investigate such concept of trust.
+We have not been able to find extensive research on the topic, but the existing research is promising, and this paper will therefore try to classify these to give an overview of the topic.
 
 \subsection*{Contributions}\label{subsec:contributions}
 % comparison parameters
-In this paper, we establish a tangible set of parameters which can be used to classify different approaches to creating randomness beacons. We will be focusing on trust, i.e.\ how a given user of the randomness beacon can trust it, and if they should trust it.
+In this paper, we produce a general randomness beacon definition. Afterwards, we create a tangible set of properties which can be used to classify different approaches to creating randomness beacons.
+We will be focusing on trust, i.e.\ how a given user of the randomness beacon can trust it, and if they should trust it.
 Alongside picking out shortcomings of the different approaches, we will examine where they excel compared to both each other and current solutions for public randomness.
 
 % actual taxonomy
-We provide the first taxonomy of such implementations alongside theoretical solutions and idea, which seeks to improve the trustability of randomness sources.
+To our knowledge, we provide the first taxonomy of such implementations accompanied by theoretical solutions and ideas, which seek to improve the trustability of randomness sources.
+
+The rise of cryptocurrencies, and more importantly blockchain technologies, has spurred interest in establishing trust in a setting where participants are mutually distrusting.
+Randomness beacons display a similar setting, and thus many approaches utilize the blockchain technology.
+As such, blockchain technology will be described briefly and incorporated into the taxonomy of randomness beacons.\msmnote{rewrite if blockchain is deleted from prelims}
+
+\paragraph{The paper is organized as follows:}
+In \cref{sec:use_cases_of_randomness_beacons} we describe the real-world context of randomness beacons by showing motivating use cases.
+We present preliminaries in \cref{sec:preliminaries}, before diving into randomness beacons in \cref{sec:beacons}.
+This section will specify the properties and settings of such beacons, and be the foundation of classifying current randomness beacon approaches.
+Furthermore, we define three archetypes of randomness beacons, which loosely describes the prevalent trends in such implementations.
+
+In \cref{sec:classification} we present, discuss, and classify existing approaches alongside non-beacon approaches to generating randomness.
+Lastly, we conclude upon this work in \cref{sec:conclusion}.
+
 
 % blockchain magic to the rescue
-We also introduce new ways of improving existing solutions, by harnessing the immutability and consensus power of blockchain networks.
-
-%Throughout the paper, our focus regarding randomness generation will be on trust and not quality of entropy.
-
-% Today, there exists some services, but only a few, that make random numbers.
-%Usually, high-quality randomness is generated by combining a hardware true random number generator (TRNG) and a cryptographically secure pseudo-random number generator (PRNG). The entropy of a TRNG is usually generated based on output from a hardware module utilizing physical properties. %However, it is impossible to prove that a specific output indeed has been generated by this TRNG\@. Even with such a proof, it is impossible to guarantee that the output was not carefully selected from a huge number of outputs of the TRNG\@.
-
-%A few services exist, such as \gls{nist} or Random.org, which
-
-%Indeed, randomness is either generated in a centralized and non-verifiable fashion by an authority such as \gls{nist} \mtjnote[inline]{source}, or by the people who need randomness.
-%With these approaches, even though they explicitly describe their protocol of obtaining randomness, we cannot guarantee the protocol was followed as described.
-%We have to trust them. \mtjnote[inline]{Rewrite and find source}
-
-% Taken from [milliondollarcurve], section 2.2
-
-
-
-% Examples:
-% NBA annual draft lottery. See OnBitcoin
-% US conscription lottery, vietnam war. OnBitcoin
+%We also introduce new ways of improving existing solutions, by harnessing the immutability and consensus power of blockchain networks.

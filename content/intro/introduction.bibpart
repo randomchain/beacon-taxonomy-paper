@@ -94,11 +94,11 @@
   year={2014}
 }
 
-@book{motwani2010randomized,
-  title={Randomized algorithms},
-  author={Motwani, Rajeev and Raghavan, Prabhakar},
-  year={2010},
-  publisher={Chapman \& Hall/CRC}
+@book{cormen2009introduction,
+  title={Introduction to Algorithms, Third Ed.},
+  author={Cormen, Thomas H and Leiserson, Charles E and Rivest, Ronald L and Stein, Clifford},
+  year={2009},
+  publisher={MIT press}
 }
 
 @book{heath2002scientific,
@@ -107,3 +107,4 @@
   year={2002},
   publisher={McGraw-Hill New York}
 }
+
