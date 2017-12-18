@@ -67,3 +67,43 @@
   year={2015},
   organization={Springer}
 }
+
+@online{nytimes-nsabackdoors,
+  title={N.S.A. Able to Foil Basic Safeguards of Privacy on Web},
+  author={Nicole Perlroth and Jeff Larson and Scott Shane},
+  url={http://www.nytimes.com/2013/09/06/us/nsa-foils-much-internet-encryption.html},
+  year={2013},
+  urldate={2017-12-18}
+}
+
+@online{randomnumbersgames,
+  title={Randomness and Game Design},
+  author={Keith Burgun},
+  url={http://keithburgun.net/randomness-and-game-design/},
+  urldate={2017-12-18},
+  year={2014}
+}
+
+@article{kim2014random,
+  title={How to do random allocation (randomization)},
+  author={Kim, Jeehyoung and Shin, Wonshik},
+  journal={Clinics in orthopedic surgery},
+  volume={6},
+  number={1},
+  pages={103--109},
+  year={2014}
+}
+
+@book{motwani2010randomized,
+  title={Randomized algorithms},
+  author={Motwani, Rajeev and Raghavan, Prabhakar},
+  year={2010},
+  publisher={Chapman \& Hall/CRC}
+}
+
+@book{heath2002scientific,
+  title={Scientific computing},
+  author={Heath, Michael T},
+  year={2002},
+  publisher={McGraw-Hill New York}
+}
