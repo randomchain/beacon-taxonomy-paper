@@ -133,3 +133,12 @@
   url={https://github.com/randao/randao},
   urldate={2017-12-11}
 }
+
+@inproceedings{grumbach2017distributed,
+  title={Distributed Random Process for a Large-Scale Peer-to-Peer Lottery},
+  author={Grumbach, St{\'e}phane and Riemann, Robert},
+  booktitle={IFIP International Conference on Distributed Applications and Interoperable Systems},
+  pages={34--48},
+  year={2017},
+  organization={Springer}
+}
