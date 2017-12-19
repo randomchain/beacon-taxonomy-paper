@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e -x
+set -x
 
 if [[ `git status --porcelain` ]]; then
     git stash save
@@ -24,6 +24,9 @@ for changed_file in $changed_files; do
         orig_file=$(mktemp)
         curr_file=$(mktemp)
         git show -s ${ORIG}:$changed_file > $orig_file
+        if [ $? -ne 0 ]; then
+            echo > $orig_file
+        fi
         mv $changed_file $curr_file
         latexdiff --exclude-textcmd="chapter,section,subsection" $orig_file $curr_file > $changed_file
         rm $orig_file
@@ -32,6 +35,8 @@ for changed_file in $changed_files; do
 done
 
 make
+
+mv main.pdf diffed.pdf
 
 git reset HEAD --hard
 
