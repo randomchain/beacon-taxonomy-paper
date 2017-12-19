@@ -44,10 +44,10 @@ Each term contains multiple types of attacks and requirements for fulfillment, a
 We identify the following attacks on the availability of a beacon:
 
 \begin{description}
-    \item[\Acrfull{dos}] The attacker prevents users from accessing the output by overwhelming the operator  with network traffic, or manipulating the network with an eclipse attack~\cite{Singh06eclipseattacks} to prevent certain users from accessing the beacon output.
-    \item[Preventing Protocol Execution] Some \gls{mpc} protocols  rely on having an honest majority to complete~\cite{cascudo2017scrape} --- an attacker or group of attackers could outnumber the honest parties, preventing the protocol from delivering an output.
+    \item[\Acrfull{dos}] The attacker prevents users from accessing the output by overwhelming the operator with network traffic, or manipulating the network with an eclipse attack~\cite{Singh06eclipseattacks} to prevent certain users from accessing the beacon output.
+    \item[Preventing Protocol Execution] Some \gls{mpc} protocols rely on having an honest majority to complete~\cite{cascudo2017scrape} --- an attacker or group of attackers could outnumber the honest parties, preventing the protocol from delivering an output.
     \item[Denial of Input] For beacons that use user input, the attacker can overwhelm the operator with input \stefan{well why not just block the inputs of others directly? (Not sure what he wants here)}, preventing other users from contributing, and potentially biasing the input, violating the unpredictability and randomness properties of the beacon.
-        While this does not prevent the beacons output, it prevents users from interacting with the beacon according to protocol, hence why it is classified as an attack on availability.
+    While this does not prevent the beacons output, it prevents users from interacting with the beacon according to protocol, hence why it is classified as an attack on availability.
 \end{description}
 
 \noindent%
@@ -63,4 +63,3 @@ We also identify the following attacks on the integrity of a beacon:
         This could include publishing false results, denying user inputs or not extracting randomness according to protocol, and could potentially violate all properties of the beacon. %However, such tampering can be detected if the beacon incorporates some form of verification, which should reveal any divergence from the operating protocol.
 
 \end{description}
-
