@@ -38,8 +38,9 @@ parallel (
     "diff": {
         node {
             stage('Diff') {
-                unstash "sources"
-                make "diff"
+                deleteDir()
+                checkout scm
+                bash "./diff_cha.sh"
                 stash name: "diffed"
                 archiveArtifacts 'diffed.pdf'
             }

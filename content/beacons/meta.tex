@@ -71,9 +71,7 @@ This can also be considered the \emph{beacon protocol}, the procedure that guide
 
 %It is, however, difficult to quantify these qualities without making assumptions on the function $f$ or assumptions about the applications using the output of the beacon --- we will therefore not require a quantity, but rather allow for reasoning about the quality of a given beacon.
 
-
 To describe a randomness beacon, we present the following attributes.
-Each of these attributes may or may not be fulfilled to some degree --- however an ideal trustworthy randomness beacon should have all of these attributes. As an absolute minimum, a beacon must be unpredictable and have some level of min-entropy. It must also be available, but does not always need to be this; periodic availability could be sufficient for some usecases. Verifiability is only required if users do not want to trust the beacon, it could easily function without it.
 
 \begin{description}
     \item[Unpredictable]
@@ -90,6 +88,8 @@ Each of these attributes may or may not be fulfilled to some degree --- however 
         A beacon needs to be designed such that it can prove its honesty instead of requiring blind trust.
         This proof can for example be accompanying the output with a proof that can be used to verify the correctness of the output, or giving the users to ability to contest the correctness of the output.
 \end{description}
+
+Each of these attributes may or may not be fulfilled to some degree --- however an ideal trustworthy randomness beacon should have all of these attributes. As an absolute minimum, a beacon must be unpredictable and have some level of min-entropy. It must also be available, but does not always need to be this; periodic availability could be sufficient for some use cases. Verifiability is only required if users do not want to trust the beacon, it could easily function without it.
 
 This definition is more flexible than the predecessors, as it does not require a randomness beacon to be publicly available, but rather introduces a \emph{setting} since beacons could also see use in non-public settings.
 However, it also poses a more strict definition of correctness, since it must be proved.
