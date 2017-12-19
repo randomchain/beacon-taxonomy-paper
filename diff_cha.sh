@@ -9,10 +9,8 @@ else
     CHANGED=false
 fi
 
-git fetch -vp
-
 if [[ $# == 0 ]]; then
-    ORIG="origin/master"
+    ORIG="HEAD~1"
 else
     ORIG=$1
 fi
