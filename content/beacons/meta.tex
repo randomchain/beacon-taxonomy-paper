@@ -3,7 +3,7 @@
 %   What is a beacon?
 
 As part of the goal of this paper, we model attributes a trustworthy randomness beacon must exhibit.
-We will also provide a brief understanding of the concept of randomness as it is used within the paper. 
+We will also provide a brief understanding of the concept of randomness as it is used within the paper.
 These attributes need to be sufficiently general to encompass a variety of implementations.
 However before doing so, we will draw inspiration from earlier definitions.
 
@@ -11,12 +11,12 @@ However before doing so, we will draw inspiration from earlier definitions.
 \stefan{this subsection is not very comprehensive (nor comprehnsible): step back a bit more and think what really needs to be said here (which will also be relevant later)}
 
 Intuitively speaking randomness is a lack of predictability in events or information. It can also be thought of as data sampled from a uniform distribution, where any sample is as likely as another. The unpredictability of a source of information is measured in entropy.
-We define a source of information as a stream of information based on some real-world occurrence. This can be direct input from users or observation of some external system --- the important aspect is that the source continually produces fresh information.  
-Within information theory, Shannon Entropy is defined as the unpredictability of a state. As an example, a coinflip has two equally likely outcomes that can not be predicted ahead of time, and has an entropy of $\log_{2} 2 = 1$ bit~\cite{informationtheory}. 
-Formally Shannon Entropy of a b-nary source $X$ with alphabet ${a_1, a_2, \ldots, a_n}$ and a probability distribution ${p_1, \ldots , p_n}$ where $p_i = p(a_i)$ is defined as  $\eta_{b} (X) = \sum\limits_{i = 1}^n p_{i}\log_{b} p_{i}$~\cite{informationtheory}. 
+We define a source of information as a stream of information based on some real-world occurrence. This can be direct input from users or observation of some external system --- the important aspect is that the source continually produces fresh information.
+Within information theory, Shannon Entropy is defined as the unpredictability of a state. As an example, a coinflip has two equally likely outcomes that can not be predicted ahead of time, and has an entropy of $\log_{2} 2 = 1$ bit~\cite{informationtheory}.
+Formally Shannon Entropy of a b-nary source $X$ with alphabet ${a_1, a_2, \ldots, a_n}$ and a probability distribution ${p_1, \ldots , p_n}$ where $p_i = p(a_i)$ is defined as  $\eta_{b} (X) = \sum\limits_{i = 1}^n p_{i}\log_{b} p_{i}$~\cite{informationtheory}.
 Likewise, a lower bound on the entropy, the  min-entropy, can be calculated as follows: $\eta _\infty(X) _{b} = -\log_{b}(\max(p(x)))$~\cite{informationtheory} .
 
-High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with less entropy by using extractor functions~\cite{pseudorandomness}. Extractor functions can be understood as functions that take a large input with little entropy spread throughout the input, and concentrates it into a smaller output. They extract the entropy, measuring unpredictability, from the larger input and concentrates it into the output. 
+High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with less entropy by using extractor functions~\cite{pseudorandomness}. Extractor functions can be understood as functions that take a large input with little entropy spread throughout the input, and concentrates it into a smaller output. They extract the entropy, measuring unpredictability, from the larger input and concentrates it into the output.
 
 \citet{bonneau2015bitcoin} define an extractor function as $y = \text{Ext}_k(x)$.
 An extractor $\text{Ext}$ is applied on an $n$-bit input $x$ of \enquote{sufficient} entropy.
@@ -59,16 +59,16 @@ Specifically, they require the input to be unknown before time $t$, and they req
 We therefore synthesize our own definition, which will be used forward in this paper:
 
 A  randomness beacon is a service that publishes random data at a known interval.
-Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is a suitable function for generating randomness (such as an extractor function), and $R$ is the random outcome. The entropy of $R$ depends on the quality of $I$, and $I$ can consist of observations of some external source or be directly input by users that use the beacon. 
+Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is a suitable function for generating randomness (such as an extractor function), and $R$ is the random outcome. The entropy of $R$ depends on the quality of $I$, and $I$ can consist of observations of some external source or be directly input by users that use the beacon.
 For $B$ to be a beacon, it is run at a known, regular interval, $\delta$, such that $t+n\delta$ for any $n \in \mathbb{N}$ are output intervals for the beacon.
 
-This can also be considered the \emph{beacon protocol}, the procedure that guides the beacons operations. The protocol also dictates how users interact with the beacon, and how it is controlled. The protocol is enforced by a \emph{beacon operator} that controls the beacon, or algorithmically. 
+This can also be considered the \emph{beacon protocol}, the procedure that guides the beacons operations. The protocol also dictates how users interact with the beacon, and how it is controlled. The protocol is enforced algorithmically or by a \emph{beacon operator} that controls the beacon.
 
 %It is, however, difficult to quantify these qualities without making assumptions on the function $f$ or assumptions about the applications using the output of the beacon --- we will therefore not require a quantity, but rather allow for reasoning about the quality of a given beacon.
 
 
 To describe a randomness beacon, we present the following attributes.
-Each of these attributes may or may not be fulfilled to some degree --- however an ideal trustworthy randomness beacon should have all of these attributes. As an absolute minimum, a beacon must be unpredictable and have some level of min-entropy. It must also be available, but does not always need to be this - periodic availability could be sufficient for some usecases. Verifiability is only required if users do not want to trust the beacon, it could easily function without it. 
+Each of these attributes may or may not be fulfilled to some degree --- however an ideal trustworthy randomness beacon should have all of these attributes. As an absolute minimum, a beacon must be unpredictable and have some level of min-entropy. It must also be available, but does not always need to be this; periodic availability could be sufficient for some usecases. Verifiability is only required if users do not want to trust the beacon, it could easily function without it.
 
 \begin{description}
     \item[Unpredictable]
@@ -90,5 +90,5 @@ This definition is more flexible than the predecessors, as it does not require a
 However, it also poses a more strict definition of correctness, since it must be proved.
 %It also generalizes the verifiability to simply concern the honesty of the beacon.
 
-The definition does not specify any properties about interaction, security, or execution of the beacon and its protocol --- only that it somehow has to prove its honesty.
+The definition does not specify any properties about interaction, security, or execution of the beacon and its protocol, only that it somehow has to prove its honesty.
 These properties rely on the setting and requirements of a given beacon.
