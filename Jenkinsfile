@@ -38,7 +38,6 @@ parallel (
     "diff": {
         node {
             stage('Diff') {
-                deleteDir()
                 unstash "sources"
                 make "diff"
                 stash name: "diffed"
