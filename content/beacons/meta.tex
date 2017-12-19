@@ -17,10 +17,12 @@ Formally Shannon Entropy of a $b$-ary source $X$ with alphabet ${a_1, \ldots, a_
 $$
 H_{b} (X) = -\sum\limits_{i = 1}^b p_{i}\log_{b} p_{i}
 $$
-As an example, a coinflip has two equally likely outcomes that can not be predicted ahead of time, and has an entropy of $-(\frac{1}{2}\log_2 \frac{1}{2} + \frac{1}{2}\log_2 \frac{1}{2}) = 1$ bit~\cite{informationtheory}.
+As an example, a coinflip has two equally likely outcomes that can not be predicted ahead of time, and has an entropy of $-(\frac{1}{2}\log_2 \frac{1}{2} + \frac{1}{2}\log_2 \frac{1}{2}) = 1$~\cite{informationtheory}.
 
-Likewise, a lower bound on the entropy, the  min-entropy, can be calculated as follows~\cite{informationtheory}:
-$$H_\infty(X)_{b} = -\log_{b}\max(p(x))$$
+Likewise, a lower bound on the entropy, the min-entropy, can be calculated as follows~\cite{informationtheory}:
+$$
+H_\infty(X)_{b} = -\log_{b}\max(p(x))
+$$
 
 High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with less entropy by using extractor functions~\cite{pseudorandomness}. Extractor functions can be understood as functions that take a large input with little entropy spread throughout the input, and concentrates it into a smaller output. They extract the entropy, measuring unpredictability, from the larger input and concentrates it into the output.
 
