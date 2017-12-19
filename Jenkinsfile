@@ -40,7 +40,7 @@ parallel (
             stage('Diff') {
                 deleteDir()
                 checkout scm
-                bash "./diff_cha.sh"
+                sh "./diff_cha.sh"
                 stash name: "diffed"
                 archiveArtifacts 'diffed.pdf'
             }

@@ -2,14 +2,14 @@
 
 set -x
 
-if [[ `git status --porcelain` ]]; then
+if ! git diff-index --quiet HEAD --; then
     git stash save
     CHANGED=true
 else
     CHANGED=false
 fi
 
-if [[ $# == 0 ]]; then
+if [ $# -eq 0 ]; then
     ORIG="HEAD~1"
 else
     ORIG=$1
@@ -18,7 +18,7 @@ fi
 changed_files=$(git diff --name-only ${ORIG}..HEAD)
 
 for changed_file in $changed_files; do
-    if [[ $changed_file == *.tex ]]; then
+    if [ ${changed_file: -4} == ".tex" ]; then
         orig_file=$(mktemp)
         curr_file=$(mktemp)
         git show -s ${ORIG}:$changed_file > $orig_file
@@ -38,6 +38,6 @@ mv main.pdf diffed.pdf
 
 git reset HEAD --hard
 
-if [[ $CHANGED ]]; then
+if [ $CHANGED == "true" ]; then
     git stash pop
 fi
