@@ -35,7 +35,7 @@ As such, it is able to convert weak random sources into a highly random output, 
 \subsection{Beacons}
 
 The term \emph{beacon} was originally introduced by \citet{rabin1983transaction}, who describes it as a trusted third party that emits random numbers at a set interval as a way to enable fair contract signing and secret disclosure.
-He assumes that beacon is provided as a service by a trusted third party and behaves \enquote{honestly}.
+He assumes that the beacon is provided as a service by a trusted third party and behaves \enquote{honestly}.
 He furthermore argues for a number of criteria for the beacon:
 
 \begin{description}
@@ -87,6 +87,7 @@ To describe a randomness beacon, we present the following attributes.
         Users should not need to trust \emph{any} output.
         A beacon needs to be designed such that it can prove its honesty instead of requiring blind trust.
         This proof can for example be accompanying the output with a proof that can be used to verify the correctness of the output, or giving the users to ability to contest the correctness of the output.
+        \mtjnote{We call this Validation later?}
 \end{description}
 
 Each of these attributes may or may not be fulfilled to some degree --- however an ideal trustworthy randomness beacon should have all of these attributes. As an absolute minimum, a beacon must be unpredictable and have some level of min-entropy. It must also be available, but does not always need to be this; periodic availability could be sufficient for some use cases. Verifiability is only required if users do not want to trust the beacon, it could easily function without it.
