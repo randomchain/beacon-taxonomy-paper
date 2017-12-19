@@ -1,4 +1,5 @@
 \subsection{Fair Contract Signing}\label{subsec:fair_contract_signing}
+\stefan{maybe have this use case first as it was also the original one proposed?}
 \citet{rabin1983transaction} motivated his invention of the beacon with an example.
 If two parties, $A$ and $B$, want to negotiate a contract, they each want the other party to sign it.
 However, if $A$ signs it and sends it to $B$, then $B$ will be in a position of strength, since $A$ has already committed to it, while $B$ is not.
@@ -8,4 +9,4 @@ Avoiding this situation is desired in a \emph{fair} contract signing protocol.
 The usual way of overcoming this problem is using an intermediary trusted by both parties.
 However, if no such intermediary can be found, Rabin proposes using a fair contract signing protocol that involves a beacon broadcasting random numbers.
 The beacon output is used as the trusted intermediary to provide a known probabilistic guarantee that neither of the parties can cheat.
-\mtjnote{Maybe we should be more specific?}
+\mtjnote{Maybe we should be more specific?} \stefan{yes it is not clear what the idea is here}

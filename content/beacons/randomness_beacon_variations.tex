@@ -1,6 +1,9 @@
 \subsection{Randomness Beacon Variations}
+
+\stefan{this section is quite good already. I am however thinking whether it is a the right place, i think it would be better to give this overview before talking about security criteria and attacks. afterwards we can talk about attacks much more concretely, and give examples where differences are}
+
 %   Properties of beacons
- To understand different types of beacons, we define three categories, which can be used to describe properties that vary between different types of beacons.
+To understand different types of beacons, we define three categories, which can be used to describe properties that vary between different types of beacons.
 These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}, and will also be tied back to the security properties of beacons.
 In the later taxonomy of current randomness beacons approaches, these properties will also be used for classification.
 
@@ -13,7 +16,7 @@ The following points describe different ways for a randomness beacon to source t
         The protocol allows users to provide entropy.
         This can potentially open up for direct manipulation of the result using last-draw attacks, which in turn can enable adversaries to overcome the \emph{unpredictability}.
         The \emph{min-entropy} of the inputs is dependent of the computation, i.e.\ aggregation of inputs and extraction of randomness.
-        Using \enquote{exclusive or} to combine the inputs guarantees that the lower bound of entropy is set by the input with the highest entropy;
+        Using \enquote{exclusive or} to combine the inputs guarantees that the lower bound of entropy is set by the input with the highest entropy \stefan{add a citation here!};
         this means that a user providing good entropy, can be sure that the outcome will have at least the same level of entropy.
 
         Usually, the beacon must commit to a set of user inputs before beginning the randomness computation, thereby making users able to reason about the inputs used.
@@ -33,18 +36,18 @@ The following points describe different ways for a randomness beacon to source t
 
         An upside to using internal input is that the \emph{availability} does not depend on some outside force, as seen from the perspective of the beacon operator.
 
-    \item[External Input]
+    \item[Publicly Available Input]
         The beacon uses some publicly available data for input.
         Publicly available input means that it must be accessible to the public and consistent over a period.
-        Hence, the \emph{availability} of the beacon is dictated by the availability of the source of external input.
-        Moreover, the \emph{min-entropy} is also determined by the external input, which should be scrutinized to guarantee the lower bound of entropy.
+        Hence, the \emph{availability} of the beacon is dictated by the availability of the source of public input.
+        Moreover, the \emph{min-entropy} is also determined by the input, which should be scrutinized to guarantee the lower bound of entropy.
         These sources can for example be the bitcoin blockchain, financial data, or national lottery results.
         \msmnote{Maybe talk about guaranteed entropy level in e.g.\ bitcoin hash, or save for later?}
 
-        Anyone who wishes to manipulate the beacon's output must do so through the external source.
+        Anyone who wishes to manipulate the beacon's output must do so through the source.
         For this type of source it is important to analyze the integrity of the source to understand the integrity of the randomness beacon itself.
 
-        It is important to note that external input does not violate the \emph{unpredictability} property of the beacon, since the time advantage an adversary has over other users is negligible regardless of computing resources.
+        It is important to note that public input does not violate the \emph{unpredictability} property of the beacon, since the time advantage an adversary has over other users is negligible regardless of computing resources.
         Furthermore, any user of the beacon will be able to \emph{verify} that the input has been used to generate the outcome.
 
 \end{description}

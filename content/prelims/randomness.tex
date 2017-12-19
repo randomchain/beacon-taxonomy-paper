@@ -1,11 +1,14 @@
 \subsection{Randomness}\label{sub:prelims_randomness}
+\stefan{this subsection is not very comprehensive (nor comprehnsible): step back a bit more and think what really needs to be said here (which will also be relevant later)}
 
-Randomness is a lack of predictability in events.
+\stefan{Intuitively speaking, randomness is...} Randomness is a lack of predictability in events.
 The unpredictability of a data source is measured in entropy.
-High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with lower levels by using extractor functions~\cite{pseudorandomness}.
+\stefan{define entropy, define source: formally}
+High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with lower levels \stefan{lower levels of what?} by using extractor functions~\cite{pseudorandomness}.
 
-\citet{bonneau2015bitcoin} define an extractor function as $y = \text{Ext}_k(x)$.
+\citet{bonneau2015bitcoin} define an extractor function as $y = \text{Ext}_k(x)$. \stefan{before you say what it does explain the intuition of extractor functions and why they are useful}
 An extractor $\text{Ext}$ is applied on an $n$-bit input $x$ of \enquote{sufficient} entropy.
+\stefan{I think before you go into details discsions of extracturs you should maybe say more about the basic stuff like how one can test randomness for example?}
 The output $y$ is $m$ bits of \enquote{high} entropy, where $m < n$. The key $k$ is used to select from a family of extractors.
 They further define \enquote{sufficient} to be that the min-entropy is at least $m$ bits, and \enquote{high} entropy to be that there is only an negligible difference between the output $y$ and an $m$-bit uniform distribution.
 As such, it is able to convert weak random sources into a highly random output, that statistically appears to be uniformly distributed.
