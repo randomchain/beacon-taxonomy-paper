@@ -36,19 +36,18 @@ The following points describe different ways for a randomness beacon to source t
 
         An upside to using internal input is that the \emph{availability} does not depend on some outside force, as seen from the perspective of the beacon operator.
 
-    \item[External Input]
-				\stefan{maybe better call it "Publicly available input"? the user input is also external somehow? (or internal :)}
+    \item[Publicly Available Input]
         The beacon uses some publicly available data for input.
         Publicly available input means that it must be accessible to the public and consistent over a period.
-        Hence, the \emph{availability} of the beacon is dictated by the availability of the source of external input.
-        Moreover, the \emph{min-entropy} is also determined by the external input, which should be scrutinized to guarantee the lower bound of entropy.
+        Hence, the \emph{availability} of the beacon is dictated by the availability of the source of public input.
+        Moreover, the \emph{min-entropy} is also determined by the input, which should be scrutinized to guarantee the lower bound of entropy.
         These sources can for example be the bitcoin blockchain, financial data, or national lottery results.
         \msmnote{Maybe talk about guaranteed entropy level in e.g.\ bitcoin hash, or save for later?}
 
-        Anyone who wishes to manipulate the beacon's output must do so through the external source.
+        Anyone who wishes to manipulate the beacon's output must do so through the source.
         For this type of source it is important to analyze the integrity of the source to understand the integrity of the randomness beacon itself.
 
-        It is important to note that external input does not violate the \emph{unpredictability} property of the beacon, since the time advantage an adversary has over other users is negligible regardless of computing resources.
+        It is important to note that public input does not violate the \emph{unpredictability} property of the beacon, since the time advantage an adversary has over other users is negligible regardless of computing resources.
         Furthermore, any user of the beacon will be able to \emph{verify} that the input has been used to generate the outcome.
 
 \end{description}
