@@ -34,17 +34,6 @@ parallel (
                 archiveArtifacts 'biblatexcheck.html'
             }
         }
-    },
-    "diff": {
-        node {
-            stage('Diff') {
-                deleteDir()
-                checkout scm
-                sh "./diff_cha.sh"
-                stash name: "diffed"
-                archiveArtifacts 'diffed.pdf'
-            }
-        }
     }
 )
 
