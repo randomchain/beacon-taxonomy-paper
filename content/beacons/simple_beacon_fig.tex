@@ -1,0 +1,17 @@
+\begin{figure}[htb]\pgfdeclarelayer{background}
+    \pgfsetlayers{background,main}
+    \centering
+    \footnotesize
+    \begin{tikzpicture}[auto]
+        \node[block] (input) {Entropy source};
+        \node[block, right=1.5cm of input] (computation) {Computation\\$f(I_t)$};
+        \draw[arrow] (input) -- node (inp) {$I_t$} (computation);
+        \node[block, right=1.5cm of computation] (users) {Users};
+        \node[above=1em of computation] {The beacon $B$ itself};
+        \draw[arrow] (computation) -- node (out) {$R$} (users);
+        \begin{pgfonlayer}{background}
+            \node[block] (beacon) [container, fit={(inp) (computation) (out)}] {};
+        \end{pgfonlayer}
+    \end{tikzpicture}
+    \caption{Abstract randomness beacon}\label{fig:abstract_beacon}
+\end{figure}

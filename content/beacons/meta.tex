@@ -66,6 +66,9 @@ We therefore synthesize our own definition, which will be used forward in this p
 A  randomness beacon is a service that publishes random data at a known interval.
 Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is a suitable function for generating randomness (such as an extractor function), and $R$ is the random outcome. The entropy of $R$ depends on the quality of $I$, and $I$ can consist of observations of some external source or be directly input by users that use the beacon.
 For $B$ to be a beacon, it is run at a known, regular interval, $\delta$, such that $t+n\delta$ for any $n \in \mathbb{N}$ are output intervals for the beacon.
+In \Cref{fig:abstract_beacon} an example of an abstract beacon can be seen.
+
+\subimport{}{simple_beacon_fig.tex}
 
 This can also be considered the \emph{beacon protocol}, the procedure that guides the beacons operations. The protocol also dictates how users interact with the beacon, and how it is controlled. The protocol is enforced algorithmically or by a \emph{beacon operator} that controls the beacon.
 
