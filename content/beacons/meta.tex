@@ -7,12 +7,14 @@ We will also provide a brief understanding of the concept of randomness as it is
 These attributes need to be sufficiently general to encompass a variety of implementations.
 However before doing so, we will draw inspiration from earlier definitions.
 
-\subsection{Randomness}\label{sub:beacons_randomness}
-\stefan{this subsection is not very comprehensive (nor comprehnsible): step back a bit more and think what really needs to be said here (which will also be relevant later)}
+\subsection{Randomness and Unpredictability}\label{sub:beacons_randomness}
+The main idea governing the security of randomness beacon use cases is that the randomness beacon regularly emits a value which is \emph{unpredictable} for all parties. At the same time, the emitted value must also be of sufficient length and exhibit \emph{randomness}.
 
-Intuitively speaking randomness is a lack of predictability in events or information. It can also be thought of as data sampled from a uniform distribution, where any sample is as likely as another. The unpredictability of a source of information is measured in entropy.
-We define a source of information as a stream of information based on some real-world occurrence. This can be direct input from users or observation of some external system --- the important aspect is that the source continually \mtjnote{continuously?} produces fresh information.
-Within information theory, Shannon Entropy is defined as the unpredictability of a state.
+Intuitively, the length and the randomness of a value can be quantified with \emph{entropy}. In information theory, entropy (formally called Shannon entropy) is a measure of information content in a source. Using an emitted value as a fair coin flip will require the value to have an entropy of at least 1, because 1 bit is required to describe both outcomes of the coin flip.
+
+%Intuitively speaking randomness is a lack of predictability in events or information. It can also be thought of as data sampled from a uniform distribution, where any sample is as likely as another. The unpredictability of a source of information is measured in entropy.
+%We define a source of information as a stream of information based on some real-world occurrence. This can be direct input from users or observation of some external system --- the important aspect is that the source continually \mtjnote{continuously?} produces fresh information.
+%Within information theory, Shannon Entropy is defined as the unpredictability of a state.
 Formally Shannon Entropy of a $b$-ary source $X$ with alphabet ${a_1, \ldots, a_b}$ and a probability distribution ${p_1, \ldots , p_b}$ where $p_i = p(a_i)$ is defined as~\cite{informationtheory}:
 $$
 H_{b} (X) = -\sum\limits_{i = 1}^b p_{i}\log_{b} p_{i}
