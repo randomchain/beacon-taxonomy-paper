@@ -38,7 +38,7 @@ As such, it is able to convert weak random sources into a highly random output, 
 
 The term \emph{beacon} was originally introduced by \citet{rabin1983transaction}, who describes it as a trusted third party that emits random numbers at a set interval as a way to enable fair contract signing and secret disclosure.
 He assumes that the beacon is provided as a service by a trusted third party and behaves \enquote{honestly}.
-He furthermore argues for a number of criteria for the beacon:
+He furthermore describes a number of properties for the beacon:
 
 \begin{description}
     \item[Unpredictability] No party should be able to have advance knowledge of the beacon's output.
@@ -46,8 +46,14 @@ He furthermore argues for a number of criteria for the beacon:
     \item[Availability] The beacon should be publicly available, and could have backups in case of failure or jamming.
 \end{description}
 
-As stated, this definition requires trust in a third party, with no way to ensure the honesty of that party and closely matches the \gls{nist} randomness beacon. 
-To avoid having to trust blindly in a third party, we will look for an alternative definition that also considers trust. 
+While we agree with these properties, we find especially the \emph{random} property to be vague and poorly motivated. Therefore, we will specify it in greater detail.
+
+Unpredictability is the main property that governs the security of randomness beacon use cases. No party should be able to \enquote{predict} the output of the randomness beacon with higher probability than other parties. Because it is unpredictable it must also necessarily be random. If it was not random, some
+
+We will relax the requirement of random, to just being picking uniform distribution
+
+As stated, this definition requires trust in a third party, with no way to ensure the honesty of that party and closely matches the \gls{nist} randomness beacon.
+To avoid having to trust blindly in a third party, we will look for an alternative definition that also considers trust.
 
 \citet{bonneau2015bitcoin} extends this description to describe a decentralized beacon based on the bitcoin blockchain.
 It is a function that returns an $m$-bit near-uniformly distributed random value $r$ at each time interval $t$. An assumption on the min-entropy of the input is made \mtjnote{should we expand on this assumption?}.
