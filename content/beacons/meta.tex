@@ -44,8 +44,8 @@ He furthermore argues for a number of criteria for the beacon:
     \item[Availability] The beacon should be publicly available, and could have backups in case of failure or jamming.
 \end{description}
 
-As stated, this definition requires trust in a third party, with no way to ensure the honesty of that party and closely matches the \gls{nist} randomness beacon.
-Since we do not want to trust blindly in a third party, we will look for an alternative definition.
+As stated, this definition requires trust in a third party, with no way to ensure the honesty of that party and closely matches the \gls{nist} randomness beacon. 
+To avoid having to trust blindly in a third party, we will look for an alternative definition that also considers trust. 
 
 \citet{bonneau2015bitcoin} extends this description to describe a decentralized beacon based on the bitcoin blockchain.
 It is a function that returns an $m$-bit near-uniformly distributed random value $r$ at each time interval $t$. An assumption on the min-entropy of the input is made \mtjnote{should we expand on this assumption?}.
