@@ -2,7 +2,7 @@
 One aspect of beacons we have not given much attention in our analysis is their performance.
 In practical use of a beacon, the performance of the beacon is also an important parameter to consider.
 When considering performance, the output frequency of the beacon is the primary metric to consider.
-Depending on the setting, having fresh randomness available frequently could be important for e.g.\ fair contract signing\cite{rabin1983transaction}.
+Depending on the setting, having fresh randomness available frequently could be important for e.g.\ fair contract signing~\cite{rabin1983transaction}.
 We briefly mention it during the analysis, but the frequency of a beacon can be correlated to our main archetypes of beacons.
 The \emph{autocratic collector} practically dictates their frequency themselves.
 They are limited only by the speed at which they can collect data.
@@ -14,5 +14,15 @@ This is best exemplified with the examples that use the bitcoin blockchain as so
 The bitcoin blockchain is designed to produce a new block at a set rate~\cite{nakamoto2008bitcoin}, which currently aims for a new block every 10 minutes.
 This frequency may be too low for some usecases, in which case another type of beacon would be preferable.
 
-By contrast, the frequency of \emph{Specialized MPC} beacons is completely dependant on the participants.
+By contrast, the frequency of \emph{Specialized \gls{mpc}} beacons is completely dependent on the participants.
 As the randomness is produced from their inputs, the frequency can be as low or high as the participants decide to set it.
+
+Another performance metric is the initial latency, i.e.\ the time it takes from starting the beacon protocol to the first outcome is produced.
+This bootstrapping time is usually insignificant since beacons are intended to be services running for a greater period.
+The initial latency is determined by two things:
+\begin{enumberate*}
+    \item the time it takes to collect input $I_t$, e.g.\ from users or waiting on some external source; and
+    \item the time it takes to perform the computation $f(I_t)$.
+\end{enumberate*}
+Publishing the outcome is not considered in this metric, since the outcome effectively is available as soon as it is computed.
+Since the computation time of $f(I_t)$ effects the latency, beacons using delay functions such as \citetalias{bunz2017proofsof} will often have a longer bootstrapping period than beacons with less time-consuming computations such as \citetalias{bentov2016bitcoin}.
