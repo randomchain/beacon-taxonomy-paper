@@ -15,15 +15,15 @@ Intuitively, the length and the randomness of a value can be quantified with \em
 In information theory, entropy (formally called Shannon entropy) is a measure of information content in a source.
 Using an emitted value as a fair coin flip will require the value to have an entropy of at least 1, because 1 bit is required to describe both outcomes of the coin flip.
 
-Formally Shannon Entropy of a $b$-ary source $X$ with alphabet ${a_1, \ldots, a_b}$ and a probability distribution ${p_1, \ldots , p_b}$ where $p_i = p(a_i)$ is defined as~\cite{informationtheory}:
+Formally Shannon Entropy of a source $X$ with alphabet ${a_1, \ldots, a_n}$ and a probability distribution ${p_1, \ldots , p_n}$ where $p_i = p(a_i)$ is defined as~\cite{informationtheory}:
 $$
-H_{b} (X) = -\sum\limits_{i = 1}^b p_{i}\log_{b} p_{i}
+H(X) = -\sum\limits_{i = 1}^n p_{i}\log_{2} p_{i}
 $$
 As an example, a coinflip has two equally likely outcomes that can not be predicted ahead of time, and has an entropy of $-(\frac{1}{2}\log_2 \frac{1}{2} + \frac{1}{2}\log_2 \frac{1}{2}) = 1$~\cite{informationtheory}.
 
 Likewise, a lower bound on the entropy, the min-entropy, can be calculated as follows~\cite{informationtheory}:
 $$
-H_\infty(X)_{b} = -\log_{b}\max(p(x))
+H_\infty(X) = -\log_{2}\max(p(x))
 $$
 
 High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with less entropy by using extractor functions~\cite{pseudorandomness}.
@@ -33,7 +33,7 @@ They extract the entropy, measuring unpredictability, from the larger input and 
 %\citet{bonneau2015bitcoin} define an extractor function as $y = \text{Ext}_k(x)$.
 %An extractor $\text{Ext}$ is applied on an $n$-bit input $x$ of \enquote{sufficient} entropy.
 %The output $y$ is $m$ bits of \enquote{high} entropy, where $m < n$.
-The key $k$ is used to select from a family of extractors.
+%The key $k$ is used to select from a family of extractors.
 %They further define \enquote{sufficient} to be that the min-entropy is at least $m$ bits, and \enquote{high} entropy to be that there is only an negligible difference between the output $y$ and an $m$-bit uniform distribution.
 %As such, it is able to convert weak random sources into a highly random output, that statistically appears to be uniformly distributed.
 
