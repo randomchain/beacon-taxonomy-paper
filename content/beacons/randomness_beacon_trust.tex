@@ -17,8 +17,8 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
         The entropy source and extractor function must be publicly available, such that users can verify the level of entropy.
 
     \item[Verifiability]
-        For a beacon to display verifiability, a user must be able to verify correct execution of the beacon protocol \stefan{... please make a figure that shows all components of the beacons (input and outputs etc.): think of something meaningful (Dont we have this in archetypes ? Maybe use that ?)}.
-        The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify. \msmnote[nofootnote, inline]{this could be interesting to expand upon, to allow for anonymized beacon interaction}.
+        For a beacon to display verifiability, a user must be able to verify correct execution of the beacon protocol.
+        The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify. \msmnote{this could be interesting to expand upon, to allow for anonymized beacon interaction}.
 
         The most straight forward verification for randomness beacons is for a user to run the same computation on the same input.
 However, this may be impractical or the input may be secret, which would require different approaches.
@@ -34,7 +34,7 @@ As long a given user contributes their own input, the others may not be able to 
 
 \end{description}
 
-\stefan{Wouldn't it make sense to discuss here some basic ideas how to achieve these properties, e.g., using protocols like MPC etc, and only then think about attacks? Or, keep the order as it is, but then do not talk about MPC yet in 4.1.2}
+\stefan{Wouldn't it make sense to discuss here some basic ideas how to achieve these properties, e.g., using protocols like MPC etc, and only then think about attacks? Or, keep the order as it is, but then do not talk about MPC yet in 4.1.2 (OUTDATED? --- msm)}
 
 %       Security objectives
 \subsubsection{Attacks}\label{ssub:security_objectives}
