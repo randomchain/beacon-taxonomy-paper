@@ -35,8 +35,8 @@ It can also be seen that the output of the private external entropy source, $I_t
 
 
 \subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
-To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc} \cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs. For a beacon this would mean users inputting secret inputs, that would then be used to generate randomness. Examples of this are \citetalias{syta2017scalable} and \citetalias{cascudo2017scrape}, that both use Shamir Secret Sharing Schemes to secretly share inputs to generate randomness.
-This eliminates the need for trust between individual participants.
+To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc} \cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs. For a beacon this would mean users inputting secret inputs, that would then be used to generate randomness. Examples of this are \citetalias{syta2017scalable} and \citetalias{cascudo2017scrape}, that both use Shamir Secret Sharing Schemes \stefan{cite} to secretly share inputs to generate randomness.
+This eliminates the need for trust between individual participants \stefan{sketch how this works exactly}.
 A beacon of this type sources its entropy from user input during the execution of the \gls{mpc} beacon protocol.
 The randomness outcome can be trusted by any user to be unbiased, if and only if said user participated in the \gls{mpc} protocol.
 Effectively this means that while this type does not require absolute trust it requires absolute participation --- all users wanting a trustworthy outcome must participate, or trust at least one of the participants.
@@ -76,7 +76,7 @@ In the last step of the sequential \gls{mpc} protocol the final beacon outcome $
 As a middle ground between the two previous beacon archetypes, the transparent authority beacon aims to provide scalability, availability, and trustworthiness.
 This is possible since the beacon displays transparency in both entropy sourcing and execution, i.e.\ using publicly available or user input, and enabling validation of the execution and outcome.
 However, the authority behind the beacon can still be a self-announced entity --- as long as verification is possible, the execution model is irrelevant.
-Examples of this type of beacon are \citetalias{clark2010use}, \citetalias{baigneres2015trap}, \citetalias{bonneau2015bitcoin}, \citetalias{bentov2016bitcoin}, \citetalias{bunz2017proofsof}, \citetalias{lenstra2015random} and \citetalias{randao}, making it the most common archetype.
+Examples of this type of beacon are \citetalias{clark2010use}, \citetalias{baigneres2015trap}, \citetalias{bonneau2015bitcoin}, \citetalias{bentov2016bitcoin}, \citetalias{bunz2017proofsof}, \citetalias{lenstra2015random} and \citetalias{randao} \stefan{give citations}, making it the most common archetype.
 
 If the execution of the beacon protocol is to be done by a single entity, it is important to have a solid incentive for running it --- as well as an incentive for the operator to be honest.
 This can be as simple as a community funded entity serving a \enquote{public good}, or to have users competing for monetary gains by running the beacon and contesting false outputs as discussed in \citet{bunz2017proofsof}.

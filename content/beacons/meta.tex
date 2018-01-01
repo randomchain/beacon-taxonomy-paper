@@ -9,9 +9,9 @@ We will also provide a brief understanding of the concept of randomness as it is
 
 \subsection{Randomness and Unpredictability}\label{sub:beacons_randomness}
 The main idea governing the security of randomness beacon use cases is that the randomness beacon regularly emits a value which is \emph{unpredictable} for all parties.
-At the same time, the emitted value must also be of sufficient length and exhibit \emph{randomness}.
+At the same time, the emitted value must also be of sufficient length and exhibit \emph{randomness} \stefan{what is the difference between randomness and unpredictable?}.
 
-Intuitively, the length and the randomness of a value can be quantified with \emph{entropy}.
+Intuitively, the length and the randomness of a value \stefan{a single value always has 0 entropy: only a distribution of values has entropy (and the bigger and more uniform the numbers the more)} can be quantified with \emph{entropy}.
 In information theory, entropy (formally called Shannon entropy) is a measure of information content in a source.
 Using an emitted value as a fair coin flip will require the value to have an entropy of at least 1, because 1 bit is required to describe both outcomes of the coin flip.
 
@@ -21,14 +21,15 @@ H(X) = -\sum\limits_{i = 1}^n p_{i}\log_{2} p_{i}
 $$
 As an example, a coinflip has two equally likely outcomes that can not be predicted ahead of time, and has an entropy of $-(\frac{1}{2}\log_2 \frac{1}{2} + \frac{1}{2}\log_2 \frac{1}{2}) = 1$~\cite{informationtheory}.
 
-Likewise, a lower bound on the entropy, the min-entropy, can be calculated as follows~\cite{informationtheory}:
+Likewise, a lower bound on the entropy, the min-entropy, can be calculated as follows~\cite{informationtheory}: \stefan{why do we need a lower bound? why do we need min-entropy?}
 $$
 H_\infty(X) = -\log_{2}\max(p(x))
 $$
+\stefan{what is x here? what is p(x)?}
 
 High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with less entropy by using extractor functions~\cite{pseudorandomness}.
-Extractor functions can be understood as functions that take a large input with little entropy spread throughout the input, and concentrates it into a smaller output.
-They extract the entropy, measuring unpredictability, from the larger input and concentrates it into the output.
+Extractor functions can be understood as functions that take a large input with little entropy spread throughout the input, and concentrates it into a smaller output \stefan{of the same entropy?}.
+They extract the entropy, measuring unpredictability, from the larger input and concentrates it into the output. \stefan{give an overview of what extractors can and cannot achieve: what is the state of the art result here?}
 
 %\citet{bonneau2015bitcoin} define an extractor function as $y = \text{Ext}_k(x)$.
 %An extractor $\text{Ext}$ is applied on an $n$-bit input $x$ of \enquote{sufficient} entropy.
@@ -39,7 +40,7 @@ They extract the entropy, measuring unpredictability, from the larger input and 
 
 \subsection{Beacons}
 
-In creating a definition of a trustless randomness beacon, we first argue for properties which a randomness beacon must exhibit.
+In creating a definition of a trustless randomness \stefan{it makes sense to be more formal here: what is the output alphabet of a beacon? so we get a sequence $x_1$,$x_2$,....} beacon, we first argue for properties which a randomness beacon must exhibit.
 Afterwards, we will seek a way to remove the need for trust.
 
 The term \emph{beacon} was originally introduced by \citet{rabin1983transaction}, who describes it as a trusted third party that emits random numbers at a set interval as a way to enable fair contract signing and secret disclosure.
@@ -47,12 +48,12 @@ He assumes that the beacon is provided as a service by a trusted third party and
 He furthermore describes a number of properties for the beacon:
 
 \begin{description}
-    \item[Unpredictability] No party should be able to have advance knowledge of the beacon's output.
-    \item[Random] The beacon should use some physical method to produce random numbers.
+    \item[Unpredictability] No party should be able to have advance knowledge of the beacon's output. \stefan{can you make it formal? $P[x_i+1 | x_<i] = P[x_i+1]$ ?}
+    \item[Random] The beacon should use some physical method to produce random numbers. \stefan{why should a physical method be random?}
     \item[Availability] The beacon should be publicly available, and could have backups in case of failure or jamming.
 \end{description}
 
-While we agree with the basics of these properties, we find the properties to be vague and poorly motivated.
+While we agree with the basics of these properties, we find the properties to be vague and poorly motivated \stefan{good :-) but maybe you can still try to formalize them afterwards}.
 Therefore, we specify and extend Rabin's description of a beacon, and provide a motivation for why these properties are needed.
 
 \subsubsection{Randomness Beacon Properties}
@@ -101,7 +102,7 @@ Specifically, they require the input to be unknown before time $t$, and they req
 We present our own definition, which will be used onward in this paper:
 
 A randomness beacon is a service that publishes random data at a known interval.
-Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is a suitable function for generating randomness, and $R$ is the random outcome. %The entropy of $R$ depends on the quality of $I$, and $I$ can consist of observations of some external source or be directly input by users that use the beacon.
+Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the input at time $t$, $f$ is a suitable function for generating \stefan{but do we really need to generate randomness in any case? dont you want to assume that the randomness is in the input?} randomness, and $R$ \stefan{$R_t$? depends on time no? maybe it can also make sense to define an entire sequence of inputs and sequence of outcomes? $I_1, I_2, I_3$.... => $O_1,O_2,O_3$.. (is O not better than R?) + see Stefans email for further explanation} is the random outcome. %The entropy of $R$ depends on the quality of $I$, and $I$ can consist of observations of some external source or be directly input by users that use the beacon.
 For $B$ to be a beacon, it is run at a known, regular interval, $\delta$, such that $t+n\delta$ for any $n \in \mathbb{N}$ are valid output intervals for the beacon.
 In \Cref{fig:abstract_beacon} an example of an abstract beacon can be seen.
 
@@ -116,9 +117,9 @@ Combined, they describe properties for a trustless randomness beacon:
 
 \begin{description}
     \item[Unpredictable]
-        Any user should not be able to predict the output with a larger probability than sampling a uniform distribution.
+        Any user should not be able to predict the output with a larger probability than sampling a uniform distribution. \stefan{make it more formal, using your notation above}
     \item[Unbiased]
-        All outputs from the beacon are equally likely --- in other words, the output is statistically close to samplings from a uniform distribution.
+        All outputs from the beacon are equally likely --- in other words, the output is statistically close to samplings from a uniform distribution. \stefan{the difference to Unpredictable and Entropy Guarantee is not so clear: are these properties not somewhat redundant? making them more formal can help}
     \item[Entropy Guarantee]
         There must be a guarantees on the level of output entropy.
 Use cases then know if there is enough entropy for their use.
@@ -143,4 +144,4 @@ Verifiability is only required if users do not want to trust the beacon, it coul
 The definition does not specify any properties about interaction, security, or execution of the beacon and its protocol, only that it somehow has to prove its honesty.
 These properties rely on the setting and requirements of a given beacon.
 
-This work is concerned with the trust of a randomness beacon, and as such we do not discuss the function $f$ for generating randomness --- \citet{bonneau2015bitcoin} provide some insight on this.
+This work is concerned with the trust of a randomness beacon, and as such we do not discuss the function $f$ for generating \stefan{but do we need to generate randomness? dont you want to assume that the randomness is in the input?} randomness --- \citet{bonneau2015bitcoin} provide some insight on this.
