@@ -18,7 +18,7 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
 
     \item[Verifiability]
         For a beacon to display verifiability, a user must be able to verify correct execution of the beacon protocol.
-        The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify. \msmnote{this could be interesting to expand upon, to allow for anonymized beacon interaction} \stefan{yes please elaborate. how can i verify a computation has been done corectly? Isnt that whats below ? -S }.
+        The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify. \msmnote{this could be interesting to expand upon, to allow for anonymized beacon interaction}
 
         The most straight forward verification for randomness beacons is for a user to run the same computation on the same input.
     However, this may be impractical or the input may be secret, which  would require different approaches.
@@ -36,7 +36,7 @@ As long a given user contributes their own input, the others may not be able to 
 
 %       Security objectives
 \subsubsection{Attacks}\label{ssub:security_objectives}
-For randomness beacons there exist two main venues of attack: \emph{availability} and \emph{integrity}. \emph{Availability} covers users being able access and interact with the beacon and its output. \emph{Integrity} covers the bias of the output, and direct manipulation of the beacon. 
+For randomness beacons there exist two main venues of attack: \emph{availability} and \emph{integrity}. \emph{Availability} covers users being able access and interact with the beacon and its output. \emph{Integrity} covers the bias of the output, and direct manipulation of the beacon.
 Each term contains multiple types of attacks and requirements for fulfillment, and will not all be effective versus all beacons different randomness beacon approaches assign different priorities to these.
 
 We identify the following attacks on the availability of a beacon:

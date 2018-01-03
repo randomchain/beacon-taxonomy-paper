@@ -1,18 +1,21 @@
-\subsection{Randomness Beacon Variations}
+\section{Randomness Beacon Variations}
+\mtjnote{Write something here \ldots. Expanding something requirements for different kinds of beacons.}
+
+\subsection{Property Variations}
 % Variation Properties of beacons
 To understand different types of beacons, we define three categories, which can be used to describe properties that vary between different types of beacons.
 These sets of properties cover \emph{entropy sourcing}, \emph{execution model}, and \emph{validation}, and will also be tied back to the security properties of beacons.
 In the later taxonomy of current randomness beacons approaches, these properties will also be used for classification.
 
-%       Entropy sourcing
+% Entropy sourcing
 \subsubsection{Entropy Sourcing}
 The input of a randomness beacon at a given time, $I_t$, is the source entropy of the outcome.
 The following describe different ways for a randomness beacon to source the input.
 \begin{description}
-    
+
     \item[Internal Input]
         The beacon uses input such as background radiation or output from photon splitters, measured with some local device.
-        These sources potentially provide high entropy\cite{nistbeacon}, but are impossible to reproduce and \emph{verify} for users.
+        These sources potentially provide high entropy~\cite{nistbeacon}, but are impossible to reproduce and \emph{verify} for users.
         This means that the claimed input from a supposedly random source, could be entirely fabricated by the beacon operator to bias or even have total control over the outcome.
         Hence, complete trust in the honesty of the beacon operator is required.
         Moreover, the \emph{unpredictability} can never be guaranteed, since the beacon operator potentially could have precomputed the outcomes from seemingly random inputs.
@@ -73,7 +76,7 @@ We identify the following ways of executing such a computation in a randomness b
         The same question of \emph{unpredictability} arises as with the self-announced entity, and must be addressed by the beacon protocol to ensure trustworthiness.
 
     \item[Distributed Execution]
-        The computation of the protocol is done in a distributed manner between a set of parties e.g.\ using \gls{mpc} and/or smart contracts. An example could be collecting inputs from each participant and performing exclusive or operations between inputs. 
+        The computation of the protocol is done in a distributed manner between a set of parties e.g.\ using \gls{mpc} and/or smart contracts. An example could be collecting inputs from each participant and performing exclusive or operations between inputs.
         This model potentially does not require trust in any other participant depending on the execution scheme.
         However, scalability to larger settings may prove difficult, and participants with byzantine behavior must be accounted for, which can hurt execution time and \emph{availability}.
 
@@ -100,7 +103,7 @@ We identify the following ways of validating a beacon:
 
     \item[Contestable]
         Users can contest the output, or published randomness, of the beacon if they believe it to be wrong.
-        The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote{This will be futher elaborated}
+        The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded.
         This can potentially degrade the beacon \emph{availability}, depending on how the contesting process is handled and executed.
 \end{description}
 
