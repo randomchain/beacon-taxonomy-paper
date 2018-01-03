@@ -9,6 +9,15 @@ In the later taxonomy of current randomness beacons approaches, these properties
 The input of a randomness beacon at a given time, $I_t$, is the source entropy of the outcome.
 The following describe different ways for a randomness beacon to source the input.
 \begin{description}
+    
+    \item[Internal Input]
+        The beacon uses input such as background radiation or output from photon splitters, measured with some local device.
+        These sources potentially provide high entropy\cite{nistbeacon}, but are impossible to reproduce and \emph{verify} for users.
+        This means that the claimed input from a supposedly random source, could be entirely fabricated by the beacon operator to bias or even have total control over the outcome.
+        Hence, complete trust in the honesty of the beacon operator is required.
+        Moreover, the \emph{unpredictability} can never be guaranteed, since the beacon operator potentially could have precomputed the outcomes from seemingly random inputs.
+
+        An upside to using internal input is that the \emph{availability} does not depend on some outside force, as seen from the perspective of the beacon operator.
     \item[User Input]
         The protocol allows users to provide entropy.
         This can potentially open up for direct manipulation of the result using last-draw attacks, which in turn can enable adversaries to overcome the \emph{unpredictability}.
@@ -16,31 +25,20 @@ The following describe different ways for a randomness beacon to source the inpu
         Using \enquote{exclusive or} to combine the inputs guarantees that the lower bound of entropy is set by the input with the highest entropy~\cite{lenstra2015random};
         this means that a user providing good entropy, can be sure that the outcome will have at least the same level of entropy.
 
-        Usually, the beacon must commit to a set of user inputs before beginning the randomness computation \stefan{how will the user inputs be revealed? one after another? that could lead to cheating. maybe you need multiparty computation for this?}, thereby making users able to reason about the inputs used.
-        This means that user will be able to \emph{verify} that a committed set of inputs has been used in the computation of the outcome.
+        Usually, the beacon must publish a commitment to a set of user inputs before beginning the randomness computation,  thereby making users able to reason about the inputs used.
+        Given knowledge of the algorithm used in the computation and the output, users will be able to \emph{verify} that a committed set of inputs has been used in the computation of the outcome.
 
         If user input is the only source of entropy, lack of users prevent the beacon from operating, denying \emph{availability}.
         There can also be too many inputs, resulting in input sourcing cutoff ---
         the input of some users will then not be used in computing the outcome, thereby undermining that set of users ability to trust the given outcome.
         This is because a given user must be able to identify the presence of a trusted input in the committed set of inputs, to trust the beacon outcome \stefan{how to solve these problems? comes later?}.
 
-    \item[Internal Input]
-				\stefan{i would start with this and then do user generated?}
-        The beacon uses input such as background radiation or output from photon splitters, measured with some local device.
-        These sources potentially provide high entropy \stefan{cite something?}, but are impossible to reproduce and \emph{verify} for users.
-        This means that the claimed input from a supposedly random source, could be entirely fabricated by the beacon operator to bias or even have total control over the outcome.
-        Hence, complete trust in the honesty of the beacon operator is required.
-        Moreover, the \emph{unpredictability} can never be guaranteed, since the beacon operator potentially could have precomputed the outcomes from seemingly random inputs.
-
-        An upside to using internal input is that the \emph{availability} does not depend on some outside force, as seen from the perspective of the beacon operator.
-
     \item[Publicly Available Input]
         The beacon uses some publicly available data for input.
         Publicly available input means that it must be accessible to the public and consistent over a period.
         Hence, the \emph{availability} of the beacon is dictated by the availability of the source of public input.
         Moreover, the \emph{min-entropy} is also determined by the input, which should be scrutinized to guarantee the lower bound of entropy.
-        These sources can for example be the bitcoin blockchain, financial data \stefan{any citations of examples using that?}, or national lottery results.
-        \msmnote{Maybe talk about guaranteed entropy level in e.g.\ bitcoin hash, or save for later?}
+        These sources can for example be the bitcoin blockchain\cite{bonneau2015bitcoin, bentov2016bitcoin}, financial data \cite{clark2010use}, or national lottery results.
 
         Anyone who wishes to manipulate the beacon's output must do so through the source.
         For this type of source it is important to analyze \stefan{how to implement this? do we need public-key crypto?} the integrity of the source to understand the integrity of the randomness beacon itself.
@@ -68,14 +66,14 @@ We identify the following ways of executing such a computation in a randomness b
         However, this only guarantees that no input manipulation by the operator has happened between the commitment and publishing the outcome.
 
     \item[Elected Operator]
-        A user is collectively elected \stefan{how could that be done? give an example} to be the operator which performs the computation.
+        A user is elected through some leader election protocol, to be the operator which performs the computation.
         That user then executes the beacon protocol as a public good.
         This type of execution participation requires that the operator has an incentive to carry out the beacon protocol, and may hurt \emph{availability} if the operator is unable or unwilling to complete.
 
         The same question of \emph{unpredictability} arises as with the self-announced entity, and must be addressed by the beacon protocol to ensure trustworthiness.
 
     \item[Distributed Execution]
-        The computation of the protocol is done in a distributed manner between a set of parties e.g.\ using \gls{mpc} and/or smart contracts \stefan{give an example of such a computation?}.
+        The computation of the protocol is done in a distributed manner between a set of parties e.g.\ using \gls{mpc} and/or smart contracts. An example could be collecting inputs from each participant and performing exclusive or operations between inputs. 
         This model potentially does not require trust in any other participant depending on the execution scheme.
         However, scalability to larger settings may prove difficult, and participants with byzantine behavior must be accounted for, which can hurt execution time and \emph{availability}.
 
@@ -96,12 +94,12 @@ We identify the following ways of validating a beacon:
 
 \begin{description}
     \item[Verifiable]
-        Any user can verify the randomness outcome \stefan{randomness outcome => outcome?} to have been correctly computed from the provided entropy input.
-        In some cases, the verification process might include correlating the outcome with a input set, of which the beacon has committed to.
+        Any user can verify the outcome to have been correctly computed from the provided entropy input.
+        In some cases, the verification process might include correlating the outcome with an input set, of which the beacon has committed to.
         This is directly related to the \emph{verifiability} in the earlier beacon definition.
 
     \item[Contestable]
-        Users can contest the randomness \stefan{what exactly can they contest? "randomness" is too vague} of the beacon if they believe it to be wrong.
+        Users can contest the output, or published randomness, of the beacon if they believe it to be wrong.
         The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded. \mtjnote{This will be futher elaborated}
         This can potentially degrade the beacon \emph{availability}, depending on how the contesting process is handled and executed.
 \end{description}
