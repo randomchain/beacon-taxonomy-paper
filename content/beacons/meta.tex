@@ -1,69 +1,51 @@
 % Randomness beacons
-\section{Randomness Beacons}\label{sec:beacons}
-%   What is a beacon?
+\section{Definition of a Randomness Beacon}\label{sec:beacons}
 
 As part of the goal of this paper, we define a trustless randomness beacon and the properties it must exhibit.
 This definition needs to be sufficiently general to encompass a variety of implementations.
 
-We will also provide a brief understanding of the concept of randomness as it is used within the paper.
+%We will also provide a brief understanding of the concept of randomness as it is used within the paper.
 
-\subsection{Randomness and Unpredictability}\label{sub:beacons_randomness}
-The main idea governing the security of randomness beacon use cases is that the randomness beacon regularly emits a value which is \emph{unpredictable} for all parties.
-At the same time, the emitted value must also be of sufficient length and exhibit \emph{randomness} \stefan{what is the difference between randomness and unpredictable?}.
+%\subsection{Randomness and Unpredictability}\label{sub:beacons_randomness}
 
-Intuitively, the length and the randomness of a value \stefan{a single value always has 0 entropy: only a distribution of values has entropy (and the bigger and more uniform the numbers the more)} can be quantified with \emph{entropy}.
-In information theory, entropy (formally called Shannon entropy) is a measure of information content in a source.
-Using an emitted value as a fair coin flip will require the value to have an entropy of at least 1, because 1 bit is required to describe both outcomes of the coin flip.
+%At the same time, the emitted value must also be of sufficient length and exhibit \emph{randomness} \stefan{what is the difference between randomness and unpredictable?}.
 
-Formally Shannon Entropy of a source $X$ with alphabet ${a_1, \ldots, a_n}$ and a probability distribution ${p_1, \ldots , p_n}$ where $p_i = p(a_i)$ is defined as~\cite{informationtheory}:
-$$
-H(X) = -\sum\limits_{i = 1}^n p_{i}\log_{2} p_{i}
-$$
-As an example, a coinflip has two equally likely outcomes that can not be predicted ahead of time, and has an entropy of $-(\frac{1}{2}\log_2 \frac{1}{2} + \frac{1}{2}\log_2 \frac{1}{2}) = 1$~\cite{informationtheory}.
+%Intuitively, the length and the randomness of a value \stefan{a single value always has 0 entropy: only a distribution of values has entropy (and the bigger and more uniform the numbers the more)} can be quantified with \emph{entropy}.
 
-Likewise, a lower bound on the entropy, the min-entropy, can be calculated as follows~\cite{informationtheory}: \stefan{why do we need a lower bound? why do we need min-entropy?}
-$$
-H_\infty(X) = -\log_{2}\max(p(x))
-$$
-\stefan{what is x here? what is p(x)?}
+%\subsection{On the Quest for a Randomness Beacon Definition}
 
-High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with less entropy by using extractor functions~\cite{pseudorandomness}.
-Extractor functions can be understood as functions that take a large input with little entropy spread throughout the input, and concentrates it into a smaller output \stefan{of the same entropy?}.
-They extract the entropy, measuring unpredictability, from the larger input and concentrates it into the output. \stefan{give an overview of what extractors can and cannot achieve: what is the state of the art result here?}
+% This section.
+\mtjnote{Rewrite this.}
+In creating a definition of a trustless randomness beacon, we first look at the root of \emph{randomness beacons}.
+The root is not trustless, and therefore we discuss the validity of the root, motivate it, and afterwards propose new properties that make a randomness beacon trustless.
 
-%\citet{bonneau2015bitcoin} define an extractor function as $y = \text{Ext}_k(x)$.
-%An extractor $\text{Ext}$ is applied on an $n$-bit input $x$ of \enquote{sufficient} entropy.
-%The output $y$ is $m$ bits of \enquote{high} entropy, where $m < n$.
-%The key $k$ is used to select from a family of extractors.
-%They further define \enquote{sufficient} to be that the min-entropy is at least $m$ bits, and \enquote{high} entropy to be that there is only an negligible difference between the output $y$ and an $m$-bit uniform distribution.
-%As such, it is able to convert weak random sources into a highly random output, that statistically appears to be uniformly distributed.
-
-\subsection{Beacons}
-
-In creating a definition of a trustless randomness \stefan{it makes sense to be more formal here: what is the output alphabet of a beacon? so we get a sequence $x_1$,$x_2$,....} beacon, we first argue for properties which a randomness beacon must exhibit.
-Afterwards, we will seek a way to remove the need for trust.
-
-The term \emph{beacon} was originally introduced by \citet{rabin1983transaction}, who describes it as a trusted third party that emits random numbers at a set interval as a way to enable fair contract signing and secret disclosure.
-He assumes that the beacon is provided as a service by a trusted third party and behaves \enquote{honestly}.
-He furthermore describes a number of properties for the beacon:
+% Rabin and the root of beacons
+\citet{rabin1983transaction} introduced the term \emph{beacon}\footnote{We use the term \emph{randomness beacon} because today beacons are perhaps more associated with Bluetooth beacons --- however we do not distinguish between our randomness beacon and Rabin's beacon.} in 1983, and describes it as a \emph{trusted} third party that behaves \emph{honestly} and emits random numbers at a set interval, as a way to enable fair contract signing and secret disclosure.
+He furthermore describes three properties for his early beacon:
 
 \begin{description}
-    \item[Unpredictability] No party should be able to have advance knowledge of the beacon's output. \stefan{can you make it formal? $P[x_i+1 | x_<i] = P[x_i+1]$ ?}
-    \item[Random] The beacon should use some physical method to produce random numbers. \stefan{why should a physical method be random?}
+    \item[Unpredictability] No party should be able to have advance knowledge of the beacon's output.
+    \item[Random] The beacon should use some physical method to produce random numbers.
     \item[Availability] The beacon should be publicly available, and could have backups in case of failure or jamming.
 \end{description}
 
-While we agree with the basics of these properties, we find the properties to be vague and poorly motivated \stefan{good :-) but maybe you can still try to formalize them afterwards}.
+This definition can be used for all our previously described use cases with the glaring exception that users need to trust it.
+While we agree with the basics of these properties, we find the properties to be vague and poorly motivated.
 Therefore, we specify and extend Rabin's description of a beacon, and provide a motivation for why these properties are needed.
 
-\subsubsection{Randomness Beacon Properties}
-We argue that unpredictability is the main property that governs the security of randomness beacon use cases.
-Rabin's definition of unpredictability is vague, since the \enquote{knowledge} can be many things.
-As such, we refine unpredictability to mean \enquote{no party should be able to predict the output of the randomness beacon with higher probability than other parties}.
-However, this property alone is not enough; imagine a randomness beacon which emits a single unpredictable bit, but with a known distribution to all parties.
+\subsection{Discussion of Randomness Beacon Properties}
+This section discusses the basic properties for a Randomness Beacon based on Rabin's properties. \mtjnote{Expand this. The paragraph titles are our own properties which we synthesize by analyzing Rabin's properties}
+
+\subsubsection{Unpredictability}
+The main idea governing the security of randomness beacon use cases is that the randomness beacon regularly emits a value which is \emph{unpredictable} for all parties.
+Rabin's definition of unpredictability is vague, since we do not know what Rabin meant with advance \enquote{knowledge}.
+Therefore, we refine unpredictability to mean \enquote{no party should be able to predict the output of the randomness beacon with higher probability than all other parties}.
+
+\subsubsection{Unbiased}
+Unpredictability alone is not enough; imagine a randomness beacon which emits a single unpredictable bit, but with a known distribution to all parties.
 For example, it could emit 0 with probability $0.4$ and 1 with probability $0.6$.
 This is still unpredictable per the definition that no party is able to predict the output with \emph{higher} probability than other parties, but it is not useful for the use cases because it is biased.
-It is unclear whether Rabin foresaw this in his definition of unpredictability by including knowledge of the probability distribution in the word \enquote{knowledge}; thus we explicitly add our own property, \emph{unbiased}.
+It is unclear whether Rabin foresaw this in his definition of unpredictability by including knowledge of the probability distribution in the word \enquote{knowledge}; thus we add our own explicit property, \emph{unbiased}.
 Unbiased means that all outputs are equally likely, i.e.\ the output is statistically close to samplings from a uniform distribution.
 
 Our definition of unbiased is close to what we believe Rabin meant with random.
@@ -71,15 +53,29 @@ However, we do not agree with his emphasis on using a physical method to produce
 While the randomness of such physical methods are good, they are inherently difficult to trust by users of the randomness beacon.
 The reason behind this, is that randomness generated by a physical method only is observable by the entity controlling it.
 While the randomness may be good, other parties cannot know if it is unbiased or manipulated.
-We therefore replace Rabin's definition of \emph{random} with the previously defined \emph{unbiased}.
-An unpredictable and unbiased number is inherently random.
+An unpredictable and unbiased number is inherently random. Therefore, there is no need to keep Rabin's \emph{random} property.
 
+\subsubsection{Entropy Guarantee}
 Rabin is only concerned with emitting integers in a small range, e.g.\ 1--100, because there, for his use cases, is a trade-off between security and time, such that a larger range provides better security but longer transaction times.
 However, we do not impose a limit or give suggestions for the range.
 This ultimately depends on the use case of the random number;
 hence we introduce a property called \emph{Entropy Guarantee}, meaning that it must be possible to guarantee a level of entropy.
-E.g., a lottery picking one human on Earth requires at least $\log_2(7.5~\text{billion}) \approx 33~\text{bits}$ of entropy.
 
+Entropy (formally called Shannon entropy) is a measure of information content in a source.
+Formally, Shannon Entropy of a source $X$ with alphabet ${a_1, \ldots, a_n}$ and a probability distribution ${p_1, \ldots , p_n}$ where $p_i = p(a_i)$ is defined as~\cite{informationtheory}:
+$$
+H(X) = -\sum\limits_{i = 1}^n p_{i}\log_{2} p_{i}
+$$
+As an example, a coin flip has two equally likely outcomes which gives it an entropy of $-(\frac{1}{2}\log_2 \frac{1}{2} + \frac{1}{2}\log_2 \frac{1}{2}) = 1$.
+
+Since we also have the unbiased property (all outcomes are equally likely), we can simplify this equation significantly:
+$$
+H(X) = -\log_{2}p(x)\text{,~~where }p(x)\text{ is the probability of an outcome.}
+$$
+
+As an example related to randomness beacons, a lottery picking one human on Earth requires at least $-\log_2(\frac{1}{7.5~\text{billion}}) \approx 33~\text{bits}$ of entropy to be able to express any possible outcome.
+
+\subsubsection{Availability}
 We relax the requirement of availability to being available in a given setting.
 Availability encompass any way the beacon sources its input and emits its output.
 It is not required to be publicly available at all times.
@@ -87,7 +83,7 @@ Backups are omitted in our definition because we believe this is an implementati
 
 We believe this is a better definition of properties that a randomness beacon must exhibit.
 
-\subsubsection{Removing the Need for Trust}
+\subsection{Removing the Need for Trust}
 As stated, Rabin's definition requires trust in a third party, with no way to ensure the honesty of that party.
 To avoid having to trust blindly in a third party, we invent a new property with inspiration from \citet{bonneau2015bitcoin}.
 They describe a beacon as a function applied regularly to some input with a known min-entropy.
@@ -106,11 +102,25 @@ Formally, let $B: f(I_t) \rightarrow R$, where $B$ is a beacon, $I_t$ is the inp
 For $B$ to be a beacon, it is run at a known, regular interval, $\delta$, such that $t+n\delta$ for any $n \in \mathbb{N}$ are valid output intervals for the beacon.
 In \Cref{fig:abstract_beacon} an example of an abstract beacon can be seen.
 
+\mtjnote{TODO: Put the following section somewhere around here.}
+High levels of entropy makes it hard to predict the data produced by the source, and can be obtained from data with less entropy by using extractor functions~\cite{pseudorandomness}.
+Extractor functions can be understood as functions that take a large input with little entropy spread throughout the input, and concentrates it into a smaller output \stefan{of the same entropy?}.
+They extract the entropy, measuring unpredictability, from the larger input and concentrates it into the output. \stefan{give an overview of what extractors can and cannot achieve: what is the state of the art result here?}
+
+%\citet{bonneau2015bitcoin} define an extractor function as $y = \text{Ext}_k(x)$.
+%An extractor $\text{Ext}$ is applied on an $n$-bit input $x$ of \enquote{sufficient} entropy.
+%The output $y$ is $m$ bits of \enquote{high} entropy, where $m < n$.
+%The key $k$ is used to select from a family of extractors.
+%They further define \enquote{sufficient} to be that the min-entropy is at least $m$ bits, and \enquote{high} entropy to be that there is only an negligible difference between the output $y$ and an $m$-bit uniform distribution.
+%As such, it is able to convert weak random sources into a highly random output, that statistically appears to be uniformly distributed.
+
 \subimport{}{simple_beacon_fig.tex}
 
 This can also be considered the \emph{beacon protocol}, the procedure that guides the beacons operations.
 The protocol also dictates how users interact with the beacon, and how it is controlled.
 The protocol is enforced algorithmically or by a \emph{beacon operator} that controls the beacon.
+
+\subsection{Summary}
 
 For sake of completeness, we reiterate our generic randomness beacon properties and combine them with the verifiability.
 Combined, they describe properties for a trustless randomness beacon:
