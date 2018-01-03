@@ -3,11 +3,14 @@
 As a way to structure the analysis of the above examples, we present a set of archetypes of randomness beacons rooted in the previously established beacon variations.
 We describe the main strengths and weaknesses for each archetype, and how well the examples in the above table match it.
 For detailed descriptions of each paper, refer to \Cref{sec:papersummaries}.
+
 \subsubsection{Autocratic Collector}\label{ssub:autocratic}
-The most naïve implementation of a randomness beacon is an autocratic beacon, which collects input from an internal source. Examples of this type include \citetalias{nistbeacon} and \citetalias{fischer2011publicrandomnessservice}.
+The most naïve implementation of a randomness beacon is an autocratic beacon, which collects input from an internal source.
+Examples of this type include \citetalias{nistbeacon} and \citetalias{fischer2011publicrandomnessservice}.
 A single entity governs the randomness beacon with complete authority, and no transparency required.
 Randomness beacons of this type are highly scalable, since scaling of the output publication is trivial.
-There is also no bottleneck in collecting entropy for the input, since it only relies on measuring something in the real world e.g.\ background radiation. E.g. \citetalias{nistbeacon} provides fresh randomness every 60 seconds\cite{nistbeacon}.
+There is also no bottleneck in collecting entropy for the input, since it only relies on measuring something in the real world e.g.\ background radiation.
+E.g. \citetalias{nistbeacon} provides fresh randomness every 60 seconds\cite{nistbeacon}.
 
 However, autocratic beacons are untrustworthy in nature, since the entity is completely self-governing.
 There is no validation in this type, as it is neither verifiable nor contestable, not even if the input entropy is published as proof, as the internal input source itself cannot be verified by users.
@@ -35,8 +38,11 @@ It can also be seen that the output of the private external entropy source, $I_t
 
 
 \subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
-To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc} \cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs. For a beacon this would mean users inputting secret inputs, that would then be used to generate randomness. Examples of this are \citetalias{syta2017scalable} and \citetalias{cascudo2017scrape}, that both use Shamir Secret Sharing Schemes \stefan{cite} to secretly share inputs to generate randomness.
+To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc}  \cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs.
+For a beacon this would mean users inputting secret inputs, that would then be used to generate randomness.
+Examples of this are \citealias{syta2017scalable} and \citealias{cascudo2017scrape}, that both use Shamir Secret Sharing Schemes~\cite{shamir1979} to secretly share inputs to generate randomness.
 This eliminates the need for trust between individual participants \stefan{sketch how this works exactly}.
+\msmnote{LOOK INTO THIS!!! They probably use PVSS instead. Elaborate?}
 A beacon of this type sources its entropy from user input during the execution of the \gls{mpc} beacon protocol.
 The randomness outcome can be trusted by any user to be unbiased, if and only if said user participated in the \gls{mpc} protocol.
 Effectively this means that while this type does not require absolute trust it requires absolute participation --- all users wanting a trustworthy outcome must participate, or trust at least one of the participants.
@@ -44,7 +50,8 @@ Effectively this means that while this type does not require absolute trust it r
 
 Scaling \gls{mpc} protocols, can also be difficult, although \citetalias{cascudo2017scrape} do improve on the performance of such protocols, especially in relation to a beacon, where the outcome is required to be published at regular intervals.
 
-The availability can also be severely hindered if one or multiple adversaries decide to drop out mid-execution. It can also be dependent on having a honest majority of users \cite{cascudo2017scrape}, which can severely impact availability in a public setting.
+The availability can also be severely hindered if one or multiple adversaries decide to drop out mid-execution.
+It can also be dependent on having a honest majority of users~\cite{cascudo2017scrape}, which can severely impact availability in a public setting.
 Because of this, a specialized \gls{mpc} beacon is best suited for a private setting, where we can assume that participants will carry out the computation, and ban anyone who tries to corrupt the beacon.
 
 An example of a specialized \gls{mpc} beacon protocol can be seen in \Vref{fig:mpc_beacon}, where the green marking covers the scope of the sequential \gls{mpc} between participants.
@@ -76,11 +83,11 @@ In the last step of the sequential \gls{mpc} protocol the final beacon outcome $
 As a middle ground between the two previous beacon archetypes, the transparent authority beacon aims to provide scalability, availability, and trustworthiness.
 This is possible since the beacon displays transparency in both entropy sourcing and execution, i.e.\ using publicly available or user input, and enabling validation of the execution and outcome.
 However, the authority behind the beacon can still be a self-announced entity --- as long as verification is possible, the execution model is irrelevant.
-Examples of this type of beacon are \citetalias{clark2010use}, \citetalias{baigneres2015trap}, \citetalias{bonneau2015bitcoin}, \citetalias{bentov2016bitcoin}, \citetalias{bunz2017proofsof}, \citetalias{lenstra2015random} and \citetalias{randao} \stefan{give citations}, making it the most common archetype.
+Examples of this type of beacon are \citealias{clark2010use}, \citealias{baigneres2015trap}, \citealias{bonneau2015bitcoin}, \citealias{bentov2016bitcoin}, \citealias{bunz2017proofsof}, \citealias{lenstra2015random} and \citealias{randao}, making it the most common archetype.
 
 If the execution of the beacon protocol is to be done by a single entity, it is important to have a solid incentive for running it --- as well as an incentive for the operator to be honest.
 This can be as simple as a community funded entity serving a \enquote{public good}, or to have users competing for monetary gains by running the beacon and contesting false outputs as discussed in \citet{bunz2017proofsof}.
-Similarly \citetalias{randao}, a smart contract on the Ethereum blockchain, has an incentive structure to make users provide input in the hopes of earning profits from making randomness available to other smart contracts.
+Similarly \citealias{randao}, a smart contract on the Ethereum blockchain, has an incentive structure to make users provide input in the hopes of earning profits from making randomness available to other smart contracts.
 
 Because this beacon type uses publicly available or user input, entropy source manipulation from adversaries must be taken into account --- often resolving in a probabilistic trust assumption, where the probability of a biased outcome is negligible.
 
