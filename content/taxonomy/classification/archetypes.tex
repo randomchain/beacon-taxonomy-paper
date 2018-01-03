@@ -38,7 +38,7 @@ It can also be seen that the output of the private external entropy source, $I_t
 
 
 \subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
-To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc}  \cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs.
+To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc}~\cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs.
 For a beacon this would mean users inputting secret inputs, that would then be used to generate randomness.
 Examples of this are \citealias{syta2017scalable} and \citealias{cascudo2017scrape}, that both use Shamir Secret Sharing Schemes~\cite{shamir1979} to secretly share inputs to generate randomness.
 This eliminates the need for trust between individual participants \stefan{sketch how this works exactly}.
