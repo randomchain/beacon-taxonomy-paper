@@ -1,9 +1,3 @@
 \section{Future Work}\label{sec:future_work}
-%This text could be conclusion ?
-Our work reveals a number of tradeoffs regarding randomness beacons. It is clear that beacons of the Autocratic Collector archetype can not be trusted for public randomness, and the the Specialized \gls{mpc} archetype does not scale well. This makes it difficult to use for public settings if all users must participate to trust the result. The combination of these makes the Transparent Authority archetype  the most suited for a trustless public randomness beacon. 
+%This text could be conclusion ? Agreed
 
-This type of beacon typically relies on a third party source of input to generate randomness from. Throughout the literature, the bitcoin blockchain has been a popular source of input due to the randomness inherent in the proof-of-work consensus protocol \cite{bonneau2015bitcoin}. Despite this, the blockchain has previously been show to be malleable, and a variety attacks on such beacon exist \cite{bonneau2015bitcoin, bentov2016bitcoin, pierrot2016malleability}. 
-
-An alternative approach for a Transparent Authority could be to use user input as \citealias{lenstra2015random} does. In such a beacon, users are guaranteed that the results is not biased against them as long as their input is used. While this does incur the risk of getting only bad or no input, they also suggest using a third party source to ensure output. 
-
-Such a combination could serve as a very powerful beacon; providing the scalability, availability and trustworthyness of a Transparent Authority, while also allowing users to provide input to achieve guaranteed trust. 
