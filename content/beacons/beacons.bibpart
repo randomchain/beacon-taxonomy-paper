@@ -19,3 +19,12 @@
     booktitle = {In IEEE INFOCOM},
     year = {2006}
 }
+
+@inproceedings{dodis2004randomness,
+  title={Randomness extraction and key derivation using the CBC, cascade and HMAC modes},
+  author={Dodis, Yevgeniy and Gennaro, Rosario and H{\aa}stad, Johan and Krawczyk, Hugo and Rabin, Tal},
+  booktitle={Advances in Cryptology--CRYPTO 2004},
+  pages={115--133},
+  year={2004},
+  organization={Springer}
+}
