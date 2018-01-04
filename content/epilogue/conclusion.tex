@@ -1,5 +1,5 @@
 \section{Conclusion}\label{sec:conclusion}
-Throughout this paper, we have examined the topic of public randomness with a focus on randomness beacons and trust.
+In this paper, we have examined the topic of public randomness with a focus on randomness beacons and trust.
 We have explored the beacon concept as well as a variety of previous work that either was or resembles a randomness beacon in structure.
 From this work we identify the following contributions:
 
@@ -8,13 +8,13 @@ From this work we identify the following contributions:
 It also serves as a more generic definition of the concept, that is not tied to a specific implementation.
     \item [Beacon Comparison Parameters] We established a variety of comparison parameters in the form of variations for randomness beacons and similar approaches.
 The parameters and their effect on a beacon was also explored.
-    \item [Classification of Existing Approaches] Based on our parameters, we compared 11 existing approaches to public randomness.
+    \item [Classification of Existing Approaches] Based on our parameters, we compared 11 existing approaches to randomness beacons.
 They were distributed within three archetypes of beacons.
-Each archetype had its strengths and weaknesses analyzed to better explore the effect of certain beacon properties.
+Each archetype had strengths and weaknesses analyzed to explore the effect of certain beacon properties.
 \end{description}
 
-By analyzing and organizing them we have given a structured overview of the field and provided a framework that can be used to classify future beacon approaches according to our parameters.
-The beacon definition is can be used in future scientific work as a generic definition of the term, which can clearly communicate the core of a randomness beacon, including variations in different approaches.
+Based on an analysis and organization we gave a structured overview of the field and provided a framework that can be used to classify future beacon approaches according to our parameters.
+The beacon definition can be used in future scientific work as a generic definition of the term, which can clearly communicate the core of a randomness beacon, including variations in different approaches.
 
 Our work reveals a number of trade-offs regarding randomness beacons.
 It is clear that beacons of the \emph{Autocratic Collector} archetype cannot be trusted for public randomness, and the \emph{Specialized \gls{mpc}} archetype does not scale well.
@@ -23,11 +23,11 @@ The combination of these makes the \emph{Transparent Authority} archetype the mo
 
 This type of beacon typically relies on a third party source of input to generate randomness from.
 Throughout the literature, the bitcoin blockchain has been a popular source of input due to the randomness inherent in the proof-of-work consensus protocol~\cite{bonneau2015bitcoin}.
-Despite this, the blockchain has previously been show to be malleable, and a variety attacks on such a beacon exist~\cite{bonneau2015bitcoin, bentov2016bitcoin, pierrot2016malleability}.
-However it has been show, that the malleability can be mitigated significantly~\cite{bunz2017proofsof}, resulting in a probabilistically trustworthy beacon.
+Despite this, the blockchain has previously been shown to be malleable, and a variety of attacks on such a beacon exist~\cite{bonneau2015bitcoin, bentov2016bitcoin, pierrot2016malleability}.
+However it has been shown, that the malleability can be mitigated significantly~\cite{bunz2017proofsof}, resulting in a probabilistically trustworthy beacon.
 
 An alternative approach for a \emph{Transparent Authority} could be to use user input as \citealias{lenstra2015random} does.
 In such a beacon, users are guaranteed that the results is not biased against them as long as their input is included.
-While this does incur the risk of getting only bad or no input, they also suggest using a third party source to ensure output quality.
+While this does incur the risk of getting only bad or no input, they also suggest using a third party source to ensure a minimum level of entropy in the output.
 
-A combination of user input and blockchain could serve as a powerful beacon; providing the scalability, availability and trustworthiness of a \emph{Transparent Authority}, while allowing users to provide input to achieve guaranteed trust, and using the blockchain to provide improbable manipulation and guaranteed entropy level.
+A combination of user input and blockchain could serve as a powerful beacon; providing the scalability, availability and trustworthiness of a \emph{Transparent Authority}, while allowing users to provide input to achieve guaranteed trust, and using the blockchain to provide make manipulation improbable and guarantee an entropy level.
