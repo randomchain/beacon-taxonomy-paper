@@ -1,0 +1,24 @@
+% Randomness beacons
+\section{Definition of a Randomness Beacon}\label{sec:beacons}
+
+As part of the goal of this paper, we define a trustless randomness beacon and the properties it must exhibit.
+This definition needs to be sufficiently general to encompass a variety of implementations.
+First, we look at the root of \emph{randomness beacons}.
+The root is not trustless, and therefore we discuss the validity of the root, motivate it, and afterwards propose new properties that make a randomness beacon trustless.
+
+% Rabin and the root of beacons
+\citet{rabin1983transaction} introduced the term \emph{beacon}\footnote{We use the terms \emph{randomness beacon} and \emph{beacon} interchangeably.
+These should not be confused with concepts like Bluetooth beacons --- however we do not distinguish between our randomness beacon and Rabin's beacon.} in 1983, and describes it as a \emph{trusted} third party that behaves \emph{honestly} and emits random numbers at a set interval, as a way to enable fair contract signing and secret disclosure.
+He furthermore describes three properties for his early beacon:
+
+\begin{description}
+    \item[Unpredictable] No party should be able to have advance knowledge of the beacon's output.
+    \item[Random] The beacon should use some physical method to produce random numbers.
+    \item[Available] The beacon should be publicly available, and could have backups in case of failure or jamming.
+\end{description}
+
+This definition can be used for all our previously described use cases with the glaring exception that users need to trust it.
+While we agree with the basics of these properties, we find the properties to be vague and poorly motivated.
+Therefore, we specify and extend Rabin's description of a beacon, and provide a motivation for why these properties are needed.
+
+
