@@ -14,7 +14,14 @@ We will shortly summarize the papers that we analyze as part of our taxonomy.
 %here goes the papers - need to fiddle with order to deliver message.
 %Maybe we should also add NIST beacon, since we use it to compare. Also RANDAO?
 %redefine command below if not in description env
-\newcommand{\papertitle}[1]{\paragraph{\citetitle{#1}}\hfill\citealias{#1}\\}
+
+\DeclareCiteCommand{\citetitleIdem}
+  {\usebibmacro{prenote}}
+  {\iffieldundef{shorttitle}{\thefield{title}}{\thefield{shorttitle}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\newcommand{\papertitle}[1]{\paragraph{\citetitleIdem{#1}}\hfill\citealias{#1}\\}
 
 \subimport{}{nist.tex}
 \subimport{}{randomservice.tex}
@@ -27,4 +34,3 @@ We will shortly summarize the papers that we analyze as part of our taxonomy.
 \subimport{}{scrape.tex}
 \subimport{}{randzoo.tex}
 \subimport{}{proofofdelay.tex}
-
