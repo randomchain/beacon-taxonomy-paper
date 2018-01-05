@@ -38,7 +38,7 @@ The following describe different ways for a randomness beacon to source the inpu
         Publicly available input means that it must be accessible to the public and consistent over a period.
         Hence, the \emph{availability} of the beacon is dictated by the availability of the source of public input.
         Moreover, the \emph{min-entropy} is also determined by the input, which should be scrutinized to guarantee the lower bound of entropy.
-        These sources can for example be the bitcoin blockchain\cite{bonneau2015bitcoin, bentov2016bitcoin}, financial data \cite{clark2010use}, or national lottery results.
+        These sources can for example be the bitcoin blockchain~\cite{bonneau2015bitcoin, bentov2016bitcoin}, financial data~\cite{clark2010use}, or national lottery results.
 
         Anyone who wishes to manipulate the beacon's output must do so through the source.
         For this type of source it is important to analyze \stefan{how to implement this? do we need public-key crypto?} the integrity of the source to understand the integrity of the randomness beacon itself.
@@ -105,5 +105,3 @@ We identify the following ways of validating a beacon:
         The beacon operator must then prove the correctness or incur some penalty, while a user that successfully contests the beacon is rewarded.
         This can potentially degrade the beacon \emph{availability}, depending on how the contesting process is handled and executed.
 \end{description}
-
-
