@@ -108,3 +108,10 @@
   publisher={McGraw-Hill New York}
 }
 
+@online{nytimes-nsaconstants,
+  title={Government Announces Steps to Restore Confidence on Encryption Standards},
+  author={Nicole Perlroth},
+  url={https://bits.blogs.nytimes.com/2013/09/10/government-announces-steps-to-restore-confidence-on-encryption-standards/},
+  urldate={2018-01-05},
+  year={2013}
+  }
