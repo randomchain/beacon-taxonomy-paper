@@ -19,7 +19,7 @@ A user is anyone with a stake in the outcome of the beacon, both through direct 
 
     \item[Verifiability]
         For a beacon to display verifiability, a user must be able to verify correct execution of the beacon protocol.
-        The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify. \msmnote{this could be interesting to expand upon, to allow for anonymized beacon interaction}
+        The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify.
 
         The most straight forward verification for randomness beacons is for a user to run the same computation on the same input.
         However, this may be impractical or the input may be secret, which  would require different approaches.
@@ -62,4 +62,3 @@ We also identify the following attacks on the integrity of a beacon:
         This could include publishing false results, denying user inputs or not extracting randomness according to protocol, and could potentially violate all properties of the beacon. %However, such tampering can be detected if the beacon incorporates some form of verification, which should reveal any divergence from the operating protocol.
 
 \end{description}
-
