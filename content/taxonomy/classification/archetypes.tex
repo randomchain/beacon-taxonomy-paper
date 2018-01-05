@@ -54,7 +54,7 @@ The availability can also be severely hindered if one or multiple adversaries de
 It can also be dependent on having a honest majority of users~\cite{cascudo2017scrape}, which can severely impact availability in a public setting.
 Because of this, a specialized \gls{mpc} beacon is best suited for a private setting, where we can assume that participants will carry out the computation, and ban anyone who tries to corrupt the beacon.
 
-An example of a specialized \gls{mpc} beacon protocol can be seen in \Vref{fig:mpc_beacon}, where the green marking covers the scope of the sequential \gls{mpc} between participants.
+An example of a specialized \gls{mpc} beacon protocol can be seen in \Cref{fig:mpc_beacon}, where the green marking covers the scope of the sequential \gls{mpc} between participants.
 In the figure, $i_{u,t}$ denotes a single user's $u$ input, and $R'$ the output of a given iteration.
 The sequential computation then performs $f'(I'_t)$, where $I'_t$ is the outcome of prevoius iteration and the current user's input, i.e.\ $R' \times i_{u,t} = I'_t$.
 In the last step of the sequential \gls{mpc} protocol the final beacon outcome $R$ is published to all users.
@@ -91,7 +91,7 @@ Similarly \citealias{randao}, a smart contract on the Ethereum blockchain, has a
 
 Because this beacon type uses publicly available or user input, entropy source manipulation from adversaries must be taken into account --- often resolving in a probabilistic trust assumption, where the probability of a biased outcome is negligible.
 
-In \Vref{fig:transparent_beacon} we show an example of a beacon of transparent authority, where the green markings indicate where the authority has power to affect the outcome.
+In \Cref{fig:transparent_beacon} we show an example of a beacon of transparent authority, where the green markings indicate where the authority has power to affect the outcome.
 As can be seen on the figure, the authority has to commit the input $I_t$, at a given time $t$.
 This input is verifiable, and therefore the outcome will also be verifiable, due to the nature of a transparent authority.
 
