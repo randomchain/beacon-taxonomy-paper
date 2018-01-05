@@ -42,7 +42,7 @@ It can also be seen that the output of the private external entropy source, $I_t
 To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc}~\cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs.
 For a beacon this would mean users inputting secret inputs, that would then be used to generate randomness.
 An example of this is \citealias{syta2017scalable} which uses \gls{pvss}~\cite{stadler1996publicly} to produce and distribute secret inputs, which then can be recovered by an honest majority if verification is needed.
-These secret inputs are the revealed after all participants have contributed.
+These secret inputs are then revealed after all participants have contributed.
 This eliminates the need for trust between individual participants, since secret inputs always can be uncovered and verified if needed, given an honest threshold.
 
 A beacon of this type sources its entropy from user input during the execution of the \gls{mpc} beacon protocol.
