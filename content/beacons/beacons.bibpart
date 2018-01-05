@@ -1,16 +1,16 @@
 @article{goldreich1998secure,
-  title={Secure multi-party computation},
-  author={Goldreich, Oded},
-  journal={Manuscript. Preliminary version},
-  pages={86--97},
-  year={1998}
+    title={Secure multi-party computation},
+    author={Goldreich, Oded},
+    journaltitle={Manuscript Preliminary version},
+    pages={86--97},
+    year={1998}
 }
 
 @book{informationtheory,
-title={Fundamentals in Information Theory and Coding},
-author={Borda, Monica},
-year={2011},
-url={http://www.springer.com/us/book/9783642203466}
+    title={Fundamentals in Information Theory and Coding},
+    author={Borda, Monica},
+    year={2011},
+    url={http://www.springer.com/us/book/9783642203466}
 }
 
 @INPROCEEDINGS{Singh06eclipseattacks,
@@ -19,3 +19,4 @@ url={http://www.springer.com/us/book/9783642203466}
     booktitle = {In IEEE INFOCOM},
     year = {2006}
 }
+

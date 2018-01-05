@@ -1,21 +1,19 @@
-\subsection*{Contributions}\label{subsec:contributions}
+\paragraph{Contributions}\label{subsec:contributions}
 % comparison parameters
-In this paper, we produce a general randomness beacon definition. Afterwards, we create a tangible set of properties which can be used to classify different approaches to creating randomness beacons.
+We produce a general randomness beacon definition, and create a tangible set of properties which can be used to classify different approaches to creating randomness beacons.
 We will be focusing on trust, i.e.\ how a given user of the randomness beacon can trust it, and if they should trust it.
-Alongside picking out shortcomings of the different approaches, we will examine where they excel compared to both each other and current solutions for public randomness.
+Alongside identifying shortcomings of the different parameters, we examine where they excel compared to both each other and current solutions for public randomness.
 
 % actual taxonomy
 To our knowledge, we provide the first taxonomy of such implementations accompanied by theoretical solutions and ideas, which seek to improve the trustability of randomness sources.
+We classify 11 existing approaches according to our parameters and place them within a set of archetypes derived from our parameters. The strengths and weaknesses of the archetypes are explored to identify tradeoffs between approaches.
 
-The rise of cryptocurrencies, and more importantly blockchain technologies, has spurred interest in establishing trust in a setting where participants are mutually distrusting.
-Randomness beacons display a similar setting, and thus many approaches utilize the blockchain technology.
-As such, blockchain technology will be discussed in relation to randomness beacons.
+%The rise of cryptocurrencies, and more importantly blockchain technologies, has spurred interest in establishing trust in a setting where participants are mutually distrusting.
+%Randomness beacons display a similar setting, and thus many approaches utilize the blockchain technology.
+%As such, blockchain technology will be part of the later discussion.
 
 \paragraph{The paper is organized as follows:}
 In \cref{sec:use_cases_of_randomness_beacons} we describe the real-world context of randomness beacons by showing motivating use cases.
-We specify the properties and settings of randomness beacons in \cref{sec:beacons}, which will be the foundation of classifying current randomness beacon approaches.
-
-In \cref{sec:classification} we define three archetypes of randomness beacons, which loosely describes the prevalent trends in such implementations.
-We then present, discuss, and classify existing approaches alongside non-beacon approaches to generating randomness.
-Lastly, we conclude upon this work in \cref{sec:conclusion}.
-
+We create a definition of trustless randomness beacons, including their properties in \cref{sec:beacons}. In \cref{sec:randomnessbeaconvariations} we define attributes, settings, trust assumptions, and attacks, which will be the foundation of classifying current randomness beacon approaches.
+In \cref{sec:classification} we define three archetypes of randomness beacons, and present, discuss, and classify existing approaches to generating randomness.
+Lastly, we follow up with some relevant discussions and  conclude upon the work in \cref{sec:conclusion}.

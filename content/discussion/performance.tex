@@ -1,11 +1,10 @@
 \subsection{Beacon Performance}
-One aspect of beacons we have not given much attention in our analysis is their performance.
-In practical use of a beacon, the performance of the beacon is also an important parameter to consider.
-When considering performance, the output frequency of the beacon is the primary metric to consider.
+One aspect of beacons we have not analysed much is their performance.
+In practical use of a beacon, performance is an important parameter to consider.
+When considering performance, the output frequency of the beacon is the primary metric we consider.
 Depending on the setting, having fresh randomness available frequently could be important for e.g.\ fair contract signing~\cite{rabin1983transaction}.
-We briefly mention it during the analysis, but the frequency of a beacon can be correlated to our main archetypes of beacons.
-The \emph{autocratic collector} practically dictates their frequency themselves.
-They are limited only by the speed at which they can collect data.
+We briefly mention it in the analysis, but the frequency of a beacon can be correlated to our main archetypes of beacons.
+The \emph{autocratic collector} practically dictates their frequency themselves.They are limited only by the speed at which they can collect data, which can be very high.
 To exemplify this, the \gls{nist} beacon output strings every 60 seconds~\cite{nistbeacon}.
 
 The \emph{transparent authority} is also limited by their input source, but in their case the limitation is much greater.

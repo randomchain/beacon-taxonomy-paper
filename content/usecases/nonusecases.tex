@@ -1,10 +1,8 @@
 \subsection{Non-Use-Cases}\label{sub:non_use_cases}
 Randomness beacons are not a universal solution in all situations requiring randomness.
 Generally‚ randomness beacons are useful in situations where all parties are mutually distrustful, and/or situations where transparency in the random number generation is beneficial.
-In cases where only one person needs a random number, there is no need to use a randomness beacon --- they can trust themself, and is often able to generate randomness of higher entropy.
+In cases where only one person needs a random number, there is no need to use a randomness beacon --- they can trust themself, and is often able to generate sufficient randomness.
 
 A concrete use case in which randomness beacons are not useful is the generation of key pairs.
 Note that algorithms for generating these key pairs may contain constants that benefit from being chosen by a randomness beacon~\cite{baigneres2015trap}.
 However, the random seed required in the algorithm for generating the key pair should be privately generated to avoid the likely situation where two people use the same randomness beacon output and end up with the same key pair.
-
-\msmnote{Maybe expand, if more comes to mind}

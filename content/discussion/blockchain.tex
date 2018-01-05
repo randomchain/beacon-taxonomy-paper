@@ -1,19 +1,32 @@
-\subsection{Blockchains}
-Blockchains are used widely within the beacon litterature, both as an source of input~\cite{bonneau2015bitcoin, bentov2016bitcoin, bunz2017proofsof} and as a platform to run a beacon~\cite{randao, bunz2017proofsof}.
+\subsection{Blockchain Technology in Beacons}
+
+Blockchains are used widely within the beacon literature, both as an source of input~\cite{bonneau2015bitcoin, bentov2016bitcoin, bunz2017proofsof} and as a platform to run a beacon~\cite{randao, bunz2017proofsof}.
 The blockchain has a strong foundation of verifiability that makes it easier to run a trustworthy service like a randomness beacon.
 
-The tendency to use the blockchain as input originates with \citet{bonneau2015bitcoin}, who presented the first bitcoin beacon.
+The tendency to use the blockchain as input originates with \citet{bonneau2015bitcoin}, who presented the first beacon driven by the bitcoin blockchain.
 They showed how you could extract large amounts of entropy from a single block on the blockchain, and how such a beacon could be attacked.
-Despite the fact that the blockchain has been shown to be malleable to a certain degree~\cite{pierrot2016malleability}, successful attempts to overcome this fact has been shown~\cite{bunz2017proofsof}.
+Despite the fact that the blockchain has been shown to be malleable~\cite{pierrot2016malleability}, successful attempts to mitigate this has been developed, e.g.\ by using delay functions to make manipulation negligible due to significantly increased cost~\cite{bunz2017proofsof}.
 
-This entropy is extracted from the block hashes, that contain a large amount of entropy due to the proof-of-work used in the bitcoin blockchain.
+The input is extracted from the block hashes, that contain a large amount of entropy due to the proof-of-work used in the bitcoin blockchain.
 However, this also ties the beacon and its entropy to a consensus protocol that consumes vast amounts of energy~\cite{bitcoinenergy}.
 
 While this does add further utility value to the proof-of-work protocol, it does not change the fact that tying a beacon to such an energy drain may not be sustainable long-term.
 While we could consider using blockchains with different consensus protocols, this presents other problems.
-Much of the entropy in the blockchain is tied to the solutions miners find to the proof-of-work puzzles~\cite{bonneau2015bitcoin}, which would not be available with alternative consensus protocols.
-This reduction could also lead to a similar reduction in the use cases of the beacon.
+Much of the entropy in the blockchain is in the proof-of-work puzzles~\cite{bonneau2015bitcoin}, which would not be available with alternative consensus protocols.
+In proof-of-work the entropy is guaranteed to be bound by the difficulty of mining a new block, since there otherwise would be a shortcut to mining, undermining the whole idea of proof-of-work crypto currencies.
 
-One could also theorize that the decentralized nature of the blockchain has also had an effect on its use within beacon literature.
-Since we typically want to avoid relying any single third party that can act maliciously, it makes sense to use a decentralized network as a source of input.
+One could also theorize that the decentralized nature of the blockchain has had an effect on its use within beacon literature.
+The public permissionless setting of blockchains like bitcoin, consits of mutually distrusting participants, and the network solves most of the issues that arise from it.
+Within public randomness we typically do not want to rely on any single third party that can act maliciously. This makes a decentralized network a useful source of input, and perhaps even as a platform for executing the beacon protocol.
+
+A downside to using blockchains as sources of input to randomness beacons, is the probabilistic nature of the guarantees a blockchain makes.
+At any given time, the state of a blockchain like bitcoin may be rewritten by an adversary, provided they posses the necessary resources.
+In the world of financial transactions this is mitigated by requiring a number of blocks to be build on top of the one containing a given transaction, \enquote{confirming} the transaction.
+This makes manipulation of the block containing the transaction improbable due the orders of magnitude higher cost, but not impossible.
+The same can be said about beacons using the blockchain as input.
+If a beacon has outputted some value based on a block, is the output then still valid if the input block is replaced in the blockchain?
+In this scenario the outcome would loose its public verifiability, and thereby be untrustworthy.
+
+However, due to the monetary value of crypto currencies like bitcoin, the cost of manipulation of a blockchain used as input for a randomness beacon, will likely be much higher than the gain of manipulating the beacon outcome.
+This is especially true when applying delay functions as \citet{bunz2017proofsof} does in \citetalias{bunz2017proofsof}, where they can even adjust the delay, based on the users stake in the outcome of the beacon.
 

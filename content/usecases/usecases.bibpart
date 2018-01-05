@@ -1,18 +1,86 @@
 @inproceedings{croman2016scaling,
-  title={On scaling decentralized blockchains},
-  author={Croman, Kyle and Decker, Christian and Eyal, Ittay and Gencer, Adem Efe and Juels, Ari and Kosba, Ahmed and Miller, Andrew and Saxena, Prateek and Shi, Elaine and Sirer, Emin G{\"u}n and others},
-  booktitle={International Conference on Financial Cryptography and Data Security},
-  pages={106--125},
-  year={2016},
-  organization={Springer}
+    title={On scaling decentralized blockchains},
+    author={Croman, Kyle and Decker, Christian and Eyal, Ittay and Gencer, Adem Efe and Juels, Ari and Kosba, Ahmed and Miller, Andrew and Saxena, Prateek and Shi, Elaine and Sirer, Emin G{\"u}n and others},
+    booktitle={International Conference on Financial Cryptography and Data Security},
+    pages={106--125},
+    year={2016},
+    organization={Springer}
 }
 
 @article{kokoris2017omniledger,
-  title={OmniLedger: A Secure, Scale-Out, Decentralized Ledger.},
-  author={Kokoris-Kogias, Eleftherios and Jovanovic, Philipp and Gasser, Linus and Gailly, Nicolas and Ford, Bryan},
-  journaltitle={IACR Cryptology ePrint Archive},
-  volume={2017},
-  pages={406},
-  year={2017}
+    title={OmniLedger: A Secure, Scale-Out, Decentralized Ledger.},
+    author={Kokoris-Kogias, Eleftherios and Jovanovic, Philipp and Gasser, Linus and Gailly, Nicolas and Ford, Bryan},
+    journaltitle={IACR Cryptology ePrint Archive},
+    volume={2017},
+    pages={406},
+    year={2017}
+}
+
+@misc{dualec-paper,
+    author = {Daniel J. Bernstein and Tanja Lange and Ruben Niederhagen},
+    title = {Dual EC: A Standardized Back Door},
+    howpublished = {Cryptology ePrint Archive, Report 2015/767},
+    year = {2015},
+    note = {\url{https://eprint.iacr.org/2015/767}},
+}
+
+@misc{backdoorsupmysleeve,
+    author={Jean-Philippe Aumasson},
+    title={Backdoors up my Sleeve},
+    howpublished={8th issue of PoC||GTFO},
+    month={6},
+    year={2015},
+    note={Source code available at \url{https://github.com/veorq/numsgen}}
+}
+
+@article{starr1997nonrandom,
+    title={Nonrandom risk: The 1970 draft lottery},
+    author={Starr, Norton},
+    journaltitle={Journal of Statistics Education},
+    volume={5},
+    number={2},
+    year={1997}
+}
+
+@Online{lotteryscandal-eddietipton,
+    title={Man hacked random-number generator to rig lotteries, investigators say},
+    author={Samuel Gibbs and agencies},
+    url={https://www.theguardian.com/technology/2016/apr/08/man-hacked-random-number-generator-rig-lotteries-investigators-say},
+    year={2016},
+    urldate={2017-12-01}
+}
+
+@Online{lotteryscandal-666,
+    title={2 guilty of bid to rig Pennsylvania lottery},
+    author={William Robbins},
+    url={http://www.nytimes.com/1981/05/21/us/2-guilty-of-bid-to-rig-pennsylvania-lottery.html},
+    year={1981},
+    urldate={2017-12-01}
+}
+
+@online{nbalottery,
+    title={Did Dikembe Mutombo reveal that the NBA Draft lottery is rigged?},
+    author={Dieter Kurtenbach},
+    date = {2016-05-17},
+    url={https://www.foxsports.com/nba/story/dikembe-mutombo-tweet-nba-draft-lottery-rigged-76ers-sixers-philadelphia-051716},
+    urldate={2017-12-04}
+}
+
+@inproceedings{heilman2014one,
+    title={One weird trick to stop selfish miners: Fresh Bitcoins, a solution for the honest miner},
+    author={Heilman, Ethan},
+    booktitle={International Conference on Financial Cryptography and Data Security},
+    pages={161--162},
+    year={2014},
+    organization={Springer}
+}
+
+@inproceedings{eyal2014majority,
+    title={Majority is not enough: Bitcoin mining is vulnerable},
+    author={Eyal, Ittay and Sirer, Emin G{\"u}n},
+    booktitle={International conference on financial cryptography and data security},
+    pages={436--454},
+    year={2014},
+    organization={Springer}
 }
 

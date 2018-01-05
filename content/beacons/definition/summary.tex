@@ -1,0 +1,35 @@
+\subsection{Summary}
+
+For sake of completeness, we reiterate our generic randomness beacon properties and combine them with the verifiability.
+They then describe properties for a trustless randomness beacon:
+
+\begin{description}
+    \item[Unpredictable]
+        Any user, $u$, should not be able to predict the output, $O_t$, with a larger probability than any other user, $u'$.
+    \item[Unbiased]
+        All possible outputs are equally likely --- i.e.\ the output is statistically close to samplings from a uniform distribution.
+        Given that $p(x)$ is the probability of $x$, and $O = \left\{ {o_0, o_1, \ldots, o_n} \right\}$, the set of all possible outcomes, this property can be formalized as:
+        $$ \forall o_i \in O \mid p(o_i) \approx \frac{1}{n}$$
+    \item[Entropy Guarantee]
+        There must be a guarantee on the level of output entropy.
+        Use cases then know if there is enough entropy for their use.
+    \item[Available]
+        All users in a given setting should have access to the randomness beacon.
+        This means both their ability to contribute with input, if applicable, and their access to the output.
+    \item[Verifiable]
+        Users should not need to trust \emph{any} output.
+        A beacon needs to be designed such that it can prove its honesty instead of requiring blind trust.
+        This can for example be accompanying the output with a proof that can be used to verify the correctness of the output, or giving the users to ability to contest the correctness of the output.
+\end{description}
+
+Each of these properties may or may not be fulfilled to some degree --- however an ideal trustworthy randomness beacon should have all of them.
+% As an absolute minimum, a beacon must be unpredictable and have some level of min-entropy.
+% It must also be available, but does not always need to be this; periodic availability could be sufficient for some use cases.
+% Verifiability is only required if users do not want to trust the beacon, it could easily function without it.
+%This definition is more flexible than the predecessors, as it does not require a randomness beacon to be publicly available, but rather introduces a \emph{setting} since beacons could also see use in non-public settings.
+%However, it also poses a more strict definition of correctness, since it must be proved.
+%It also generalizes the verifiability to simply concern the honesty of the beacon.
+The definition does not specify any properties about interaction, security, or execution of the beacon and its protocol, only that it somehow has to prove its honesty.
+These properties depend on the setting and requirements of a given beacon.
+
+This work is concerned with the trust of a randomness beacon, and as such we do not discuss the function $f$ for transforming the input to the output other than in the light of trust --- \citet{bonneau2015bitcoin, dodis2004randomness} provide some insights on the technicalities of such functions.

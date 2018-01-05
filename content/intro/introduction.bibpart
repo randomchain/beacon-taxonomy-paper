@@ -87,7 +87,7 @@
 @article{kim2014random,
   title={How to do random allocation (randomization)},
   author={Kim, Jeehyoung and Shin, Wonshik},
-  journal={Clinics in orthopedic surgery},
+  journaltitle={Clinics in orthopedic surgery},
   volume={6},
   number={1},
   pages={103--109},
@@ -108,3 +108,10 @@
   publisher={McGraw-Hill New York}
 }
 
+@online{nytimes-nsaconstants,
+  title={Government Announces Steps to Restore Confidence on Encryption Standards},
+  author={Nicole Perlroth},
+  url={https://bits.blogs.nytimes.com/2013/09/10/government-announces-steps-to-restore-confidence-on-encryption-standards/},
+  urldate={2018-01-05},
+  year={2013}
+  }
