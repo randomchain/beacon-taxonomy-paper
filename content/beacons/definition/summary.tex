@@ -8,8 +8,8 @@ They then describe properties for a trustless randomness beacon:
         Any user, $u$, should not be able to predict the output, $O_t$, with a larger probability than any other user, $u'$.
     \item[Unbiased]
         All possible outputs are equally likely --- i.e.\ the output is statistically close to samplings from a uniform distribution.
-        Given that $p(x)$ is the probability of $x$, and $O = \left\{ {o_n, o_{n-1}, \ldots, o_{0}} \right\}$, the set of all possible outcomes, this property can be formalized as:
-        $$ \forall o_n \in O \mid p(o_n) \approx \frac{1}{\left\vert{O}\right\vert}$$
+        Given that $p(x)$ is the probability of $x$, and $O = \left\{ {o_0, o_1, \ldots, o_n} \right\}$, the set of all possible outcomes, this property can be formalized as:
+        $$ \forall o_i \in O \mid p(o_i) \approx \frac{1}{n}$$
     \item[Entropy Guarantee]
         There must be a guarantee on the level of output entropy.
         Use cases then know if there is enough entropy for their use.
@@ -36,4 +36,3 @@ The definition does not specify any properties about interaction, security, or e
 These properties rely on the setting and requirements of a given beacon.
 
 This work is concerned with the trust of a randomness beacon, and as such we do not discuss the function $f$ for transforming the input to the output --- \citet{bonneau2015bitcoin, dodis2004randomness} provide some insights on this.
-
