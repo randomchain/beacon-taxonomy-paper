@@ -31,17 +31,17 @@ The following describe different ways for a randomness beacon to source the inpu
         If user input is the only source of entropy, lack of users prevent the beacon from operating, denying \emph{availability}.
         There can also be too many inputs, resulting in input sourcing cutoff ---
         the input of some users will then not be used in computing the outcome, thereby undermining that set of users ability to trust the given outcome.
-        This is because a given user must be able to identify the presence of a trusted input in the committed set of inputs, to trust the beacon outcome \stefan{how to solve these problems? comes later?}.
+        This is because a given user must be able to identify the presence of a trusted input in the committed set of inputs, to trust the beacon outcome.
 
     \item[Publicly Available Input]
         The beacon uses some publicly available data for input.
         Publicly available input means that it must be accessible to the public and consistent over a period.
         Hence, the \emph{availability} of the beacon is dictated by the availability of the source of public input.
-        Moreover, the \emph{min-entropy} is also determined by the input, which should be scrutinized to guarantee the lower bound of entropy.
+        Moreover, the \emph{guaranteed entropy} is also determined by the input, which should be scrutinized to guarantee the lower bound of entropy.
         These sources can for example be the bitcoin blockchain~\cite{bonneau2015bitcoin, bentov2016bitcoin}, financial data~\cite{clark2010use}, or national lottery results.
 
         Anyone who wishes to manipulate the beacon's output must do so through the source.
-        For this type of source it is important to analyze \stefan{how to implement this? do we need public-key crypto?} the integrity of the source to understand the integrity of the randomness beacon itself.
+        For this type of source it is important to analyze the integrity of the source to understand the integrity of the randomness beacon itself.
 
         It is important to note that public input does not violate the \emph{unpredictability} property of the beacon, since the time advantage an adversary has over other users is negligible regardless of computing resources.
         Furthermore, any user of the beacon will be able to \emph{verify} that the input has been used to generate the outcome.

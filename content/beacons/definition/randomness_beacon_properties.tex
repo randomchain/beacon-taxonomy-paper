@@ -59,8 +59,7 @@ Similarly, to our properties, they define unpredictable and unbiased, and also r
 Their beacon definition is tailored to describe their solution, and as such is not general enough to allow us to borrow it\footnote{Specifically, they require the input to be unknown before time $t$, and they require that any user can compute the output after time $t$ --- two things that are not necessarily required.}.
 
 However, they do capture an important element necessary for a \emph{trustless} randomness beacon, namely verifiability --- the ability to verify certain properties of the output.
-
-\mtjnote{Should we write something about that we will detail this later?}
+We adopt the property \emph{verifiability} such that users of the randomness beacon can verify the output. This will be further elaborated in later sections.
 
 \subsubsection{Trustless Randomness Beacons --- A Definition}
 Since computers are inherently deterministic, a randomness beacon will necessarily need to source its random output from somewhere.
@@ -78,7 +77,5 @@ The green area is what can be defined as the beacon, or \emph{beacon protocol} -
 The function $f$ will likely be an \emph{extractor function}.
 Extractor functions can be understood as functions that take an input with a non-uniform distribution and yields a uniformly distributed output.
 Informally, they concentrate the entropy level of the input.
+Extractor functions require a foundation of entropy as input, i.e.\ they cannot generate randomness from nothing --- they only condense existing entropy.
 Common extractor functions have been proven secure when the input has an entropy level of at least $2k$, where $k$ is the number of bits in the output~\cite{dodis2004randomness}.
-\stefan{give an overview of what extractors can and cannot achieve: what is the state of the art result here?}
-
-
