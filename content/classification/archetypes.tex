@@ -15,7 +15,7 @@ E.g.\ \citetalias{nistbeacon} provides fresh randomness every 60 seconds~\cite{n
 However, autocratic beacons are untrustworthy in nature, since the entity is completely self-governing.
 There is no validation in this type, as it is neither verifiable nor contestable, not even if the input entropy is published as proof, as the internal input source itself cannot be verified by users.
 
-A general example of autocratic collector beacon types can be seen in \Cref{fig:autocratic_beacon}, where the green marking depicts the components under total control of the beacon operator.
+A general example of autocratic collector beacon types can be seen in \Vref{fig:autocratic_beacon}, where the green marking depicts the components under total control of the beacon operator.
 It can also be seen that the output of the private external entropy source, $I_t$, can be manipulated or even manufactured by the autocratic beacon operator; without users being able to detect it.
 
 \begin{figure*}[htb]
@@ -56,7 +56,7 @@ The availability can also be severely hindered if one or multiple adversaries de
 It can also be dependent on having a honest majority of users~\cite{cascudo2017scrape}, which can severely impact availability in a permissionless setting.
 Because of this, a specialized \gls{mpc} beacon is best suited for a permissioned setting, where we can assume that participants will carry out the computation, and ban anyone who tries to corrupt the beacon.
 
-An example of a specialized \gls{mpc} beacon protocol can be seen in \Cref{fig:mpc_beacon}, where the green marking covers the scope of the sequential \gls{mpc} between participants.
+An example of a specialized \gls{mpc} beacon protocol can be seen in \Vref{fig:mpc_beacon}, where the green marking covers the scope of the sequential \gls{mpc} between participants.
 In the figure, $i_{u,t}$ denotes a single user's $u$ input, and $O'_t$ the output of a given iteration at time $t$.
 The sequential computation then performs $f'(I'_t)$, where $I'_t$ is the outcome of previous iteration and the current user's input, i.e.\ $O'_t \times i_{u,t} = I'_t$.
 In the last step of the sequential \gls{mpc} protocol the final beacon outcome $O_t$ is published to all users.
@@ -93,7 +93,7 @@ Similarly \citealias{randao}, a smart contract on the Ethereum blockchain, has a
 
 Because this beacon type uses publicly available or user input, entropy source manipulation from adversaries must be taken into account --- often resolving in a probabilistic trust assumption, where the probability of a biased outcome is negligible.
 
-In \Cref{fig:transparent_beacon} we show an example of a beacon of transparent authority, where the green markings indicate where the authority has power to affect the outcome.
+In \Vref{fig:transparent_beacon} we show an example of a beacon of transparent authority, where the green markings indicate where the authority has power to affect the outcome.
 As can be seen on the figure, the authority has to commit the input $I_t$, at a given time $t$.
 This input is verifiable, and therefore the outcome will also be verifiable, due to the nature of a transparent authority.
 
@@ -115,4 +115,3 @@ This input is verifiable, and therefore the outcome will also be verifiable, due
     \end{tikzpicture}
     \caption{Example of a transparent authority beacon}\label{fig:transparent_beacon}
 \end{figure*}
-
