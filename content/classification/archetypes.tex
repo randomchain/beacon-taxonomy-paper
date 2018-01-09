@@ -16,26 +16,25 @@ However, autocratic beacons are untrustworthy in nature, since the entity is com
 There is no validation in this type, as it is neither verifiable nor contestable, not even if the input entropy is published as proof, as the internal input source itself cannot be verified by users.
 
 A general example of autocratic collector beacon types can be seen in \Vref{fig:autocratic_beacon}, where the green marking depicts the components under total control of the beacon operator.
-It can also be seen that the output of the private external entropy source, $I_t$, can be manipulated or even manufactured by the autocratic beacon operator; without users being able to detect it.
+It can also be seen that the output of the private external entropy source, $I_t$, can be manipulated or manufactured by the autocratic beacon operator; without users being able to detect it.
 
-\begin{figure*}[hbt]
+\begin{figure}[hbt]
     \pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
     \centering
     \footnotesize
     \begin{tikzpicture}[auto]
         \node[block] (input) {Private external\\entropy source};
-        \node[block, right=1cm of input] (computation) {Computation\\$f(I_t)$};
-        \node[block, right=1cm of computation] (users) {Users};
+        \node[block, below=.7cm of input] (computation) {Computation\\$f(I_t)$};
+        \node[block, below=1.2cm of computation] (users) {Users};
         \draw[arrow] (input) -- node (inp) {$I_t$} (computation);
-        \node[above=1em of inp] {Undetectable internal manipulation of $I_t$ possible for operator};
-        \draw[arrow] (computation) -- node {$O_t$} (users);
+        \draw[arrow] (computation) -- node[yshift=-1mm] {$O_t$} (users);
         \begin{pgfonlayer}{background}
             \node[block] (beacon) [container, fit={(input) (computation)}] {};
         \end{pgfonlayer}
     \end{tikzpicture}
-    \caption{An autocratic collector beacon}\label{fig:autocratic_beacon}
-\end{figure*}
+    \caption{An autocratic collector beacon. In the green marking, undetectable internal manipulation of $I_t$ is possible for the operator.}\label{fig:autocratic_beacon}
+\end{figure}
 
 \subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
 To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc}~\cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs.
@@ -49,7 +48,7 @@ The randomness outcome can be trusted by any user to be unbiased, if and only if
 Effectively this means that while this type does not require absolute trust it requires absolute participation --- all users wanting a trustworthy outcome must participate, or trust at least one of the participants.
 
 
-Scaling \gls{mpc} protocols can also be difficult, although \citetalias{cascudo2017scrape} do improve on the performance of such protocols, especially in relation to a beacon, where the outcome is required to be published at regular intervals.
+Scaling \gls{mpc} protocols can also be difficult, although \citetalias{cascudo2017scrape} does improve on the performance of such protocols, especially in relation to a beacon, where the outcome is required to be published at regular intervals.
 
 The availability can also be severely hindered if one or multiple adversaries decide to drop out mid-execution.
 It can also be dependent on having a honest majority of users~\cite{cascudo2017scrape}, which can severely impact availability in a permissionless setting.
@@ -60,24 +59,23 @@ In the figure, $i_{u,t}$ denotes a single user's $u$ input, and $O'_t$ the outpu
 The sequential computation then performs $f'(I'_t)$, where $I'_t$ is the outcome of previous iteration and the current user's input, i.e.\ $O'_t \times i_{u,t} = I'_t$.
 In the last step of the sequential \gls{mpc} protocol the final beacon outcome $O_t$ is published to all users.
 
-\begin{figure*}[hbt]\pgfdeclarelayer{background}
+\begin{figure}[hbt]\pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
     \centering
     \footnotesize
     \begin{tikzpicture}[auto]
         \node[block] (input) {Each user's input};
-        \node[block, text width=9em, right=1cm of input] (computation) {Partial computation\\$f'(I'_t)$};
-        \node[block, right=1.5cm of computation] (users) {Users};
+        \node[block, text width=9em, below=.7cm of input] (computation) {Partial computation\\$f'(I'_t)$};
+        \node[block, below=1.7cm of computation] (users) {Users};
         \draw[arrow] (input) -- node (inp) {$i_{u,t}$} (computation);
-        \node[above=1em of inp] {Done sequentially by all participants};
-        \draw[arrow] (computation) -- node {$O_t$} (users);
-        \draw[arrow] (computation.east) to [out=-10, in=-90, looseness=2] node (rprime) {$O'$} (computation.south);
+        \draw[arrow] (computation) -- node[yshift=-5mm] {$O_t$} (users);
+        \draw[arrow] (computation.south) to [out=250, in=190, looseness=2] node (rprime) {$O'$} (computation.west);
         \begin{pgfonlayer}{background}
-            \node[block] (beacon) [container, fit={(input) (computation) (rprime)}] {};
+            \node[block] (beacon) [container, fit={(input) (computation) ([shift={(0mm,1mm)}]rprime.south west)}] {};
         \end{pgfonlayer}
     \end{tikzpicture}
-    \caption{Example of a specialized \gls{mpc} beacon protocol}\label{fig:mpc_beacon}
-\end{figure*}
+    \caption{Example of a specialized \gls{mpc} beacon protocol. The green marking is performed sequentially by all participants}\label{fig:mpc_beacon}
+\end{figure}
 
 
 \subsubsection{Transparent Authority}\label{ssub:transparent_authority}
@@ -97,20 +95,19 @@ As can be seen on the figure, the authority has to commit the input $I_t$, at a 
 This input is verifiable, and therefore the outcome will also be verifiable, due to the nature of a transparent authority.
 
 
-\begin{figure*}[hbt]\pgfdeclarelayer{background}
+\begin{figure}[hbt]\pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
     \centering
     \footnotesize
     \begin{tikzpicture}[auto]
         \node[block] (input) {Verifiable input};
-        \node[block, right=1cm of input] (computation) {Computation\\$f(I_t)$};
-        \node[block, right=1cm of computation] (users) {Users};
-        \draw[arrow] (input) -- node (inp) {$I_t$} (computation);
-        \draw[arrow] (computation) -- node {$O_t$} (users);
-        \node[above=1em of computation] {Authority commits to input $I_t$ at time $t$};
+        \node[block, below=1cm of input] (computation) {Computation\\$f(I_t)$};
+        \node[block, below=1cm of computation] (users) {Users};
+        \draw[arrow] (input) -- node[yshift=1mm] (inp) {$I_t$} (computation);
+        \draw[arrow] (computation) -- node[yshift=-1mm] {$O_t$} (users);
         \begin{pgfonlayer}{background}
             \node[block] (beacon) [container, fit={(computation)}] {};
         \end{pgfonlayer}
     \end{tikzpicture}
-    \caption{Example of a transparent authority beacon}\label{fig:transparent_beacon}
-\end{figure*}
+    \caption{Example of a transparent authority beacon. The green marking denotes what the authority controls. The authority commits to input $I_t$ at time $t$.}\label{fig:transparent_beacon}
+\end{figure}
