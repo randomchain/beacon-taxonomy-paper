@@ -18,7 +18,7 @@ There is no validation in this type, as it is neither verifiable nor contestable
 A general example of autocratic collector beacon types can be seen in \Vref{fig:autocratic_beacon}, where the green marking depicts the components under total control of the beacon operator.
 It can also be seen that the output of the private external entropy source, $I_t$, can be manipulated or even manufactured by the autocratic beacon operator; without users being able to detect it.
 
-\begin{figure*}[htb]
+\begin{figure*}[hbt]
     \pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
     \centering
@@ -36,7 +36,6 @@ It can also be seen that the output of the private external entropy source, $I_t
     \end{tikzpicture}
     \caption{An autocratic collector beacon}\label{fig:autocratic_beacon}
 \end{figure*}
-
 
 \subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
 To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc}~\cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs.
