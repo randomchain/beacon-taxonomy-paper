@@ -8,7 +8,7 @@ When honest miners then discovers a new valid block, the selfish miner can immed
 This effectively means that honest miners will have wasted their computational power, and the selfish miner still had a head start in mining on top of the now longest chain.
 
 \citet{heilman2014one} presents a way to make selfish mining significantly harder to do;
-Previously, a selfish miner was required to possess 25~\% of the mining power to be able to profitably carry out the attack, as presented by \citet{eyal2014majority} --- Heilman raises this to 32~\%.\msmnote{explaining these numbers requires extensive theory about block propagation probability among others.}
+Previously, a selfish miner was required to possess 25~\% of the mining power to be able to profitably carry out the attack, as presented by \citet{eyal2014majority} --- Heilman raises this to 32~\%.
 This is done by using unforgeable timestamps in the blocks, which means that a selfish miner will be exposed for having withheld mined blocks.
 The idea is that all mined blocks will contain the latest beacon output, thereby guaranteeing that the block was not mined prior to the beacon outputting.
 Randomness beacons can thus be used to provide these unforgeable timestamps, given that a random number is published at sufficient intervals.
