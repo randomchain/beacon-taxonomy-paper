@@ -57,9 +57,9 @@ It can also be dependent on having a honest majority of users~\cite{cascudo2017s
 Because of this, a specialized \gls{mpc} beacon is best suited for a permissioned setting, where we can assume that participants will carry out the computation, and ban anyone who tries to corrupt the beacon.
 
 An example of a specialized \gls{mpc} beacon protocol can be seen in \Cref{fig:mpc_beacon}, where the green marking covers the scope of the sequential \gls{mpc} between participants.
-In the figure, $i_{u,t}$ denotes a single user's $u$ input, and $R'$ the output of a given iteration.
-The sequential computation then performs $f'(I'_t)$, where $I'_t$ is the outcome of previous iteration and the current user's input, i.e.\ $R' \times i_{u,t} = I'_t$.
-In the last step of the sequential \gls{mpc} protocol the final beacon outcome $R$ is published to all users.
+In the figure, $i_{u,t}$ denotes a single user's $u$ input, and $O'_t$ the output of a given iteration at time $t$.
+The sequential computation then performs $f'(I'_t)$, where $I'_t$ is the outcome of previous iteration and the current user's input, i.e.\ $O'_t \times i_{u,t} = I'_t$.
+In the last step of the sequential \gls{mpc} protocol the final beacon outcome $O_t$ is published to all users.
 
 \begin{figure*}[hbt]\pgfdeclarelayer{background}
     \pgfsetlayers{background,main}
@@ -72,7 +72,7 @@ In the last step of the sequential \gls{mpc} protocol the final beacon outcome $
         \draw[arrow] (input) -- node (inp) {$i_{u,t}$} (computation);
         \node[above=1em of inp] {Done sequentially by all participants};
         \draw[arrow] (computation) -- node {$O_t$} (users);
-        \draw[arrow] (computation.east) to [out=-10, in=-90, looseness=2] node (rprime) {$R'$} (computation.south);
+        \draw[arrow] (computation.east) to [out=-10, in=-90, looseness=2] node (rprime) {$O'$} (computation.south);
         \begin{pgfonlayer}{background}
             \node[block] (beacon) [container, fit={(input) (computation) (rprime)}] {};
         \end{pgfonlayer}

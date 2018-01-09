@@ -8,7 +8,7 @@
         \draw[arrow] (input) -- node (inp) {$I_t$} (computation);
         \node[block, right=1.5cm of computation] (users) {Users};
         \node[above=1em of computation] {The beacon $B$ itself};
-        \draw[arrow] (computation) -- node (out) {$R$} (users);
+        \draw[arrow] (computation) -- node (out) {$O_t$} (users);
         \begin{pgfonlayer}{background}
             \node[block] (beacon) [container, fit={(inp) (computation) (out)}] {};
         \end{pgfonlayer}
