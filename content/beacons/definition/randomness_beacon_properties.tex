@@ -1,8 +1,6 @@
-\subsection{Randomness Beacon Properties}
+\subsection{Discussion of Rabin's properties}
 This section discusses the basic properties for a Randomness Beacon based on Rabin's properties.
 After the discussion we motivate the need for a new property, \emph{entropy guarantee}, before we tackle a property that removes the needed trust.
-
-\subsubsection{Discussion of Rabin's properties}
 The main idea governing the security of randomness beacon use cases is that the randomness beacon regularly emits a value which is \emph{unpredictable} to all parties.
 Rabin's definition of unpredictability is vague, since we do not know what Rabin meant with advance \enquote{knowledge}.
 Therefore, we refine unpredictability to mean \enquote{no party should be able to predict the output of the randomness beacon with higher probability than all other parties}.
@@ -26,7 +24,7 @@ Availability encompasses any way the beacon sources its input and emits its outp
 It is not required to be publicly available at all times.
 Backups are omitted in our definition because we believe this is an implementation specific detail.
 
-\subsubsection{Entropy Guarantee}
+\subsection{Entropy Guarantee}
 Rabin is only concerned with emitting integers in a small range, e.g.\ 1--100, because there, for his use cases, is a trade-off between security and time, such that a larger range provides better security but longer transaction times.
 However, we do not impose a limit or give suggestions for the range, since it ultimately depends on the use case of the random number.
 Some use cases require a larger space of random numbers than other use cases, and therefore it should be known in advance how large this space is.
@@ -47,7 +45,7 @@ Since we also have the unbiased property (all outcomes are equally likely), we c
 
 As an example related to randomness beacons, a lottery picking one human on Earth requires at least $-\log_2\left(\frac{1}{7.5~\text{billion}}\right) \approx 33~\text{bits}$ of entropy to be able to express any possible outcome.
 
-\subsubsection{Removing the Need for Trust}
+\subsection{Removing the Need for Trust}
 By now, we have refined \emph{unpredictable} and added \emph{unbiased}.
 These two combined makes Rabin's \emph{random} property obsolete.
 Moreover we have relaxed \emph{available}, and added \emph{entropy guarantee}.
@@ -61,7 +59,7 @@ Their beacon definition is tailored to describe their solution, and as such is n
 However, they do capture an important element necessary for a \emph{trustless} randomness beacon, namely verifiability --- the ability to verify certain properties of the output.
 We adopt the property \emph{verifiability} such that users of the randomness beacon can verify the output. This will be further elaborated in later sections.
 
-\subsubsection{Trustless Randomness Beacons --- A Definition}
+\subsection{Formalization}
 Since computers are inherently deterministic, a randomness beacon will necessarily need to source its random output from somewhere.
 The input to a beacon may not be in a directly usable form, and it may require some operation performed on it such that the output adheres to the output specification.
 We can regard the input as entropy or a seed to a computation that outputs data with our aforementioned properties.
