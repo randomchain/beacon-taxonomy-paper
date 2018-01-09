@@ -9,31 +9,29 @@ Not all of these assumptions and attacks will be relevant to all types of beacon
 The trust assumptions of a randomness beacon depend on the interaction with, and execution of the beacon, as well as the source of entropy.
 The following trust assumptions are from the users' point of view, unless otherwise stated.
 A user is anyone with a stake in the outcome of the beacon, both through direct use, but also indirect or inferred usage.
-\begin{description}
 
-    \item[Guaranteed Entropy Level]
-        Assumptions about the level of entropy in the outcome, rely on the entropy of the input and the properties of the computation which generates the outcome, e.g.\ an extractor function.
-        Users must be able to reason about the entropy level of the input source, through documentation or otherwise.
-        One way could be to calculate the Shannon Entropy of the source~\cite{informationtheory} for an average case entropy analysis, or the min-entropy for a strict lower bound on the entropy.
-        The entropy source and extractor function must be publicly available, such that users can verify the level of entropy.
+\paragraph{Guaranteed Entropy Level}
+    Assumptions about the level of entropy in the outcome, rely on the entropy of the input and the properties of the computation which generates the outcome, e.g.\ an extractor function.
+    Users must be able to reason about the entropy level of the input source, through documentation or otherwise.
+    One way could be to calculate the Shannon Entropy of the source~\cite{informationtheory} for an average case entropy analysis, or the min-entropy for a strict lower bound on the entropy.
+    The entropy source and extractor function must be publicly available, such that users can verify the level of entropy.
 
-    \item[Verifiability]
-        For a beacon to display verifiability, a user must be able to verify correct execution of the beacon protocol.
-        The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify.
+\paragraph{Verifiability}
+    For a beacon to display verifiability, a user must be able to verify correct execution of the beacon protocol.
+    The input to the beacon must be available for users to verify a given output, unless the beacon is able to produce a proof, which allows users to verify.
 
-        The most straight forward verification for randomness beacons is for a user to run the same computation on the same input.
-        However, this may be impractical or the input may be secret, which  would require different approaches.
-        This could include using proofs or functions that can rapidly be verified such as hashing functions~\cite{nakamoto2008bitcoin} or modular square roots~\cite{lenstra2015random}.
-        Verifiability can eliminate the need for trust in participants, while ensuring the trustworthiness of the outcome.
+    The most straight forward verification for randomness beacons is for a user to run the same computation on the same input.
+    However, this may be impractical or the input may be secret, which  would require different approaches.
+    This could include using proofs or functions that can rapidly be verified such as hashing functions~\cite{nakamoto2008bitcoin} or modular square roots~\cite{lenstra2015random}.
+    Verifiability can eliminate the need for trust in participants, while ensuring the trustworthiness of the outcome.
 
-    \item[Input Reasoning]
-        Being able to reason about the input is coupled to the two previous trust assumptions.
-        This trust assumption concerns what users can assume about the bias of the input.
-        The easier it is for adversaries to bias the input, the easier they can bias the randomness.
-        This assumption may also change significantly if the input is purely user-supplied.
-        As long a given user contributes their own input, the others may not be able to bias the randomness against him.
+\paragraph{Input Reasoning}
+    Being able to reason about the input is coupled to the two previous trust assumptions.
+    This trust assumption concerns what users can assume about the bias of the input.
+    The easier it is for adversaries to bias the input, the easier they can bias the randomness.
+    This assumption may also change significantly if the input is purely user-supplied.
+    As long a given user contributes their own input, the others may not be able to bias the randomness against him.
 
-\end{description}
 
 %       Security objectives
 \subsubsection{Attacks}\label{ssub:security_objectives}
