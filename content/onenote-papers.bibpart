@@ -1,5 +1,5 @@
 @article{cascudo2017scrape,
-  title={SCRAPE: Scalable Randomness Attested by Public Entities.},
+  title={SCRAPE: Scalable Randomness Attested by Public Entities},
   author={Cascudo, Ignacio and David, Bernardo},
   journaltitle={IACR Cryptology ePrint Archive},
   volume={2017},
@@ -17,7 +17,7 @@
 }
 
 @article{lenstra2015random,
-  title={A random zoo: sloth, unicorn, and trx.},
+  title={A random zoo: sloth, unicorn, and trx},
   author={Lenstra, Arjen K and Wesolowski, Benjamin},
   journaltitle={IACR Cryptology ePrint Archive},
   volume={2015},
@@ -56,7 +56,7 @@
 }
 
 @article{bonneau2015bitcoin,
-  title={On Bitcoin as a public randomness source.},
+  title={On Bitcoin as a public randomness source},
   author={Bonneau, Joseph and Clark, Jeremy and Goldfeder, Steven},
   journaltitle={IACR Cryptology ePrint Archive},
   volume={2015},
@@ -71,7 +71,7 @@
 }
 
 @article{clark2010use,
-  title={On the Use of Financial Data as a Random Beacon.},
+  title={On the Use of Financial Data as a Random Beacon},
   author={Clark, Jeremy and Hengartner, Urs},
   journaltitle={EVT/WOTE},
   volume={89},
@@ -79,7 +79,7 @@
 }
 
 @article{baigneres2015trap,
-  title={Trap Me If You Can --- Million Dollar Curve.},
+  title={Trap Me If You Can --- Million Dollar Curve},
   author={Baign{\`e}res, Thomas and Delerabl{\'e}e, C{\'e}cile and Finiasz, Matthieu and Goubin, Louis and Lepoint, Tancr{\`e}de and Rivain, Matthieu},
   journaltitle={IACR Cryptology ePrint Archive},
   volume={2015},
@@ -88,7 +88,7 @@
 }
 
 @article{andrychowicz2014distributed,
-  title={Distributed Cryptography Based on the Proofs of Work.},
+  title={Distributed Cryptography Based on the Proofs of Work},
   author={Andrychowicz, Marcin and Dziembowski, Stefan},
   journaltitle={IACR Cryptology ePrint Archive},
   volume={2014},

@@ -9,7 +9,9 @@ They then describe properties for a trustless randomness beacon:
     \item[Unbiased]
         All possible outputs are equally likely --- i.e.\ the output is statistically close to samplings from a uniform distribution.
         Given that $p(x)$ is the probability of $x$, and $O = \left\{ {o_0, o_1, \ldots, o_n} \right\}$, the set of all possible outcomes, this property can be formalized as:
-        $$ \forall o_i \in O \mid p(o_i) \approx \frac{1}{n}$$
+        \[
+            \forall o_i \in O \mid p(o_i) \approx \frac{1}{n}
+        \]
     \item[Entropy Guarantee]
         There must be a guarantee on the level of output entropy.
         Use cases then know if there is enough entropy for their use.

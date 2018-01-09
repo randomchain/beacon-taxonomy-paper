@@ -1,5 +1,6 @@
 %!TEX root = ../main.tex
 {%
+    \onecolumn
     %set up various length
     \ifx\titlepageleftcolumnwidth\undefined{}
       \newlength{\titlepageleftcolumnwidth}
@@ -10,36 +11,38 @@
     %create title page
     \thispagestyle{empty}
     \noindent%
-    \begin{tabular}{@{}ll@{}}
-      \parbox{\titlepageleftcolumnwidth}{%
-          \includegraphics[width=0.88\titlepageleftcolumnwidth]{img/aau_logo_en.pdf}
-      } &
-      \vspace{1cm}
-      \parbox{\titlepagerightcolumnwidth}{\raggedleft\sffamily\small
-        \textbf{\color{sectioning}Department of Computer Science}\\
-        Selma Lagerlöfs Vej 300\\
-        DK-9220 Aalborg Ø\\
-        \href{http://www.cs.aau.dk}{http://www.cs.aau.dk}
-      }\bigskip\\
-        \parbox[t]{\titlepageleftcolumnwidth}{%
-        \textbf{\color{sectioning}\sffamily{Title:}}\\ \TITLE{}\\\SUBTITLE{}\bigskip\par
-        \textbf{\color{sectioning}\sffamily{Project period:}}\\ \PERIOD\bigskip\par
-        \textbf{\color{sectioning}\sffamily{Project group:}}\\ \GROUP{}\bigskip\par
-        \textbf{\color{sectioning}\sffamily{Participants:}}\\ \MEMBERS{}\bigskip\par
-        \textbf{\color{sectioning}\sffamily{Supervisor:}}\\ \SUPERVISOR\bigskip\par
-        %\textbf{\color{sectioning}\sffamily{Copies:}} \projectcopies\bigskip\par
-        \textbf{\color{sectioning}\sffamily{Pages:}}~\pageref*{LastPageLabel}\bigskip\par
-        \textbf{\color{sectioning}\sffamily{Date of completion:}}\\ \COMPLETION%
-  } &
-      \parbox[t]{\titlepagerightcolumnwidth}{%
-      \textbf{\color{sectioning}\sffamily{Abstract:}}\smallskip\par{}
-        \mbox{\parbox{\titlepagerightcolumnwidth}{%
-          \subimport{}{frontmatter/abstract.tex}
-        }}
-      }\\
-    \end{tabular}
+    %\begin{table*}[h!]
+      \begin{tabular}{@{}ll@{}}
+        \parbox{\titlepageleftcolumnwidth}{%
+            \includegraphics[width=0.88\titlepageleftcolumnwidth]{img/aau_logo_en.pdf}
+        } &
+        \vspace{1cm}
+        \parbox{\titlepagerightcolumnwidth}{\raggedleft\sffamily\small
+          \textbf{\color{sectioning}Department of Computer Science}\\
+          Selma Lagerlöfs Vej 300\\
+          DK-9220 Aalborg Ø\\
+          \href{http://www.cs.aau.dk}{http://www.cs.aau.dk}
+        }\bigskip\\
+          \parbox[t]{\titlepageleftcolumnwidth}{%
+          \textbf{\color{sectioning}\sffamily{Title:}}\\ \TITLE{}\\\SUBTITLE{}\bigskip\par
+          \textbf{\color{sectioning}\sffamily{Project period:}}\\ \PERIOD\bigskip\par
+          \textbf{\color{sectioning}\sffamily{Project group:}}\\ \GROUP{}\bigskip\par
+          \textbf{\color{sectioning}\sffamily{Participants:}}\\ \MEMBERS{}\bigskip\par
+          \textbf{\color{sectioning}\sffamily{Supervisor:}}\\ \SUPERVISOR\bigskip\par
+          %\textbf{\color{sectioning}\sffamily{Copies:}} \projectcopies\bigskip\par
+          \textbf{\color{sectioning}\sffamily{Pages:}}~\pageref*{LastPageLabel}\bigskip\par
+          \textbf{\color{sectioning}\sffamily{Date of completion:}}\\ \COMPLETION%
+    } &
+        \parbox[t]{\titlepagerightcolumnwidth}{%
+        \textbf{\color{sectioning}\sffamily{Abstract:}}\smallskip\par{}
+          \mbox{\parbox{\titlepagerightcolumnwidth}{%
+            \subimport{}{frontmatter/abstract.tex}
+          }}
+        }\\
+      \end{tabular}
+    %\end{table*}
     \vfill
       \noindent{\footnotesize\emph{The content of this paper is freely available, but publication (with reference) may only be pursued due to agreement with the authors.}}
     \clearpage
+    \twocolumn
   }
-
