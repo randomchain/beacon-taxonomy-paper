@@ -24,7 +24,7 @@ The protocol allows users to provide entropy.
 This can potentially open up for direct manipulation, which in turn can enable adversaries to overcome the \emph{unpredictability}.
 
 The \emph{guaranteed entropy} of the inputs is dependent of the computation, i.e.\ aggregation of inputs and extraction of randomness.
-Using \enquote{exclusive or} to combine the inputs guarantees that the lower bound of entropy is set by the input with the highest entropy~\cite{lenstra2015random};
+Using \enquote{exclusive OR} to combine the inputs guarantees that the lower bound of entropy is set by the input with the highest entropy~\cite{lenstra2015random};
 this means that a user providing good entropy, can be sure that the outcome will have at least the same level of entropy.
 
 Usually, the beacon must publish a commitment to a set of user inputs before beginning the randomness computation,  thereby making users able to reason about the inputs used.
