@@ -3,14 +3,13 @@ One aspect of beacons we have not analyzed much is their performance.
 In practical use of a beacon, performance is an important parameter to consider.
 When considering performance, the output frequency of the beacon is the primary metric we consider.
 As briefly mentioned in the analysis the frequency of a beacon can be correlated to the archetypes.
-The \emph{autocratic collector} practically dictates their frequency themselves.
-They are limited only by the speed at which they can collect data, which can be high.
-To exemplify this, the \gls{nist} beacon outputs every 60 seconds~\cite{nistbeacon}.
+The \emph{autocratic collector} practically decide their frequency themselves.
+As an example, the \gls{nist} beacon outputs every 60 seconds~\cite{nistbeacon}.
 
 The \emph{transparent authority} is also limited by their input source, but in their case the limitation is much greater.
 They require the source to be published by a third party before they can start their computation, which puts the frequency out of their control.
 This is best exemplified with the examples that use the bitcoin blockchain as source~\cite{bonneau2015bitcoin, bentov2016bitcoin, bunz2017proofsof}.
-The bitcoin blockchain is designed to produce a new block at a set rate~\cite{nakamoto2008bitcoin}, which aims for a new block every 10 minutes\footnote{This timing could be adjusted in the future, by the bitcoin developers.}.
+The bitcoin blockchain is designed to produce a new block at a set rate~\cite{nakamoto2008bitcoin}, which aims for a new block every 10 minutes.
 This frequency may be too low for some use cases, in which case another type of \emph{entropy sourcing} would be preferable.
 
 By contrast, the frequency of \emph{Specialized MPC} beacons is completely dependent on the participants.
@@ -25,4 +24,3 @@ The initial latency is determined by two things:
 \end{eromanate*}
 Publishing the outcome is not considered in this metric, since the outcome effectively is available as soon as it is computed.
 Since the computation time of $f(I_t)$ affects the latency, beacons using delay functions such as \citealias{bunz2017proofsof} will often have a longer bootstrapping period than beacons with less time-consuming computations such as \citealias{bentov2016bitcoin}.
-
