@@ -17,7 +17,7 @@
 
 @article{rabin1983transaction,
   title={Transaction protection by beacons},
-  author={Rabin, Michael O},
+  author={Rabin, Michael O.},
   journaltitle={Journal of Computer and System Sciences},
   volume={27},
   number={2},
@@ -103,7 +103,7 @@
 
 @book{heath2002scientific,
   title={Scientific computing},
-  author={Heath, Michael T},
+  author={Heath, Michael T.},
   year={2002},
   publisher={McGraw-Hill New York}
 }

@@ -18,7 +18,7 @@
 
 @article{lenstra2015random,
   title={A random zoo: sloth, unicorn, and trx},
-  author={Lenstra, Arjen K and Wesolowski, Benjamin},
+  author={Lenstra, Arjen K. and Wesolowski, Benjamin},
   journaltitle={IACR Cryptology ePrint Archive},
   volume={2015},
   pages={366},
@@ -49,9 +49,6 @@
   journaltitle={CoRR},
   volume    = {abs/1605.04559},
   year      = {2016},
-  url       = {http://arxiv.org/abs/1605.04559},
-  archivePrefix = {arXiv},
-  eprint    = {1605.04559},
   timestamp = {Wed, 07 Jun 2017 14:40:08 +0200},
 }
 

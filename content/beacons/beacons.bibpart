@@ -9,8 +9,7 @@
 @book{informationtheory,
     title={Fundamentals in Information Theory and Coding},
     author={Borda, Monica},
-    year={2011},
-    url={http://www.springer.com/us/book/9783642203466}
+    year={2011}
 }
 
 @INPROCEEDINGS{Singh06eclipseattacks,

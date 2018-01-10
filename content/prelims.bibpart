@@ -8,7 +8,7 @@
 
 @Online{nistbeacon,
     title={NIST Randomness Beacon},
-    author={National Insitute of Standard and Technology},
+    author={{National Insitute of Standard and Technology}},
     date={2017-08-23},
     url={https://www.nist.gov/programs-projects/nist-randomness-beacon},
     urldate={2017-11-14}

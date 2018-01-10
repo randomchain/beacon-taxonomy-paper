@@ -1,21 +1,21 @@
-\subsection{Archetypes of Randomness Beacon}
-%   Beacon types
-As a way to structure the analysis of the above examples, we present a set of archetypes of randomness beacons rooted in the previously established beacon variations.
-We describe the main strengths and weaknesses for each archetype, and how well the examples in the above table match it.
+\subsection{Archetypes of Randomness Beacons}
+As a way to structure the analysis, we present a set of archetypes of randomness beacons rooted in the previously established beacon variations and common trends in existing approaches.
 For detailed descriptions of each paper, refer to \Cref{sec:papersummaries}.
+
+The three following sections each represent an archetype, namely the \emph{Autocratic Collector}, the \emph{Specialized MPC}, and the \emph{Transparent Authority}.
 
 \subsubsection{Autocratic Collector}\label{ssub:autocratic}
 The most naïve implementation of a randomness beacon is an autocratic beacon, which collects input from an internal source.
 Examples of this type include \citetalias{nistbeacon} and \citetalias{fischer2011publicrandomnessservice}.
-A single entity governs the randomness beacon with complete authority, and no transparency required.
+A single entity governs the randomness beacon with complete authority and no transparency.
 Randomness beacons of this type are highly scalable, since scaling of the output publication is trivial.
-There is also no bottleneck in collecting entropy for the input, since it only relies on measuring something in the real world e.g.\ background radiation.
-E.g.\ \citetalias{nistbeacon} provides fresh randomness every 60 seconds~\cite{nistbeacon}.
+There is also no bottleneck in collecting entropy for the input since it only relies on measuring e.g.\ background radiation.
+An example of this archetype, \citetalias{nistbeacon}, provides fresh randomness every 60 seconds~\cite{nistbeacon}.
 
-However, autocratic beacons are untrustworthy in nature, since the entity is completely self-governing.
+Autocratic beacons are untrustworthy in nature, since the entity is completely self-governing.
 There is no validation in this type, as it is neither verifiable nor contestable, not even if the input entropy is published as proof, as the internal input source itself cannot be verified by users.
 
-A general example of autocratic collector beacon types can be seen in \Vref{fig:autocratic_beacon}, where the green marking depicts the components under total control of the beacon operator.
+A general example of autocratic collector beacon types can be seen in \Vref{fig:autocratic_beacon}, where the green marking depicts the components under total control of the beacon operator; it could even be perceived as a block box.
 It can also be seen that the output of the private external entropy source, $I_t$, can be manipulated or manufactured by the autocratic beacon operator; without users being able to detect it.
 
 \begin{figure}[hbt]
@@ -36,9 +36,9 @@ It can also be seen that the output of the private external entropy source, $I_t
     \caption{An autocratic collector beacon. In the green marking, undetectable internal manipulation of $I_t$ is possible for the operator.}\label{fig:autocratic_beacon}
 \end{figure}
 
-\subsubsection{Specialized \gls{mpc}}\label{ssub:specialized_mpc}
+\subsubsection{Specialized MPC}\label{ssub:specialized_mpc}
 To alleviate the need for absolute trust in the beacon operator, a beacon protocol utilizing \acrfull{mpc}~\cite{goldreich1998secure} can be deployed. \gls{mpc} is a way for a group of users to secretly input to and perform some computation, without learning each others inputs.
-For a beacon this would mean users inputting secret inputs, that would then be used to generate randomness.
+For a beacon this would mean users input secret inputs, from which the output will be derived.
 An example of this is \citealias{syta2017scalable} which uses \gls{pvss}~\cite{stadler1996publicly} to produce and distribute secret inputs, which then can be recovered by an honest majority if verification is needed.
 These secret inputs are then revealed after all participants have contributed.
 This eliminates the need for trust between individual participants, since secret inputs always can be uncovered and verified if needed, given an honest threshold.
@@ -47,15 +47,15 @@ A beacon of this type sources its entropy from user input during the execution o
 The randomness outcome can be trusted by any user to be unbiased, if and only if said user participated in the \gls{mpc} protocol.
 Effectively this means that while this type does not require absolute trust it requires absolute participation --- all users wanting a trustworthy outcome must participate, or trust at least one of the participants.
 
-
-Scaling \gls{mpc} protocols can also be difficult, although \citetalias{cascudo2017scrape} does improve on the performance of such protocols, especially in relation to a beacon, where the outcome is required to be published at regular intervals.
+Scaling \gls{mpc} protocols can also be difficult, especially in relation to a beacon, where the outcome is required to be published at regular intervals.
+However, \citetalias{cascudo2017scrape} tries to solve this scaling bottleneck.
 
 The availability can also be severely hindered if one or multiple adversaries decide to drop out mid-execution.
-It can also be dependent on having a honest majority of users~\cite{cascudo2017scrape}, which can severely impact availability in a permissionless setting.
+It can also be dependent on having a honest majority of users~\cite{cascudo2017scrape}, which can significantly impact availability in a permissionless setting.
 Because of this, a specialized \gls{mpc} beacon is best suited for a permissioned setting, where we can assume that participants will carry out the computation, and ban anyone who tries to corrupt the beacon.
 
 An example of a specialized \gls{mpc} beacon protocol can be seen in \Vref{fig:mpc_beacon}, where the green marking covers the scope of the sequential \gls{mpc} between participants.
-In the figure, $i_{u,t}$ denotes a single user's $u$ input, and $O'_t$ the output of a given iteration at time $t$.
+In the figure, $i_{u,t}$ denotes a single user's, $u$, input and $O'_t$ the output of a given iteration at time $t$.
 The sequential computation then performs $f'(I'_t)$, where $I'_t$ is the outcome of previous iteration and the current user's input, i.e.\ $O'_t \times i_{u,t} = I'_t$.
 In the last step of the sequential \gls{mpc} protocol the final beacon outcome $O_t$ is published to all users.
 
@@ -69,7 +69,7 @@ In the last step of the sequential \gls{mpc} protocol the final beacon outcome $
         \node[block, below=1.7cm of computation] (users) {Users};
         \draw[arrow] (input) -- node (inp) {$i_{u,t}$} (computation);
         \draw[arrow] (computation) -- node[yshift=-5mm] {$O_t$} (users);
-        \draw[arrow] (computation.south) to [out=250, in=190, looseness=2] node (rprime) {$O'$} (computation.west);
+        \draw[arrow] (computation.south) to [out=250, in=190, looseness=2] node (rprime) {$O'_t$} (computation.west);
         \begin{pgfonlayer}{background}
             \node[block] (beacon) [container, fit={(input) (computation) ([shift={(0mm,1mm)}]rprime.south west)}] {};
         \end{pgfonlayer}
@@ -88,9 +88,9 @@ If the execution of the beacon protocol is to be done by a single entity, it is 
 This can be as simple as a community funded entity serving a \enquote{public good}, or to have users competing for monetary gains by running the beacon and contesting false outputs as discussed in \citet{bunz2017proofsof}.
 Similarly \citealias{randao}, a smart contract on the Ethereum blockchain, has an incentive structure to make users provide input in the hopes of earning profits from making randomness available to other smart contracts.
 
-Because this beacon type uses publicly available or user input, entropy source manipulation from adversaries must be taken into account --- often resolving in a probabilistic trust assumption, where the probability of a biased outcome is negligible.
+Because this beacon type uses publicly available or user input, entropy source manipulation from adversaries must be taken into account --- often resulting in a probabilistic trust assumption, where the probability of a biased outcome is negligible.
 
-In \Vref{fig:transparent_beacon} we show an example of a beacon of transparent authority, where the green markings indicate where the authority has power to affect the outcome.
+In \Vref{fig:transparent_beacon} we show an example of the transparent authority archetype, where the green markings indicate where the authority has power to affect the outcome.
 As can be seen on the figure, the authority has to commit the input $I_t$, at a given time $t$.
 This input is verifiable, and therefore the outcome will also be verifiable, due to the nature of a transparent authority.
 
