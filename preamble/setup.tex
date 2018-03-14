@@ -1,5 +1,6 @@
 %!TEX root = ../main.tex
 
+\usepackage{shellesc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PAGE LAYOUT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,6 +35,7 @@
 \usepackage[english]{babel}
 \usepackage{fontspec}
 \usepackage[T1]{fontenc}
+\DeclareTextCommand{\nobreakspace}{T1}{\leavevmode\nobreak\ }
 
 % Fonts
 \usepackage[bitstream-charter]{mathdesign} % Serif font
@@ -169,7 +171,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Listing & Minted
-\usepackage{shellesc}
 \usepackage{listings}
 
 %Minted makes nice looking code listings, but requires listings
